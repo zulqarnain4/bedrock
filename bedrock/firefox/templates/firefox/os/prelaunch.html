@@ -1,0 +1,62 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "firefox/base-resp.html" %}
+
+{% block page_title_prefix %}{% endblock %}
+{% block page_title %}{{_('Firefox OS — Sign up to learn more')}}{% endblock %}
+
+{% block body_id %}firefox-os{% endblock %}
+{% block body_class %}firefox-os{% endblock %}
+
+{% block site_header_nav %}{% endblock %}
+{% block site_header_logo %}{% endblock %}
+
+{% block site_css %}
+  {{ css('firefox_os_prelaunch') }}
+{% endblock %}
+
+{% block extrahead %}
+<!--[if lte IE 9]>
+  {{ css('firefox_os_prelaunch_ie9') }}
+<![endif]-->
+{% endblock %}
+
+{% block content %}
+<div class="outer-phone-container">
+  <div class="inner-phone-container">
+    <img class="phone" src="{{ MEDIA_URL }}img/firefox/os/prelaunch/phone-fox.png" alt="{{_('Firefox OS')}}" />
+    <div class="tail"></div>
+  </div>
+</div>
+
+<div class="rays-container">
+  <div class="rays-inner">
+      <div class="rays-bottom"></div>
+      <div class="rays-mid"></div>
+      <div class="rays-top"></div>
+  </div>
+</div>
+
+<section class="intro">
+  <h1 class="large">{{_('Welcome to a new way forward')}}</h1>
+  <p>{{_('Imagine a smartphone that adapts to your needs. Imagine content on any subject that’s instantly available when you want it. Imagine always staying in touch with your friends, your life and the world around you. That’s the power that Firefox OS puts in your hands.')}}</p>
+</section>
+
+{% block fx_os_email_form %}
+  {{ email_newsletter_form('mozilla-and-you,os',
+                          _('Sign up for our monthly newsletter and get the latest on Firefox OS')) }}
+{% endblock %}
+
+<section class="coming-soon">
+  <p>{{_('Coming soon from:')}} <span class="partner-logo"></span></p>
+</section>
+
+{% block email_form %}{% endblock %}
+
+{% endblock %}
+
+{% block js %}
+  {{ js('firefox_os_prelaunch') }}
+{% endblock  %}

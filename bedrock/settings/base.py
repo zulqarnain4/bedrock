@@ -211,6 +211,12 @@ MINIFY_BUNDLES = {
         'firefox_organizations': (
             'css/firefox/organizations.less',
         ),
+        'firefox_os_prelaunch': (
+            'css/firefox/os/prelaunch.less',
+        ),
+        'firefox_os_prelaunch_ie9': (
+            'css/firefox/os/prelaunch-ie9.less',
+        ),
         'firefox_platforms': (
             'css/firefox/template-resp.less',
             'css/base/mozilla-expanders.less',
@@ -429,6 +435,10 @@ MINIFY_BUNDLES = {
         'firefox_new': (
             'js/libs/modernizr.custom.csstransitions.js',
             'js/firefox/new.js',
+        ),
+        'firefox_os_prelaunch': (
+            'js/libs/script.js',
+            'js/firefox/os/prelaunch.js',
         ),
         'firefox_platforms': (
             'js/base/mozilla-expanders.js',

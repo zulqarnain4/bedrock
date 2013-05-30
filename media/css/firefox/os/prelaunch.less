@@ -1,0 +1,591 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import "../../sandstone/sandstone-resp.less";
+
+@bgBaseColor: #195F74;
+
+/* {{{ Template overrides */
+
+html {
+  overflow: auto;
+}
+
+html, body {
+  height: 100%;
+  min-width: @widthDesktop;
+}
+
+#masthead {
+  width: @widthDesktop - (@gridGutterWidth * 2);
+  z-index: 15;
+}
+
+.js #tabzilla {
+  .transition(opacity linear .25s);
+  opacity: 0.5;
+}
+
+.js #tabzilla.highlight {
+  opacity: 1;
+}
+
+#outer-wrapper {
+  background: @bgBaseColor;
+  background: -moz-linear-gradient(top, #11242d 0%, #1d596e 30%, #195f74 50%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#11242d), color-stop(25%,#1d596e), color-stop(50%,#195f74));
+  background: -webkit-linear-gradient(top, #11242d 0%,#1d596e 30%,#195f74 50%);
+  background: -o-linear-gradient(top, #11242d 0%,#1d596e 30%,#195f74 50%);
+  background: -ms-linear-gradient(top, #11242d 0%,#1d596e 30%,#195f74 50%);
+  background: linear-gradient(to bottom, #11242d 0%,#1d596e 30%,#195f74 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#11242d', endColorstr='#195f74',GradientType=0 );
+  overflow: hidden;
+}
+
+.js #outer-wrapper {
+  .transition(border-color linear .25s);
+  border-top: 2px solid #89969B;
+}
+
+.js #outer-wrapper.highlight {
+  border-top: 2px solid #fff;
+}
+
+#wrapper {
+  width: @widthDesktop;
+}
+
+/* }}} */
+/* {{{ Firefox OS Phone */
+
+.outer-phone-container {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 500px;
+  z-index: 5;
+}
+
+.inner-phone-container {
+  position: relative;
+  width: 1000px;
+  height: auto;
+  margin: -44px auto 0 auto;
+  overflow: visible;
+}
+
+.phone {
+  display: block;
+  position: relative;
+  min-width: 320px;
+  width: 487px;
+  height: 724px;
+  margin: 0 auto;
+  z-index: 10; 
+}
+
+.tail{
+  position: absolute;
+  right: 52%;
+  top: 75px;
+  content: "";
+  width: 606px;
+  height: 278px;
+  background: transparent url('/media/img/firefox/os/prelaunch/fox-tail.png') top left no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  z-index: 9;
+}
+
+/* }}} */
+/* {{{ Light rays */
+
+.rays-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+}
+
+.rays-inner {
+  position: relative;
+  width: 1000px;
+  height: 100%;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.rays-top {
+  position: absolute;
+  top: -185px;
+  left: 115px;
+  width: 748px;
+  height: 748px;
+  background: transparent url('/media/img/firefox/os/prelaunch/rays-top.png') top left no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  -webkit-animation: 240s rayRotate infinite linear;
+  -moz-animation: 240s rayRotate infinite linear;
+  -o-animation: 240s rayRotate infinite linear;
+  animation: 240s rayRotate infinite linear;
+  z-index: 3;
+}
+
+.rays-mid {
+  position: absolute;
+  top: -305px;
+  left: 0;
+  width: 990px;
+  height: 990px;
+  background: transparent url('/media/img/firefox/os/prelaunch/rays-mid.png') top left no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  -webkit-animation: 240s rayRotate infinite linear;
+  -moz-animation: 240s rayRotate infinite linear;
+  -o-animation: 240s rayRotate infinite linear;
+  animation: 240s rayRotate infinite linear;
+  -webkit-animation-direction: reverse;
+  -moz-animation-direction: reverse;
+  -o-animation-direction: reverse;
+  animation-direction: reverse;
+  z-index: 2;
+}
+
+.rays-bottom {
+  position: absolute;
+  top: -500px;
+  left: -170px;
+  width: 1358px;
+  height: 1358px;
+  background: transparent url('/media/img/firefox/os/prelaunch/rays-bottom.png') top left no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  z-index: 1;
+}
+
+@-webkit-keyframes rayRotate {
+  0% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: rotate(0);
+  }
+
+  100% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes rayRotate {
+  0% {
+    -moz-transform-origin: center center;
+    -moz-transform: rotate(0);
+  }
+
+  100% {
+    -moz-transform-origin: center center;
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes rayRotate {
+  0% {
+    -o-transform-origin: center center;
+    -o-transform: rotate(0);
+  }
+
+  100% {
+    -o-transform-origin: center center;
+    -o-transform: rotate(360deg);
+  }
+}
+
+@keyframes rayRotate {
+  0% {
+    transform-origin: center center;
+    transform: rotate(0);
+  }
+
+  100% {
+    transform-origin: center center;
+    transform: rotate(360deg);
+  }
+}
+
+/* }}} */
+/* {{{ Main page content */
+
+.intro {
+  position: relative;
+  width: 960px;
+  margin: 0 auto 0 auto;
+  .open-sans-light();
+  text-align: center;
+  h1 {
+      color: #fff;
+      text-shadow: none;
+  }
+  p {
+      color: #fff;
+      font-size: 18px;
+  }
+  z-index: 11;
+}
+
+.coming-soon {
+  display: none;
+  visibility: hidden;
+  position: relative;
+  width: 960px;
+  margin: (@baseLine * 2) auto @baseLine auto;
+  .open-sans();
+  text-align: center;
+  p {
+    color: #fff;
+    font-size: 18px;
+    vertical-align: middle;
+  }
+  .partner-logo {
+    display: inline-block;
+    margin-left: @baseLine;
+    vertical-align: middle;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  z-index: 11;
+}
+
+.coming-soon.pl,
+.coming-soon.co,
+.coming-soon.ve,
+.coming-soon.es, {
+  display: block;
+  visibility: visible;
+}
+
+// T-Mobile partner logo
+// Poland
+.coming-soon.pl {
+  .partner-logo {
+    width: 120px;
+    height: 46px;
+    background: transparent url('/media/img/firefox/os/prelaunch/logos/tmobile.png') top left no-repeat; 
+  }
+}
+
+
+// Movistar partner logo
+// Columbia, Venezuela, Spain
+.coming-soon.co,
+.coming-soon.ve,
+.coming-soon.es {
+  .partner-logo {
+    width: 200px;
+    height: 60px;
+    background: transparent url('/media/img/firefox/os/prelaunch/logos/movistar.png') top left no-repeat; 
+  }
+}
+
+/* }}} */
+/* {{{ Newsletter form */
+
+#footer-email-form {
+  width: 960px;
+  margin-bottom: @baseLine * 3;
+  h3 {
+      width: 270px;
+      margin: 0 90px 0 10px;
+      font-size: 17px;
+      line-height: 1.5;
+  }
+  .form-contents {
+      margin: 0;
+      padding-top: 10px;
+      input[type=email] {
+          width: 250px;
+      }
+  }
+  .form-submit {
+      float: right;
+      width: 160px;
+      padding-top: 8px;
+      input[type=submit] {
+          width: 160px;
+          padding: 5px 30px;
+      }
+      p {
+          text-align: right;
+      }
+  }
+  z-index: 11;
+}
+
+#footer-email-errors {
+  width: @widthDesktop;
+  margin: 0 auto;
+}
+
+#colophon {
+  margin: 0;
+}
+
+@media only screen {
+  #wrapper {
+    width: auto;
+  }
+}
+
+/* Tablet Layout: 760px */
+@media only screen and (min-width: @breakTablet) and (max-width: @breakDesktop) {
+  html, body {
+    min-width: @widthTablet;
+  }
+  #masthead {
+    width: @widthTablet  - (@gridGutterWidth * 2);
+  }
+  .outer-phone-container {
+    height: 510px;
+  }
+  .inner-phone-container {
+    width: 760px;
+  }
+  .tail {
+    right: 52.5%;
+  }
+  .intro {
+    width: @widthTablet  - (@gridGutterWidth * 2);
+    h1 {
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+  }
+  .coming-soon {
+    width: @widthTablet  - (@gridGutterWidth * 2);
+  }
+  #footer-email-form {
+    width: @widthTablet  - (@gridGutterWidth * 2);
+    h3 {
+      margin: 0 20px 0 10px;
+      line-height: 1.5em;
+      padding: 0;
+    }
+    .form-contents {
+      width: 200px;
+      input[type=email] {
+          width: 200px;
+      }
+    }
+  }
+  #footer-email-errors {
+    width: @widthTablet;
+  }
+  .rays-inner {
+    width: 760px;
+    height: 778px;
+  }
+  .rays-top {
+    left: 0;
+  }
+  .rays-mid {
+    left: -100px;
+  }
+  .rays-bottom {
+    left: -290px;
+  }
+}
+
+/* Mobile layout: 320px */
+@media only screen and (max-width: @breakMobileLandscape) {
+  html, body {
+    min-width: @widthMobile;
+  }
+  #masthead {
+    width: @widthMobile - @gridGutterWidth;
+  }
+  .outer-phone-container {
+    height: 300px;
+  }
+  .inner-phone-container {
+    width: 320px;
+    margin: -64px auto 0 auto;
+  }
+  .phone {
+    width: 320px;
+    height: 475px;
+  }
+  .tail {
+    right: 56%;
+    top: 33px;
+    width: 378px;
+    height: 196px;
+  }
+  .intro {
+    width: @widthMobile - @gridGutterWidth;
+  }
+  .coming-soon {
+    width: @widthMobile - @gridGutterWidth;
+    img {
+      display: block;
+      margin: 0 auto;
+      padding: @baseLine 0;
+    }
+  }
+  #footer-email-form {
+    width: @widthMobile - @gridGutterWidth;
+    text-align: center;
+    h3 {
+      margin: 0 10px;
+      line-height: 1.5em;
+      padding: 0;
+    }
+    .form-contents {
+      width: auto;
+      margin: @baseLine 10px;
+      padding-top: 0;
+      input[type=email] {
+          width: 220px;
+      }
+      select {
+        width: 250px;
+      }
+      .field-privacy {
+        width: 250px;
+        margin: 0 auto;
+        text-align: left;
+      }
+    }
+    .form-submit {
+      float: none;
+      width: auto;
+      margin: @baseLine 10px 0 10px;
+      padding-top: 0;
+      p {
+          text-align: center;
+      }
+    }
+  }
+  #footer-email-errors {
+    width: @widthMobile;
+  }
+  .rays-inner {
+    width: 320px;
+  }
+  .rays-top {
+    width: 434px;
+    height: 434px;
+    top: -70px;
+    left: -60px;
+  }
+  .rays-mid {
+    width: 600px;
+    height: 600px;
+    top: -170px;
+    left: -135px;
+  }
+  .rays-bottom {
+    width: 800px;
+    height: 800px;
+    top: -280px;
+    left: -240px;
+  }
+}
+
+/* Mobile layout: 480px */
+@media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
+  html, body {
+    min-width: @widthMobileLandscape;
+  }
+  #masthead {
+    width: @widthMobileLandscape  - @gridGutterWidth;
+  }
+  .outer-phone-container {
+    height: 300px;
+  }
+  .inner-phone-container {
+    width: 320px;
+    margin: -64px auto 0 auto;
+  }
+  .phone {
+    width: 320px;
+    height: 475px;
+  }
+  .tail {
+    right: 56%;
+    top: 33px;
+    width: 378px;
+    height: 196px;
+  }
+  .intro {
+    width: @widthMobileLandscape - @gridGutterWidth;
+  }
+  .coming-soon {
+    width: @widthMobileLandscape - @gridGutterWidth;
+  }
+  #footer-email-form {
+    width: @widthMobileLandscape - @gridGutterWidth;
+    text-align: center;
+    h3 {
+      margin: 0 auto;
+      line-height: 1.5em;
+      padding: 0;
+    }
+    .form-contents {
+      width: auto;
+      margin: @baseLine 10px;
+      select {
+        width: 250px;
+      }
+      .field-privacy {
+        width: 250px;
+        margin: 0 auto;
+        text-align: left;
+      }
+    }
+    .form-submit {
+      float: none;
+      width: auto;
+      margin: @baseLine 10px 0 10px;
+      p {
+          text-align: center;
+      }
+    }
+  }
+  #footer-email-errors {
+    width: @widthMobileLandscape;
+  }
+  .rays-inner {
+    width: 320px;
+  }
+  .rays-top {
+    width: 434px;
+    height: 434px;
+    top: -70px;
+    left: -60px;
+  }
+  .rays-mid {
+    width: 600px;
+    height: 600px;
+    top: -170px;
+    left: -135px;
+  }
+  .rays-bottom {
+    width: 800px;
+    height: 800px;
+    top: -280px;
+    left: -240px;
+  }
+}
+
+/* }}} */
+
