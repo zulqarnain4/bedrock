@@ -2,6 +2,7 @@ packages/beautifulsoup4
 packages/certifi
 packages/chardet
 packages/python-memcached
+packages/PyYAML/lib
 src/basket-client
 src/feedparser/feedparser
 src/django-extensions
