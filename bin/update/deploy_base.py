@@ -126,6 +126,7 @@ def cronjobs(ctx):
     management_cmd(ctx, 'cron update_tweets')
     management_cmd(ctx, 'cron update_openstandard')
     management_cmd(ctx, 'cron update_reps_ical')
+    management_cmd(ctx, 'update_security_advisories --quiet')
 
 
 @task
