@@ -4,13 +4,34 @@
 from django.test import RequestFactory
 
 from mock import patch, Mock
-from nose.tools import eq_
+from nose.tools import eq_, ok_
+from product_details import product_details
 from product_details.version_compare import Version
 
 from bedrock.mozorg.tests import TestCase
 from bedrock.security.management.commands.update_security_advisories import add_or_update_advisory
 from bedrock.security.models import Product
-from bedrock.security.views import ProductView, ProductVersionView, latest_queryset
+from bedrock.security.views import (ProductView, ProductVersionView, latest_queryset,
+                                    product_is_obsolete)
+
+
+@patch.dict(product_details.firefox_versions, {'LATEST_FIREFOX_VERSION': '33.0',
+                                               'FIREFOX_ESR': '31.2.0'})
+@patch.dict(product_details.thunderbird_versions, {'LATEST_THUNDERBIRD_VERSION': '31.2.0'})
+def test_product_is_obsolete():
+    ok_(product_is_obsolete('firefox', '3.6'))
+    ok_(product_is_obsolete('firefox', '32'))
+    ok_(product_is_obsolete('firefox-esr', '17.0'))
+    ok_(product_is_obsolete('thunderbird', '30'))
+    ok_(product_is_obsolete('seamonkey', '2.0'))
+    ok_(product_is_obsolete('seamonkey', '2.19'))
+    ok_(product_is_obsolete('other-things', '3000'))
+
+    ok_(not product_is_obsolete('firefox', '33.0.2'))
+    ok_(not product_is_obsolete('firefox', '34.0'))
+    ok_(not product_is_obsolete('firefox-esr', '31.0'))
+    ok_(not product_is_obsolete('thunderbird', '31'))
+    ok_(not product_is_obsolete('seamonkey', '2.30'))
 
 
 class TestViews(TestCase):
