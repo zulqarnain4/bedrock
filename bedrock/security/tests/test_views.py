@@ -60,14 +60,14 @@ class TestViews(TestCase):
     def test_product_version_view_filter_major(self):
         """Given a major version should return all minor versions."""
         pview = ProductVersionView()
-        pview.kwargs = {'slug': 'firefox-4'}
+        pview.kwargs = {'product': 'firefox', 'version': '4'}
         self.assertListEqual(pview.get_queryset(),
                              [self.pvs[4], self.pvs[3], self.pvs[2], self.pvs[1]])
 
     def test_product_version_view_filter_minor(self):
         """Given a minor version should return all point versions."""
         pview = ProductVersionView()
-        pview.kwargs = {'slug': 'firefox-4.2'}
+        pview.kwargs = {'product': 'firefox', 'version': '4.2'}
         self.assertListEqual(pview.get_queryset(), [self.pvs[4], self.pvs[3]])
 
 
@@ -136,11 +136,11 @@ class TestLastModified(TestCase):
         req = self.rf.get('/')
         req.resolver_match = Mock()
         req.resolver_match.url_name = 'security.product-version-advisories'
-        qs = latest_queryset(req, {'slug': 'firefox-30'})
+        qs = latest_queryset(req, {'product': 'firefox', 'version': '30'})
         self.assertListEqual(advisories_30, list(qs.order_by('year', 'order')))
-        qs = latest_queryset(req, {'slug': 'firefox-30.1'})
+        qs = latest_queryset(req, {'product': 'firefox', 'version': '30.1'})
         self.assertEqual(advisories_30[1], qs.get())
-        qs = latest_queryset(req, {'slug': 'firefox-29.0'})
+        qs = latest_queryset(req, {'product': 'firefox', 'version': '29.0'})
         self.assertListEqual(advisories_29, list(qs.order_by('year', 'order')))
 
 

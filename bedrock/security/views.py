@@ -74,7 +74,7 @@ def latest_queryset(request, kwargs):
         return SecurityAdvisory.objects.filter(fixed_in__product_slug=slug)
 
     if urlname == 'product-version-advisories':
-        slug = kwargs.get('slug')
+        slug = u'{product}-{version}'.format(**kwargs)
         qfilter = Q(fixed_in__slug__startswith=slug + '.')
         dots = slug.count('.')
         if dots < 2:
@@ -156,7 +156,6 @@ class ProductVersionView(ListView):
     template_name = 'security/product-advisories.html'
     context_object_name = 'product_versions'
     allow_empty = False
-    slug_re = re.compile(r'([\w-]+)-(\d{1,3}(?:\.\d{1,3})?)')
 
     @method_decorator(cache_control_expires(0.5))
     @method_decorator(last_modified(latest_advisory))
@@ -164,7 +163,7 @@ class ProductVersionView(ListView):
         return super(ProductVersionView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        slug = self.kwargs['slug']
+        slug = u'{product}-{version}'.format(**self.kwargs)
         qfilter = Q(slug__startswith=slug + '.')
         dots = slug.count('.')
         if dots < 2:
@@ -178,8 +177,7 @@ class ProductVersionView(ListView):
 
     def get_context_data(self, **kwargs):
         cxt = super(ProductVersionView, self).get_context_data(**kwargs)
-        match = self.slug_re.match(self.kwargs['slug'])
-        prod_name, version = match.groups()
+        prod_name, version = self.kwargs['product'], self.kwargs['version']
         cxt['is_obsolete'] = product_is_obsolete(prod_name, version)
         cxt['product_name'] = '{0} {1}'.format(cxt['product_versions'][0].product, version)
         cxt['product_slug'] = prod_name
@@ -213,8 +211,9 @@ class KVRedirectsView(CachedRedirectView):
         match = self.prod_ver_re.match(url_component)
         if match:
             product, version = match.groups()
-            slug = '{0}-{1}.{2}'.format(product, *version)
-            return reverse('security.product-version-advisories', kwargs={'slug': slug})
+            version = '{0}.{1}'.format(*version)
+            return reverse('security.product-version-advisories', kwargs={'product': product,
+                                                                          'version': version})
 
         if url_component.endswith('ESR'):
             return reverse('security.product-advisories',
