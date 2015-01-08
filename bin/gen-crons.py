@@ -31,12 +31,14 @@ def main():
     if not opts.template:
         parser.error('-t must be defined')
 
-    ctx = {'django': 'cd %s && %s manage.py' % (opts.webapp, opts.python)}
-    ctx['cron'] = '%s cron' % ctx['django']
+    django_manage = 'cd %s && %s manage.py' % (opts.webapp, opts.python)
+    ctx = {
+        'django_manage': django_manage,
+        'django_cron': '%s cron' % django_manage,
+    }
 
-    if opts.user:
-        for k, v in ctx.iteritems():
-            ctx[k] = '%s %s' % (opts.user, v)
+    for k, v in ctx.iteritems():
+        ctx[k] = '%s %s' % (opts.user, v)
 
     # Needs to stay below the opts.user injection.
     ctx['user'] = opts.user
@@ -47,7 +49,7 @@ def main():
 
     tmpl_final_name = os.path.join(TEMPLATE_DIR, opts.template)
     tmpl_src_name = tmpl_final_name + '.tmpl'
-    tmpl_temp_name = tmpl_final_name + '.new'
+    tmpl_temp_name = tmpl_final_name + '.TEMP'
     try:
         with open(tmpl_src_name, 'r') as src_fh:
             with open(tmpl_temp_name, 'w') as out_fh:
