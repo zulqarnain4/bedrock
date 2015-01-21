@@ -45,6 +45,16 @@ CACHES['l10n'] = {
         'CULL_FREQUENCY': 4,  # 1/4 entries deleted if max reached
     }
 }
+# cache for static files
+CACHES['staticfiles'] = {
+    'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    'LOCATION': 'staticfiles',
+    'TIMEOUT': None,
+    'OPTIONS': {
+        'MAX_ENTRIES': 5000,
+        'CULL_FREQUENCY': 4,  # 1/4 entries deleted if max reached
+    }
+}
 
 MEDIA_URL = CDN_BASE_URL + MEDIA_URL
 STATIC_URL = CDN_BASE_URL + STATIC_URL
