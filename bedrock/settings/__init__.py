@@ -35,7 +35,8 @@ WAFFLE_FLAG_DEFAULT = WAFFLE_SWITCH_DEFAULT = WAFFLE_SAMPLE_DEFAULT = DEV
 if 'manage.py' not in sys.argv:
     SLAVE_DATABASES = [db for db in DATABASES if db != 'default']
 
-if 'test' in sys.argv:
+if len(sys.argv) > 1 and sys.argv[1] == 'test':
+    # Using the CachedStaticFilesStorage for tests breaks all the things.
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # cache for lang files
