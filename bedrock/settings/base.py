@@ -944,6 +944,8 @@ PIPELINE_CSS = {
             'css/styleguide/identity-webmaker.less',
             'css/styleguide/communications.less',
             'css/styleguide/products-firefox-os.less',
+            'css/libs/jquery-ui.css',
+            'css/styleguide/mozilla-logo-generator.css',
         ),
         'output_filename': 'css/styleguide-bundle.css',
     },
@@ -1764,6 +1766,17 @@ PIPELINE_JS = {
             'js/styleguide/logo-prototype/clock-data.js',
         ),
         'output_filename': 'js/logo-prototype-bundle.js',
+    },
+    'mozilla-logo': {
+        'source_filesnames': (
+            'js/styleguide/mozilla-logo/lodash.js',
+            'js/styleguide/mozilla-logo/d3.js',
+            'js/styleguide/mozilla-logo/jquery-2.1.1.js',
+            'js/styleguide/mozilla-logo/jquery-ui.js',
+            'js/styleguide/mozilla-logo/logo.js',
+            'js/styleguide/mozilla-logo/controls.js',
+        ),
+        'output_filename': 'js/mozilla-logo-bundle.js',
     },
     'partners': {
         'source_filenames': (
