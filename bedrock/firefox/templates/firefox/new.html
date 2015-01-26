@@ -20,11 +20,11 @@
 {% block site_css %}{% endblock %}
 
 {% block extrahead %}
-  {{ css('firefox_new') }}
+  {% stylesheet 'firefox_new' %}
 {% endblock %}
 
 {% block js_pretrack %}
-  {{ js('firefox_new') }}
+  {% javascript 'firefox_new' %}
 {% endblock %}
 
 {% block optimizely %}

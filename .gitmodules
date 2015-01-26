@@ -73,3 +73,9 @@
 [submodule "vendor-local/src/jingo-minify"]
 	path = vendor-local/src/jingo-minify
 	url = git://github.com/jsocol/jingo-minify.git
+[submodule "vendor-local/src/django-pipeline"]
+	path = vendor-local/src/django-pipeline
+	url = git://github.com/cyberdelia/django-pipeline.git
+[submodule "vendor-local/src/whitenoise"]
+	path = vendor-local/src/whitenoise
+	url = git://github.com/evansd/whitenoise.git

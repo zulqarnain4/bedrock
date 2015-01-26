@@ -19,7 +19,7 @@
 {% block body_id %}privacy-day{% endblock %}
 
 {% block site_css %}
-  {{ css('privacy-day') }}
+  {% stylesheet 'privacy-day' %}
 {% endblock %}
 
 {%
@@ -306,5 +306,5 @@ Privacy Matters”') }}">
 {% endblock %}
 
 {% block js %}
-  {{ js('privacy-day') }}
-{% endblock %}
+  {% javascript 'privacy-day' %}
+{% endblock  %}

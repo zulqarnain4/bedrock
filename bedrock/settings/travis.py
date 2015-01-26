@@ -29,3 +29,4 @@ HMAC_KEYS = {
 # signal which Django's test client uses to save away the contexts for your
 # test to look at later.
 TEMPLATE_DEBUG = True
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'

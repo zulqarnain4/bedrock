@@ -58,11 +58,6 @@ def secure_url(ctx, viewname=None):
 
 
 @jingo.register.function
-def media(url):
-    return path.join(settings.MEDIA_URL, url.lstrip('/'))
-
-
-@jingo.register.function
 @jinja2.contextfunction
 def l10n_img(ctx, url):
     """Output the url to a localized image.

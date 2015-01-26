@@ -7,11 +7,11 @@
 {% set_lang_files "firefox/privacy_tour/privacy_tour" %}
 
 {% block site_css %}
-  {{ css('firefox_privacy_tour') }}
+  {% stylesheet 'firefox_privacy_tour' %}
 {% endblock %}
 
 {% block js %}
-  {{ js('firefox_privacy_tour') }}
+  {% javascript 'firefox_privacy_tour' %}
 {% endblock %}
 
 {% block noscript %}
