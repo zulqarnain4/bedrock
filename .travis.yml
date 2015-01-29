@@ -13,6 +13,7 @@ before_script:
   - mysql -e 'create database bedrock_test;'
   - python manage.py version
   - python manage.py syncdb --noinput --migrate
+  - python manage.py collectstatic --noinput
   - python manage.py update_product_details
   - svn checkout https://svn.mozilla.org/projects/mozilla.com/trunk/locales/ locale
 script: coverage run manage.py test
