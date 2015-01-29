@@ -1774,8 +1774,15 @@ PIPELINE_JS = {
             'js/styleguide/mozilla-logo/jquery-ui.js',
             'js/styleguide/mozilla-logo/logo.js',
             'js/styleguide/mozilla-logo/controls.js',
+            'js/styleguide/mozilla-logo/logo-init.js',
         ),
         'output_filename': 'js/mozilla-logo-bundle.js',
+    },
+    'mozilla-logo-embed': {
+        'source_filenames': (
+            'js/styleguide/mozilla-logo/logo-embed.js',
+        ),
+        'output_filename': 'js/mozilla-logo-embed-bundle.js',
     },
     'partners': {
         'source_filenames': (
