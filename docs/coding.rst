@@ -39,7 +39,7 @@ Embedding images
 Images should be included on pages using helper functions.
 
 static()
-^^^^^^^
+^^^^^^^^
 For a simple image, the `static()` function is used to generate the image URL. For example::
 
     <img src="{{ static('img/firefox/new/firefox-logo.png') }}" alt="Firefox" />
