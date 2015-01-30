@@ -96,7 +96,8 @@ def update_revision_file(ctx):
     """Add a file containing the current git hash to media."""
     with ctx.lcd(settings.SRC_DIR):
         ctx.local("if [ -f media/revision.txt ]; then "
-                  "mv media/revision.txt media/prev-revision.txt; fi")
+                  "mv media/revision.txt media/prev-revision.txt; "
+                  "fi")
         ctx.local("git rev-parse HEAD > media/revision.txt")
 
 
@@ -137,23 +138,33 @@ def update_info(ctx):
 @task
 def ping_newrelic(ctx):
     if NEW_RELIC_API_KEY and NEW_RELIC_APP_ID:
-        with ctx.lcd(settings.WWW_DIR):
-            oldrev = ctx.local('cat media/prev-revision.txt').out.strip()
-            newrev = ctx.local('cat media/revision.txt').out.strip()
-            log_cmd = 'git log --oneline {0}..{1}'.format(oldrev, newrev)
-            changelog = ctx.local(log_cmd).out.strip()
+        with ctx.lcd(settings.SRC_DIR):
+            oldrev = ctx.local('if [ -f media/prev-revision.txt ]; then '
+                               'cat media/prev-revision.txt; '
+                               'fi').out.strip()
+            newrev = ctx.local('if [ -f media/revision.txt ]; then '
+                               'cat media/revision.txt; '
+                               'fi').out.strip()
+            if oldrev and newrev:
+                log_cmd = 'git log --oneline {0}..{1}'.format(oldrev, newrev)
+                changelog = ctx.local(log_cmd).out.strip()
+            else:
+                changelog = None
 
         print 'Post deployment to New Relic'
         desc = generate_desc(oldrev, newrev, changelog)
         if changelog:
             github_url = GITHUB_URL.format(oldrev=oldrev, newrev=newrev)
             changelog = '{0}\n\n{1}'.format(changelog, github_url)
-        data = urllib.urlencode({
+        data = {
             'deployment[description]': desc,
             'deployment[revision]': newrev,
             'deployment[app_id]': NEW_RELIC_APP_ID,
-            'deployment[changelog]': changelog,
-        })
+        }
+        if changelog:
+            data['deployment[changelog]'] = changelog
+
+        data = urllib.urlencode(data)
         headers = {'x-api-key': NEW_RELIC_API_KEY}
         try:
             request = urllib2.Request(NEW_RELIC_URL, data, headers)
