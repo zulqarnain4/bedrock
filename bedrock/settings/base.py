@@ -1767,7 +1767,7 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/logo-prototype-bundle.js',
     },
-    'mozilla-logo': {
+    'mozilla-logo-generator': {
         'source_filesnames': (
             'js/styleguide/mozilla-logo/lodash.js',
             'js/styleguide/mozilla-logo/d3.js',
@@ -1778,11 +1778,19 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/mozilla-logo-bundle.js',
     },
-    'mozilla-logo-embed': {
+    'mozilla-logo-embed-snippet': {
         'source_filenames': (
             'js/styleguide/mozilla-logo/logo-embed.js',
         ),
         'output_filename': 'js/mozilla-logo-embed-bundle.js',
+    },
+    'mozilla-logo-build': {
+        'source_filenames': (
+            'js/styleguide/mozilla-logo/d3.js',
+            'js/styleguide/mozilla-logo/lodash.js',
+            'js/styleguide/mozilla-logo/logo.js'
+        ),
+        'output_filename': 'js/mozilla-logo-build-bundle.js',
     },
     'partners': {
         'source_filenames': (
