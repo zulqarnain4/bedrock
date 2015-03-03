@@ -1768,10 +1768,10 @@ PIPELINE_JS = {
         'output_filename': 'js/logo-prototype-bundle.js',
     },
     'mozilla-logo-generator': {
-        'source_filesnames': (
+        'source_filenames': (
             'js/styleguide/mozilla-logo/lodash.js',
             'js/styleguide/mozilla-logo/d3.js',
-            'js/styleguide/mozilla-logo/jquery-ui.js',
+            'js/styleguide/mozilla-logo/jquery-ui.min.js',
             'js/styleguide/mozilla-logo/logo.js',
             'js/styleguide/mozilla-logo/controls.js',
             'js/styleguide/mozilla-logo/logo-init.js',

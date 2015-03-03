@@ -7,6 +7,7 @@
   var shapes;
   var controls = null;
   var sources = ['all','sumo','bugzilla','firefox','firefoxos','firefoxforandroid','github','qa'];
+  var sourceLink = 'https://www.mozilla.org/contributor-data/';
   var sourceData = [];
   var rotationAngle = 56.82; //degrees
   var MPathData ="M40.797,115.531L25.443,138.95H6.509V44.962c0,0,0.155-4.541-1.695-9.645c-1.851-5.105-4.876-6.677-4.876-6.677L17.814,1.436c0,0,8.903,1.907,15.774,10.246c4.19,5.083,5.989,10.546,5.989,10.546l1.018-1.308C50.516,7.438,62.726,0.061,79.769,0.061c15.263,0,26.965,7.885,32.307,22.131c10.429-14.246,22.639-22.131,40.191-22.131c21.112,0,35.611,15.263,35.611,40.7v71.866l-17.202,26.322h-18.919V46.866c0-15.518-6.104-19.841-13.226-19.841c-9.921,0-16.536,6.867-23.403,18.823v66.778l-17.193,26.322H79.007V46.866c0-15.517-5.85-19.841-13.228-19.841c-9.919,0-16.534,6.867-23.147,18.823v66.887L40.797,115.531";
@@ -55,7 +56,7 @@
   ];
   function compatible() {
     return supportsSVG() && supportsCanvas();
-    function supportsSVG() {    
+    function supportsSVG() {
       return  !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect;
     }
     function supportsCanvas() {
@@ -85,7 +86,7 @@
       .attr('height', size)
       .attr('xmlns','http://www.w3.org/2000/svg')
       .attr('version', '1.1');
-      
+
     svgElement = svg;
     defs = svg.append('defs');
     var translate = size * 0.5;
@@ -113,17 +114,11 @@
       initGUI();
       drawingMode = 'svg'
     }
-    
+
     loadSourceData();
-    
   }
   function loadSourceData() {
-    var nextSource = sources[sourceData.length];
-    
-    var sourceLink = 'http://booloo-mozid.appspot.com/payload/';
-    sourceLink += nextSource;
-    d3.json(sourceLink, sourceLoaded);
-
+    d3.json(sourceLink + sources[sourceData.length] + '.json', sourceLoaded);
   }
   function allSourceDataLoaded() {
     initShapes();
@@ -175,7 +170,7 @@
     controls.on('updateDataKey', updateSourceData );
     controls.init(colors, svgElement);
     options = controls.getOptions();
-  
+
   }
   function updateSourceData() {
     _.each(sourceData, initKeyDataPoints);
@@ -212,7 +207,7 @@
       color2Index = options['colorIndex' + shapeIndex];
     }
     shape.color2 = colors[color2Index];
-    
+
     var shapeGradient = canvas.createLinearGradient(0, 0, 0, -options.shapeMaxSize)
     shapeGradient.addColorStop(0, shape.color.colors[options.colorPalette])
     shapeGradient.addColorStop(1, shape.color2.colors[options.colorPalette])
@@ -249,7 +244,7 @@
     shape.position = {x : size / 2, y : size / 2};
     if(typeof shapePositionPoints[shapeIndex] !== 'undefined') {
       var shapePoints = shapePositionPoints[shapeIndex];
-      
+
       var pointsInSpace = {
         x1: mX + mDimensions.w * mScale * shapePoints.x1,
         y1: mY + mDimensions.h * mScale * shapePoints.y1,
@@ -292,7 +287,7 @@
       .attr('transform', function() {
         return 'translate(' + (mX + offset) + ',' + (mY + offset) + ') scale(' + mScale + ')';
       }).style('fill', options.mColor);
-    
+
   }
   function drawShapes() {
     if(drawingMode === 'svg') {
@@ -319,12 +314,12 @@
         var pointsToUse = [
           { x: 0, y: 0 }
         ];
-        
+
         d.historicalOffset = historicalOffset;
         if(options.animation === 'static') {
           d.historicalOffset = d.data.length - options.numDataPoints;
         }
-        
+
         var dataPoints = d.data.slice(d.historicalOffset, options.numDataPoints + d.historicalOffset);
         var min = _.min(dataPoints);
         var max = _.max(dataPoints);
@@ -338,7 +333,7 @@
           var y = options.animation === "animated" ? 0 : scaled;
           return {x: x, y: y};
         });
-    
+
         pointsToUse = pointsToUse.concat(points);
         pointsToUse.push({ x: d.width, y: 0 });
         d.nullPoints = pointsToUse;
@@ -385,13 +380,13 @@
     }
     var fa=t*d01/denom
     var fb=t-fa;
-  
+
     var p1x=x1+fa*(x0-x2);
     var p1y=y1+fa*(y0-y2);
 
     var p2x=x1-fb*(x0-x2);
     var p2y=y1-fb*(y0-y2);
-    
+
     return [p1x,p1y,p2x,p2y];
   }
 
@@ -412,7 +407,7 @@
         ctxt.bezierCurveTo(cp[2*i-2],cp[2*i-1],cp[2*i],cp[2*i+1],pts[i+2],pts[i+3]);
     }
     ctxt.fill();
-      
+
   }
   function clearCanvas() {
     //clear larger than we would expect to account for canvas transformations
@@ -494,7 +489,7 @@
       var pointsToUse = [
         shape.width, 0, shape.width, 0, 0,0,0,0
       ];
-      
+
       if(options.animation === 'static') {
         shape.historicalOffset = shape.data.length - options.numDataPoints - 1;
       }
@@ -516,7 +511,7 @@
         scaled *= popupTween;
         var y = options.animation === "animated" ? 0 : scaled;
 
-        pointsToUse.push(x,scaled); 
+        pointsToUse.push(x,scaled);
       });
       pointsToUse.push(shape.width, 0)
       drawCurvedShape(pointsToUse, canvas)
@@ -565,7 +560,7 @@
   window.mozillaID.logo = {
     init: init,
   };
-  
+
 })(_, d3);
 if(typeof mozillaIDConfig !== 'undefined') {
   mozillaID.logo.init(mozillaIDConfig.selector,
