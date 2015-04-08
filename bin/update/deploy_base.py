@@ -14,7 +14,7 @@ from commander.deploy import commands, task, hostgroups
 import commander_settings as settings
 
 
-PYTHON = getattr(settings, 'PYTHON_PATH', 'python2.6')
+PYTHON = settings.PYTHON_PATH
 NEW_RELIC_API_KEY = getattr(settings, 'NEW_RELIC_API_KEY', None)
 NEW_RELIC_APP_ID = getattr(settings, 'NEW_RELIC_APP_ID', None)
 NEW_RELIC_URL = 'https://rpm.newrelic.com/deployments.xml'
@@ -142,6 +142,9 @@ def peep_install(ctx):
     """Install things using peep."""
     with ctx.lcd(settings.SRC_DIR):
         ctx.local(peep_install_cmd('prod'))
+        # update any newly installed libs to be relocatable
+        # this call is idempotent
+        ctx.local('virtualenv-2.7 --relocatable ../venv')
 
 
 @task
