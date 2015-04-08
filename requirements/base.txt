@@ -1,30 +1,81 @@
+# sha256: byzISLK3Kt9TpvPyG-BJxHfoLECLznzttX7-sJhL3iQ
 Django==1.6.11
+
+# sha256: 4h6LijS01EbJtWCQ4yh847Y9GuHPbe8ejb-Ij0DkbMw
 django-pipeline==1.4.7
+
+# sha256: QZSbCQMWEXmRNuAZFouE617Ymcjk5pIRfS04UEZZ_RY
 icalendar==3.8.3
+
+# sha256: dEJWIK08Kh8FFR8MyFGrfiYYbaOfsDma_Aqo7uu9IBs
 django-waffle==0.10.1
+
+# sha256: xuo7xc6G8xnNOP8XC-2vWAvRtHVcDqEHTMSwCyBUu1s
 jingo-markdown==1.3
+
+# sha256: YW-TRcQTQ853Y3AFRqO-nGPI-KQKobUlA6LWTIvx3us
 django-statsd-mozilla==0.3.14
+
+# sha256: eI_6Kd-3VJAOCLkIgffqFsPCXKKUlUjup7Q9LKc54z8
 statsd==3.1
+
+# sha256: w2yTiocuX_SUk4szsUqqFWy0OexnVI_Ks1Nbt4sIRug
 PyYAML==3.11
+
+# sha256: n9IrNUpMR1WtjH0WHZP1AmrKTP6Zm9LlMWjxR2XALNY
 futures==2.2.0
+
+# sha256: G1VbiogAE0_a_jK30MtS9b2_3Qk3B8PdSExepZ8dmLc
 ipaddr==2.1.11
+
+# sha256: Vt7B6U0vrRPZAJoUC4FoCAhqed337fnrSTHIT2WrsSo
 pytz==2014.7
+
+# sha256: RXPZHsnm2Ixr4d_gBOozfUd1TtOSS0wYH3d8YTRlV4s
 chardet==1.0.1
+
+# sha256: ZrvGLZUZ-dUxsfd-aH2fL15SHLkG8f1yMfQDmX4BEMQ
 python-memcached==1.48
+
+# sha256: orKb0EjKL-VKBGspdwlkc4hyqXRwA6NxNEqT7t961Y4
 beautifulsoup4==4.3.2
+
+# sha256: Ruz191JqCMwfi8gjKt8M_84Eb0bO_5VTna7ELrxISe8
 certifi==0.0.8
+
+# sha256: SjoIXs8fzSc2VzU4_6EU8fQzGzu73Wk4Hm4XLEnJdQ8
 Babel==0.9.6
+
+# sha256: u7c2WkL5XjKULmokZX56dgyb5mDvZB2szsn6gzb66mk
 django-recaptcha==1.0.3
+
+# sha256: 2ZQmvkb9kv5rZLn1xZJuqYWTlOROw--eH3xkfTomZX8
 django-picklefield==0.3.1
+
+# sha256: KuY89HXwvQSbci-sIIE9Yq7cFJV91aO_ANEg0rVARGA
 python-dateutil==2.4.2
+
+# sha256: QYqTw5en7asj5ViNvAZ6x0pyPts9VBvUk295R252Rdo
 six==1.9.0
-jingo_minify==0.5
+
+# sha256: zDw_3qAwgTFur-9mCWjpgeBBi20qlgago_6FA2NDhsg
+jingo-minify==0.5
+
+# sha256: LRy1WDkWc99RCaP-XoT95hYO3IskGz6xmrPTq-m43zE
 cef==0.5
+
+# sha256: RORjnsBXprap3duGnU46SBj8knjsSQzOOa7whEBZKpM
 django-session-csrf==0.5
+
+# sha256: Pk2AGZlglZuCiVGqJMv6o2zr7RSdzXKMEehVeYsV-HA
+whitenoise==1.0.6
+
+# sha256: 02C9MYmPnfWfb6p4ZVEGW7pFs15-48ObOBtPv-9zkvQ
+South==1.0.2
 
 # django-rest-framework: master
 # sha256: gfmft9XJ7xdSYzkyvCuqYGZra3-4SDg1SzpsFy5SMJU
-https://github.com/tomchristie/django-rest-framework/archive/6e92e415aa7dd6871ef7d6500a85cacebde8dca2.tar.gz#egg=django-rest-framework
+https://github.com/tomchristie/django-rest-framework/archive/6e92e415aa7dd6871ef7d6500a85cacebde8dca2.tar.gz#egg=djangorestframework
 
 # html5lib: master
 # sha256: M0ZwRFnRCzd-i2XC0dxRmdHXh5iBxnSr0s8vBvtieC8
@@ -48,7 +99,7 @@ https://github.com/tweepy/tweepy/archive/3941489457db86710b770bc120409d6947904af
 
 # Python-Markdown: master
 # sha256: N2BBZyiBsBYZ3q-hcpYLTgRxITyuAH-9QD8ISLUHPXU
-https://github.com/waylan/Python-Markdown/archive/d7fa7931bec55eec5498cd79882b770d1110b9b7.tar.gz#egg=Python-Markdown
+https://github.com/waylan/Python-Markdown/archive/d7fa7931bec55eec5498cd79882b770d1110b9b7.tar.gz#egg=Markdown
 
 # django-extensions: tags/1.4.9
 # sha256: n2ZARMQgCSk__PvX3adbyN4rJy62ZuJMtSaMu_q59b8
@@ -89,6 +140,7 @@ https://github.com/fwenzel/django-sha2/archive/3ba2b4771056fb722bc9fe52cf26918a3
 https://github.com/jbalogh/django-mobility/archive/e2b60a1f96e4c4aed736395c01bf707e969d8e83.tar.gz#egg=django-mobility
 
 # django-product-details: master
+# sha256: tLy18AIevr3_Rd7saf4cKuq_W1M3zpKFVOLBmggiCck
 https://github.com/mozilla/django-product-details/archive/d168ab2e689a1b54a30a923386fe7948a74ff334.tar.gz#egg=django-mozilla-product-details
 
 # django-appconf: develop~28
