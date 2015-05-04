@@ -1,0 +1,95 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import "../../sandstone/lib.less";
+
+* {
+    .border-box();
+}
+
+.firefox-friends {
+    #wrapper {
+        padding-bottom: 0;
+        width: 1400px;
+    }
+    #masthead {
+        background: transparent url(/media/img/contribute/friends/header-img.png) 0 0 no-repeat;
+        padding: 0 220px;
+        width: 1400px;
+    }
+    #colophon {
+        margin: 0 auto;
+        width: 1400px;
+    }
+    h1,
+    h2,
+    h3 {
+        color: #fff;
+        font-weight: 700;
+    }
+    h1 {
+        .font-size(4rem);
+    }
+    h2 {
+        .font-size(2.5rem);
+    }
+    h3 {
+        .font-size(1.3rem);
+        text-transform: uppercase;
+    }
+    hr {
+        margin: 100px auto;
+        border: 1px solid #fff;
+        width: 20%;
+    }
+    .ff-logo {
+        padding-top: 25px;
+    }
+    .ff-header-content {
+        color: #fff;
+        margin: 0 auto;
+        padding-top: 110px;
+        padding-bottom: 80px;
+        width: 80%;
+        text-align: center;
+        p {
+            .font-size(1.4rem);
+        }
+    }
+    .ff-join-now {
+        display: block;
+        background-color: #f26c24;
+        color: #fff;
+        margin: 70px auto 0 auto;
+        padding: 10px 30px;
+        border: 0;
+        width: 200px;
+        .font-size(1.2rem);
+        .border-radius(6px);
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .ff-body-content {
+        background-color: #06a6e0;
+        color: #fff;
+        padding: 95px 220px;
+        text-align: center;
+        h2 {
+            margin-bottom: 80px;
+        }
+        .how {
+            display: inline-block;
+            padding-left: 40px;
+            width: 300px;
+            vertical-align: top;
+            &:first-of-type {
+                padding-left: 0;
+            }
+            img {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
