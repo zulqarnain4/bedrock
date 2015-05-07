@@ -23,7 +23,7 @@
 <img src="{{ static('img/contribute/friends/firefox-friends-logo.png') }}" width="186" class="ff-logo" alt="{{_('Firefox Friends logo')}}" />
 <div class="ff-header-content">
   <h1>{{_('Join Firefox Friends today!')}}</h1>
-  <p>{{_('Step to the frontline to help us tell the world how <br />awesome Firefox is and about all the important work <br />Mozilla does every day.')}}</p>
+  <p>{{_('Step to the frontline to help us tell the world <br />how awesome Firefox is and about all the important <br />work Mozilla does every day.')}}</p>
   <a href="https://friends.mozilla.org" id="ff-join" class="ff-join-now" rel="external">{{_('Join now')}}</a>
 </div>
 {% endblock %}
@@ -37,24 +37,27 @@
   <div class="how">
     <img src="{{ static('img/contribute/friends/connected.png') }}" width="155" alt="" />
     <h3>{{_('Get connected')}}</h3>
-    <p>{{_('Sign up using your Twitter, Facebook or LinkedIn profile, or simply enter your email.')}}</p>
+    <p>{{_('Sign up using your Twitter,<br /> Facebook or LinkedIn profile,<br /> or simply enter your email.')}}</p>
   </div>
 
   <div class="how">
     <img src="{{ static('img/contribute/friends/sharing.png') }}" width="155" alt="" />
     <h3>{{_('Start sharing')}}</h3>
-    <p>{{_('Browse through our news feeds for topics that interest you, or submit your own content.')}}</p>
+    <p>{{_('Browse through our news feeds<br /> for topics that interest you, or<br /> submit your own content.')}}</p>
   </div>
 
   <div class="how">
     <img src="{{ static('img/contribute/friends/rewarded.png') }}" width="155" alt="" />
     <h3>{{_('Get rewarded')}}</h3>
-    <p>{{_('Track your impact and share often for opportunities to be recognized and rewarded.')}}</p>
+    <p>{{_('Track your impact and share<br /> often for opportunities to be<br /> recognized and rewarded.')}}</p>
   </div>
 
   <hr />
 
   <h2>{{_('Watch the video')}}</h2>
+  <!-- this is temp as the video might not be ready for the 5/11 launch, see:
+       https://bugzilla.mozilla.org/show_bug.cgi?id=1148126#c6 -->
+  <img src="{{ static('img/contribute/friends/video-tmp.jpg') }}" width="620" alt="" />
 </section>
 {% endblock contrib_content %}
 

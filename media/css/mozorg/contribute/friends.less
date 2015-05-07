@@ -10,10 +10,22 @@
         width: 100%;
     }
     #masthead {
-        background: transparent url(/media/img/contribute/friends/header-img-wide.jpg) 0 0 no-repeat;
-        padding: 0 220px;
+        background: #373737 url(/media/img/contribute/friends/header-img-wide.jpg) 50% 0 no-repeat;
+        padding: 0 180px;
         width: 100%;
         .border-box();
+
+        @media only screen and (max-width: 1100px) {
+            padding: 0 100px;
+        }
+
+        @media only screen and (max-width: 790px) {
+            padding: 0 60px;
+        }
+
+        @media only screen and (max-width: @breakMobileLandscape) {
+            padding: 0 20px;
+        }
     }
     #colophon {
         margin-top: 0;
@@ -27,13 +39,21 @@
     h1 {
         .font-size(4rem);
         text-shadow: 1px 1px 2px #333;
+
+        @media only screen and (max-width: 790px) {
+            .font-size(3rem);
+        }
     }
     h2 {
         .font-size(2.5rem);
     }
     h3 {
-        .font-size(1.3rem);
+        .font-size(1.2rem);
         text-transform: uppercase;
+
+        @media only screen and (max-width: 790px) {
+            .font-size(1rem);
+        }
     }
     hr {
         margin: 100px auto;
@@ -46,13 +66,30 @@
     .ff-header-content {
         color: #fff;
         margin: 0 auto;
-        padding-top: 110px;
-        padding-bottom: 80px;
-        width: 80%;
+        padding-top: 85px;
+        padding-bottom: 70px;
+        width: 100%;
         text-align: center;
+
+        @media only screen and (max-width: 1100px) {
+            padding-top: 40px;
+        }
+
+        @media only screen and (max-width: 790px) {
+            padding-bottom: 45px;
+        }
+
+        @media only screen and (max-width: @breakMobileLandscape) {
+            padding-bottom: 25px;
+        }
+
         p {
             .font-size(1.4rem);
             text-shadow: 1px 1px 2px #333;
+
+            @media only screen and (max-width: 790px) {
+                .font-size(1.2rem);
+            }
         }
     }
     .ff-join-now {
@@ -65,6 +102,11 @@
         width: 200px;
         .font-size(1.2rem);
         .border-radius(6px);
+
+        @media only screen and (max-width: @breakMobileLandscape) {
+                margin-top: 35px;
+        }
+
         &:hover {
             text-decoration: none;
         }
@@ -72,16 +114,40 @@
     .ff-body-content {
         background-color: #06a6e0;
         color: #fff;
-        padding: 95px 220px;
+        padding: 95px 180px;
         text-align: center;
+
+        @media only screen and (max-width: 1100px) {
+            padding: 95px 100px;
+        }
+
+        @media only screen and (max-width: 790px) {
+            padding: 75px 60px;
+        }
+
+        @media only screen and (max-width: @breakMobileLandscape) {
+            padding: 75px 20px;
+        }
+
         h2 {
             margin-bottom: 80px;
+
+            @media only screen and (max-width: @breakMobileLandscape) {
+                margin-bottom: 40px;
+            }
         }
         .how {
             display: inline-block;
-            padding-left: 40px;
-            width: 300px;
+            padding-left: 10%;
+            width: 25%;
             vertical-align: top;
+
+            @media only screen and (max-width: @breakMobileLandscape) {
+                display: block;
+                padding-left: 0;
+                width: 100%;
+            }
+
             &:first-of-type {
                 padding-left: 0;
             }
