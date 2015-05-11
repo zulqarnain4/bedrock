@@ -20,7 +20,7 @@
         }
 
         @media only screen and (max-width: 790px) {
-            padding: 0 60px;
+            padding: 0 50px;
         }
 
         @media only screen and (max-width: @breakMobileLandscape) {
@@ -115,10 +115,6 @@
         }
 
         @media only screen and (max-width: 790px) {
-            padding: 75px 60px;
-        }
-
-        @media only screen and (max-width: @breakMobileLandscape) {
             padding: 75px 20px;
         }
 
@@ -134,6 +130,11 @@
             padding-left: 7%;
             width: 25%;
             vertical-align: top;
+
+            @media only screen and (max-width: @breakTablet) {
+                padding-left: 3%;
+                width: 30%;
+            }
 
             @media only screen and (max-width: @breakMobileLandscape) {
                 display: block;
