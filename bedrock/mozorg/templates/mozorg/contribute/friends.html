@@ -12,6 +12,9 @@
 
 {% block page_css %}
   {% stylesheet 'contribute-friends' %}
+  <!--[if lt IE 9]>
+    {% stylesheet 'contribute-friends-ie' %}
+  <![endif]-->
 {% endblock %}
 
 {% block js %}

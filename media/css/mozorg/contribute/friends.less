@@ -148,15 +148,17 @@
                 width: 100%;
             }
 
-            h3 {
+            h3::before {
+                display: block;
                 background: transparent url(/media/img/contribute/friends/icon-sprite.png) 50% 0 no-repeat;
                 margin-top: @baseLine;
-                padding-top: 175px;
+                height: 175px;
+                content: '';
             }
-            h3.sharing {
+            h3.sharing::before {
                 background-position: 50% -240px;
             }
-            h3.rewarded {
+            h3.rewarded::before {
                 background-position: 50% -470px;
             }
 
