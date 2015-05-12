@@ -144,6 +144,7 @@
 
             h3 {
                 background: transparent url(/media/img/contribute/friends/icon-sprite.png) 50% 0 no-repeat;
+                margin-top: @baseLine;
                 padding-top: 175px;
             }
             h3.sharing {
@@ -156,8 +157,13 @@
             &:first-of-type {
                 padding-left: 0;
             }
-            img {
-                margin-bottom: 15px;
+            p {
+                margin: 0 auto;
+                max-width: 200px;
+
+                @media only screen and (max-width: 640px) {
+                    max-width: 240px;
+                }
             }
         }
     }
