@@ -36,14 +36,6 @@
         color: #fff;
         font-weight: 700;
     }
-    h1 {
-        .font-size(4rem);
-        text-shadow: 1px 1px 2px #333;
-
-        @media only screen and (max-width: 790px) {
-            .font-size(3rem);
-        }
-    }
     h2 {
         .font-size(2.5rem);
     }
@@ -72,6 +64,14 @@
         width: 100%;
         text-align: center;
 
+        h1 {
+            .font-size(4rem);
+            text-shadow: 1px 1px 2px #333;
+
+            @media only screen and (max-width: 790px) {
+                .font-size(3rem);
+            }
+        }
         p {
             .font-size(1.4rem);
             text-shadow: 1px 1px 2px #333;
@@ -88,12 +88,12 @@
         margin: 70px auto 0 auto;
         padding: 10px 30px;
         border: 0;
+        border-radius: 6px;
         width: 200px;
         .font-size(1.2rem);
-        .border-radius(6px);
 
         @media only screen and (max-width: @breakMobileLandscape) {
-                margin-top: 35px;
+            margin-top: 35px;
         }
 
         &:hover {
@@ -136,10 +136,21 @@
                 width: 30%;
             }
 
-            @media only screen and (max-width: @breakMobileLandscape) {
+            @media only screen and (max-width: 640px) {
                 display: block;
                 padding-left: 0;
                 width: 100%;
+            }
+
+            h3 {
+                background: transparent url(/media/img/contribute/friends/icon-sprite.png) 50% 0 no-repeat;
+                padding-top: 175px;
+            }
+            h3.sharing {
+                background-position: 50% -210px;
+            }
+            h3.rewarded {
+                background-position: 50% -410px;
             }
 
             &:first-of-type {
