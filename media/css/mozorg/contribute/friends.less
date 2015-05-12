@@ -76,10 +76,13 @@
             }
         }
         p {
+            margin: 0 auto;
+            max-width: 610px;
             .font-size(1.4rem);
             text-shadow: 1px 1px 2px #333;
 
             @media only screen and (max-width: 790px) {
+                max-width: 500px;
                 .font-size(1.2rem);
             }
         }
@@ -151,10 +154,10 @@
                 padding-top: 175px;
             }
             h3.sharing {
-                background-position: 50% -210px;
+                background-position: 50% -240px;
             }
             h3.rewarded {
-                background-position: 50% -410px;
+                background-position: 50% -470px;
             }
 
             &:first-of-type {
@@ -169,5 +172,12 @@
                 }
             }
         }
+    }
+}
+/* Tweaks for RTL locales */
+html[dir="rtl"] {
+    .how {
+        padding-right: 7%;
+        padding-left: 0;
     }
 }
