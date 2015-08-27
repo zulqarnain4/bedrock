@@ -1,7 +1,109 @@
-from bedrock.redirects.util import redirect
+from bedrock.redirects.util import redirect, ua_redirector
 
 
 redirectpatterns = (
+    # bug 755826
+    redirect('^zh-CN/$', 'http://firefox.com.cn/', locale_prefix=False),
+
+    # bug 764261, 841393, 996608, 1008162, 1067691, 1113136, 1119022, 1131680, 1115626
+    redirect('^zh-TW/?$', 'http://mozilla.com.tw/', locale_prefix=False),
+    redirect('^zh-TW/mobile/?', 'http://mozilla.com.tw/firefox/mobile/', locale_prefix=False),
+    redirect('^zh-TW/download/?', 'http://mozilla.com.tw/firefox/download/', locale_prefix=False),
+
+    # bug 874913
+    redirect('products/download.html', 'firefox.new', anchor='download-fx'),
+
+    # bug 845580
+    redirect('^home/?$', 'firefox.new'),
+
+    # bug 948605
+    redirect('^firefox/xp', 'firefox.new'),
+
+    # bug 857246 redirect /products/firefox/start/  to start.mozilla.org
+    redirect('^products/firefox/start/$', 'http://start.mozilla.org'),
+
+    # bug 875052
+    redirect('^start/', ua_redirector('seamonkey',
+                                      'http://www.seamonkey-project.org/start/',
+                                      'firefox.new')),
+
+    # bug 856081 redirect /about/drivers https://wiki.mozilla.org/Firefox/Drivers
+    redirect('^about/drivers(\.html|/)?$', 'https://wiki.mozilla.org/Firefox/Drivers'),
+
+    # community
+    # bug 885797
+    redirect('^community/(directory|wikis|blogs|websites)\.html$',
+             'https://wiki.mozilla.org/Websites/Directory', locale_prefix=False),
+
+    # bug 885856
+    redirect('^projects/index\.(de|fr|hr|sq).html$', '/{}/firefox/products/',
+             locale_prefix=False),
+
+    # bug 856075
+    redirect('^projects/technologies\.html$',
+             'https://developer.mozilla.org/docs/Mozilla/Using_Mozilla_code_in_other_projects',
+             locale_prefix=False),
+
+    # bug 787269
+    redirect('^projects/security/components/signed-script(?:s|-example)\.html$',
+             'https://developer.mozilla.org/docs/Bypassing_Security_Restrictions_and_Signing_Code'),
+
+    # bug 874526, 877698
+    redirect('^projects/security/components(?P<path>.*)$',
+             'http://www-archive.mozilla.org/projects/security/components{path}'),
+
+    # bug 876889
+    redirect('^projects/testopia/?',
+             'https://developer.mozilla.org/docs/Mozilla/Bugzilla/Testopia'),
+
+    # bug 874525
+    redirect(r'^projects/security/pki/(?P<arg>[nj])ss',
+             lambda r, arg, locale: 'https://developer.mozilla.org/docs/{}SS'.format(arg.upper())),
+
+    # bug 866190
+    redirect('^projects/security/pki/python-nss/?$',
+             'https://developer.mozilla.org/docs/Python_binding_for_NSS'),
+
+    # bug 1043035
+    redirect('^projects/security/pki/(?:index\.html)?$',
+             'https://developer.mozilla.org/docs/PKI'),
+    redirect('^projects/security/pki/pkcs11',
+             'https://developer.mozilla.org/docs/Mozilla/Projects/NSS#PKCS_.2311_information'),
+    redirect('^projects/security/pki/psm',
+             'https://developer.mozilla.org/docs/Mozilla/Projects/PSM'),
+    redirect('^projects/security/pki/src',
+             'https://developer.mozilla.org/docs/Mozilla/Projects/NSS/NSS_Sources_Building_Testing'),
+
+    # bug 975476
+    redirect('^projects/security/pki/python-nss/doc/api/current/html(?P<path>.*)$',
+             'https://mozilla.github.io/python-nss-docs{path}'),
+
+    # bug 780672
+    redirect('^firefox/webhero', 'firefox.new'),
+
+    # bug 964107
+    redirect('^firefox/video', 'https://www.youtube.com/firefoxchannel'),
+
+    # bug 948520
+    redirect('^firefox/livebookmarks',
+             'https://support.mozilla.org/kb/Live%20Bookmarks'),
+
+    # bug 782333
+    redirect('^firefox/backtoschool/?$',
+             'https://addons.mozilla.org/firefox/collections/mozilla/back-to-school/'),
+    redirect('^firefox/backtoschool/firstrun/?$', 'firefox.firstrun'),
+
+    # bug 824126, 837942
+    redirect('^ports/qtmozilla(?:/|/index.html)?$', 'https://wiki.mozilla.org/Qt'),
+    redirect('^ports/os2/?$', 'https://wiki.mozilla.org/Ports/os2'),
+    redirect('^ports(?P<path>.*)', 'http://www-archive.mozilla.org/ports{path}'),
+
+    # bug 1013082
+    redirect('^ja/?$', 'http://www.mozilla.jp/', permanent=False),
+
+    # bug 1051686
+    redirect('^ja/firefox/organizations/?$', 'http://www.mozilla.jp/business/downloads/'),
+
     redirect(r'^b2g', 'firefox.partners.index'),
 
     # Bug 781914
@@ -116,4 +218,10 @@ redirectpatterns = (
 
     # Bug 1073269 /dnt/ -> /firefox/dnt/
     redirect(r'^dnt/$', 'firefox.dnt'),
+
+    # bug 832348 **/index.html -> **/
+    redirect('^(.*)/index.html$', '/{}/', locale_prefix=False),
+
+    # bug 845988 - remove double slashes in URLs
+    redirect('^(.*)//(.*)$', '/{}/{}', locale_prefix=False),
 )
