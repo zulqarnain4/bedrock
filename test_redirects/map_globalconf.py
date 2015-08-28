@@ -12,6 +12,11 @@ URLS = flatten((
     url_test('/es/', '/es-ES/'),
     url_test('/pt/', '/pt-BR/'),
 
+    # bug 795970 - lowercase to uppercase, e.g. en-us to en-US
+    url_test('/en-us/firefox/', '/en-US/firefox/'),
+    url_test('/es-es/firefox/', '/es-ES/firefox/'),
+    url_test('/pt-br/mobile/', '/pt-BR/mobile/'),
+
     # bug 880182
     url_test('/ja-JP-mac/', '/ja/'),
 
