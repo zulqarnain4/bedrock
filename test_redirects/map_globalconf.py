@@ -26,6 +26,7 @@ URLS = flatten((
 
     # bug 845988 - remove double slashes in URLs
     url_test('/en-US/firefox//all/', '/en-US/firefox/all/'),
+    url_test('/pt-BR/////thunderbird/', '/pt-BR/thunderbird/'),
 
     # bug 755826
     url_test('/zh-CN/', 'http://firefox.com.cn/'),
