@@ -27,13 +27,13 @@
 <header class="relasenotes-header" id="masthead">
   <div class="container">
     <div id="tabzilla">
-      <a href="{{ url('mozorg.home') }}">Mozilla</a>
+      <a href="{{ url('mozorg.home') }}">{{ _('Mozilla') }}</a>
     </div>
     {% block site_header_nav %}
       {% include 'firefox/includes/release-menu.html' %}
     {% endblock %}
     {% block site_header_logo %}
-      <h2><a href="{{ url('firefox') }}">{{ high_res_img('img/firefox/template/header-logo.png', {'alt': 'Mozilla Firefox', 'width': '185', 'height': '70'}) }}</a></h2>
+      <h2><a href="{{ url('firefox') }}">{{ high_res_img('firefox/template/header-logo.png', {'alt': 'Mozilla Firefox', 'width': '185', 'height': '70'}) }}</a></h2>
     {% endblock %}
   </div>
 </header>
@@ -81,12 +81,12 @@
               <a>{{ _('Other Recent Releases') }}</a>
               <div>
                 <ul class="submenu">
-                  <li class="title">Other Desktop Releases</li>
-                  <li><a href="https://www.mozilla.org/en-US/firefox/aurora/notes/">Latest Aurora</a></li>
-                  <li><a href="https://www.mozilla.org/en-US/firefox/beta/notes/">Latest Beta</a></li>
-                  <li class="title">Other Android Releases</a></li>
-                  <li><a href="https://www.mozilla.org/en-US/firefox/android/beta/notes/">Latest Android Beta</a></li>
-                  <li><a href="https://www.mozilla.org/en-US/firefox/android/aurora/notes/">Latest Android Aurora</a></li>
+                  <li class="title">{{ _('Other Desktop Releases') }}</li>
+                  <li><a href="https://www.mozilla.org/en-US/firefox/aurora/notes/">{{ _('Latest Aurora') }}</a></li>
+                  <li><a href="https://www.mozilla.org/en-US/firefox/beta/notes/">{{ _('Latest Beta') }}</a></li>
+                  <li class="title">{{ _('Other Android Releases') }}</a></li>
+                  <li><a href="https://www.mozilla.org/en-US/firefox/android/beta/notes/">{{ _('Latest Android Beta') }}</a></li>
+                  <li><a href="https://www.mozilla.org/en-US/firefox/android/aurora/notes/">{{ _('Latest Android Aurora') }}</a></li>
                 </ul>
               </div>
             </li>
@@ -196,7 +196,6 @@
           </ul>
         </div>
       {% endif %}
-
       </div>
 
       <div class="features" id="know-issues">
@@ -213,7 +212,6 @@
           </div>
         {% endif %}
       </div>
-
     </section>
 
     <section class="notes-footer">
@@ -233,7 +231,6 @@
 {% endblock %}
 
 {% block site_footer %} 
-
 <footer id="colophon" class="release-footer">
   <nav class="row">
     <div class="col col-1">
@@ -257,7 +254,6 @@
     </div>
   </nav>
 </footer>
-
 {% endblock %}
 
 {% block email_form %} {% endblock %}
