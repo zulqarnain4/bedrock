@@ -1,7 +1,9 @@
 @import "../sandstone/lib.less";
 
-#outer-wrapper {
-    background: none;
+.sky {
+    #outer-wrapper {
+        background: none;
+    }
 }
 #wrapper {
     width: 100%;
@@ -56,7 +58,6 @@
         font-weight: bold;
         .font-size(1.5rem);
         text-align: center;
-        .inline-block();
 
         .download-link {
             padding: 0 (@baseLine * 2);
@@ -109,27 +110,20 @@
         text-transform: uppercase;
     }
 }
-.download-button {
-    .download-list {
-        .os_android {
-            .download-link {
-                .download-subtitle {
-                    margin: 0;
-                    .font-size(1.2rem);
-                    text-align: inherit;
-                }
-            }
-        }
-    }
+.download-button .download-list .os_android .download-link .download-subtitle {
+    margin: 0;
+    .font-size(1.2rem);
+    text-align: inherit;
 }
 
-main {
+.page-content {
     margin: 0 auto;
     padding: 90px 0 120px 0;
     width: 100%;
     max-width: 1400px;
     text-align: center;
 }
+
 .blurb {
     display: inline-block;
     margin: 0 auto;
@@ -169,6 +163,7 @@ main {
             width: auto;
         }
     }
+
     a {
         .font-size(1.1rem);
 

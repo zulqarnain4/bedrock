@@ -2,7 +2,7 @@
  # License, v. 2.0. If a copy of the MPL was not distributed with this
  # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
 
-{% extends "base-resp.html" %}
+{% extends "firefox/base-resp.html" %}
 
 {% block page_title_prefix %}{{_('Firefox Web Browser')}} - {% endblock %}
 {% block page_title %}{{_('Keep your identity yours with the new Firefox.')}}{% endblock %}
@@ -32,7 +32,7 @@
 {% endblock alt_header %}
 
 {% block content %}
-<main role="main">
+<section class="page-content">
   <div class="blurb">
     <h2>{{ _('The most private browsing') }}</h2>
     <p>{{ _('Take control of your web by using Private Browsing with Tracking Protection, only from Firefox.') }}</p>
@@ -44,15 +44,11 @@
     <p>{{ _('Discover easy tips about how to take back control of your online experience, only from Mozilla.') }}</p>
     <a href="{{ url('firefox.desktop.trust') }}" class="more">{{ _('Get smart on data tracking') }}</a>
   </div>
-</main>
+</section>
 {% endblock %}
 
 {% block email_form %}{% endblock %}
 
 {% block site_footer %}
   {% include 'firefox/includes/simple_footer.html' %}
-{% endblock %}
-
-{% block site_js %}
-  {{ super() }}
 {% endblock %}
