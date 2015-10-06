@@ -56,9 +56,18 @@
             float: none;
             display: inline-block;
             background: url(/media/img/firefox/desktop/trust/sprite-privacy.png) center top no-repeat;
-            margin-right: 30px;
+            margin-right: @baseLine;
             padding-top: 180px;
             vertical-align: top;
+
+            @media only screen and (max-width: @breakTablet) {
+                margin-right: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+                margin-left: @baseLine;
+            }
 
             &#privacy-browsing {
                 background-position: -390px top;
@@ -209,6 +218,9 @@ html[dir="rtl"] {
         }
         &#privacy-forget {
             background-position: -1250px top;
+        }
+        &:last-child {
+            margin: 0;
         }
     }
 

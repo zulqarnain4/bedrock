@@ -48,7 +48,7 @@
       </p>
 
       <ul class="feature-list">
-        {% if l10n_has_tag('tracking_protection') %}
+        {% if l10n_has_tag('tracking_protection') and waffle.switch('tracking-protection') %}
           <li id="privacy-browsing">
             <h3>{{ _('Private Browsing with<br> Tracking Protection') }}</h3>
 
