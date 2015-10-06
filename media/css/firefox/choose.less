@@ -1,7 +1,9 @@
 @import "../sandstone/lib.less";
 
-#outer-wrapper {
-    background: none;
+.sky {
+    #outer-wrapper {
+        background: none;
+    }
 }
 #wrapper {
     width: 100%;
@@ -14,6 +16,7 @@
     }
 
     @media only screen and (min-width: @breakTablet) and (max-width: @breakDesktop) {
+        padding: 0;
         width: 100%;
     }
 }
@@ -44,23 +47,8 @@
         letter-spacing: -0.035em;
         text-shadow: none;
 
-        @media only screen and (max-width: @breakDesktop) {
-            .font-size(3rem);
-        }
-
-        @media only screen and (max-width: @breakTablet) {
-            .font-size(2.5rem);
-            letter-spacing: -1px;
-        }
-
-        span {
-            display: block;
-            color: #fff;
-            margin-left: 28%;
-
-            @media only screen and (max-width: @breakMobileLandscape) {
-                margin-left: 0;
-            }
+        @media only screen and (max-width: 540px) {
+            .font-size(2rem);
         }
     }
     .download-button.download-button-simple {
@@ -70,7 +58,6 @@
         font-weight: bold;
         .font-size(1.5rem);
         text-align: center;
-        .inline-block();
 
         .download-link {
             padding: 0 (@baseLine * 2);
@@ -123,42 +110,39 @@
         text-transform: uppercase;
     }
 }
-.download-button {
-    .download-list {
-        .os_android {
-            .download-link {
-                .download-subtitle {
-                    margin: 0;
-                    .font-size(1.2rem);
-                    text-align: inherit;
-                }
-            }
-        }
-    }
+.download-button .download-list .os_android .download-link .download-subtitle {
+    margin: 0;
+    .font-size(1.2rem);
+    text-align: inherit;
 }
 
-main {
+.page-content {
     margin: 0 auto;
-    padding: 90px 0 150px 0;
+    padding: 90px 0 120px 0;
     width: 100%;
     max-width: 1400px;
     text-align: center;
-
-    @media only screen and (max-width: @breakMobileLandscape) {
-        padding: 20px 0;
-    }
 }
+
 .blurb {
     display: inline-block;
+    margin: 0 auto;
     padding: 0 55px;
-    width: 35%;
+    width: 380px;
     vertical-align: top;
 
-    @media only screen and (max-width: @breakTablet) {
+    @media only screen and (max-width: @breakDesktop) {
         display: block;
-        margin: (@baseLine * 3) 0 0 0;
+        margin: (@baseLine * 3) auto 0;
         padding: 0;
-        width: 100%;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    @media only screen and (max-width: @breakMobileLandscape) {
+        width: 90%;
     }
 
     h2 {
@@ -171,11 +155,15 @@ main {
     p {
         color: #414141;
         margin: 10px auto;
-        width: 360px;
         .open-sans-light();
         .font-size(1.2rem);
         line-height: 1.5;
+
+        @media only screen and (max-width: @breakDesktop) {
+            width: auto;
+        }
     }
+
     a {
         .font-size(1.1rem);
 

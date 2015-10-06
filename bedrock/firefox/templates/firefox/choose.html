@@ -2,10 +2,10 @@
  # License, v. 2.0. If a copy of the MPL was not distributed with this
  # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
 
-{% extends "base-resp.html" %}
+{% extends "firefox/base-resp.html" %}
 
-{% block page_title_prefix %}{{_('Firefox Web Browser')}} - {% endblock %}
-{% block page_title %}{{_('Keep your identity yours with the new Firefox.')}}{% endblock %}
+{% block page_title_prefix %}{{_('Firefox Web browser')}} — {% endblock %}
+{% block page_title %}Keep your identity yours with the new Firefox{% endblock %}
 
 {% block page_image %}{{ static('img/firefox/personal/logo.png') }}{% endblock %}
 {% block page_desc %}{{_('Choose Firefox when you want to browse the Web without the Web browsing you.')}}'{% endblock %}
@@ -32,19 +32,34 @@
 {% endblock alt_header %}
 
 {% block content %}
+<<<<<<< HEAD
 <main role="main">
   <div class="blurb">
     <h2>{{ _('The most private browsing') }}</h2>
     <p>{{ _('Take control of your web by using Private Browsing with Tracking Protection, only from Firefox.') }}</p>
+=======
+<section class="page-content">
+  <div class="blurb">
+    <h2>{{ _('The most private browsing') }}</h2>
+    <p>{{ _('Take control of your web by using Private Browsing with Tracking Protection, only from Firefox.') }}</p>
+    <!-- Still waiting on final URL for this link -->
+>>>>>>> bug1205357-fall-campaign-landing-page
     <a href="{{ url('firefox.desktop.trust') }}" class="more">{{ _('Learn more about this') }}</a>
   </div>
 
   <div class="blurb">
     <h2 class="data">{{ _('Here for you, not selling your info') }}</h2>
     <p>{{ _('Discover easy tips about how to take back control of your online experience, only from Mozilla.') }}</p>
+<<<<<<< HEAD
     <a href="{{ url('firefox.desktop.trust') }}" class="more">{{ _('Get smart on data tracking') }}</a>
   </div>
 </main>
+=======
+    <!-- For python this will be url('teach.smarton.tracking') - Currently not 100% whether smart on will launch on or before the same date as this page so, using the URL below to avoid errors. -->
+    <a href="https://mozilla.org/teach/smarton/tracking/" class="more">{{ _('Get smart on data tracking') }}</a>
+  </div>
+</section>
+>>>>>>> bug1205357-fall-campaign-landing-page
 {% endblock %}
 
 {% block email_form %}{% endblock %}
@@ -52,7 +67,10 @@
 {% block site_footer %}
   {% include 'firefox/includes/simple_footer.html' %}
 {% endblock %}
+<<<<<<< HEAD
 
 {% block site_js %}
   {{ super() }}
 {% endblock %}
+=======
+>>>>>>> bug1205357-fall-campaign-landing-page
