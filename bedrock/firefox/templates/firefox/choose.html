@@ -36,13 +36,15 @@
   <div class="blurb">
     <h2>{{ _('The most private browsing') }}</h2>
     <p>{{ _('Take control of your web by using Private Browsing with Tracking Protection, only from Firefox.') }}</p>
+    <!-- Still waiting on final URL for this link -->
     <a href="{{ url('firefox.desktop.trust') }}" class="more">{{ _('Learn more about this') }}</a>
   </div>
 
   <div class="blurb">
     <h2 class="data">{{ _('Here for you, not selling your info') }}</h2>
     <p>{{ _('Discover easy tips about how to take back control of your online experience, only from Mozilla.') }}</p>
-    <a href="{{ url('firefox.desktop.trust') }}" class="more">{{ _('Get smart on data tracking') }}</a>
+    <!-- For python this will be url('teach.smarton.tracking') - Currently not 100% whether smart on will launch on or before the same date as this page so, using the URL below to avoid errors. -->
+    <a href="https://mozilla.org/teach/smarton/tracking/" class="more">{{ _('Get smart on data tracking') }}</a>
   </div>
 </section>
 {% endblock %}
