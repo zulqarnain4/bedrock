@@ -506,6 +506,10 @@ html[dir="rtl"] #phone-wrapper figure {
         list-style-type: none;
         vertical-align: top;
 
+        @media only screen and (max-width: @breakMobileLandscape) {
+            padding: 0;
+        }
+
         &:before {
             display: block;
             // each icon in sprite is at left edge of 300px wide area
@@ -534,7 +538,7 @@ html[dir="rtl"] #phone-wrapper figure {
 
     #private-browsing {
         &:before {
-            background-position: -261px top;
+            background-position: -271px top;
         }
     }
 
@@ -992,7 +996,7 @@ html[lang="ja"] #privacy p {
             margin: 0 auto (@baseLine * 2) auto;
             padding-left: 0;
             padding-right: 0;
-            width: 70%;
+            width: 50%;
         }
 
         #dnt {
@@ -1003,19 +1007,19 @@ html[lang="ja"] #privacy p {
 
         #private-browsing {
             &:before {
-                background-position: -261px top;
+                background-position: -271px top;
             }
         }
 
         #clear-history {
             &:before {
-                background-position: -561px top;
+                background-position: -571px top;
             }
         }
 
         #guest-browsing {
             &:before {
-                background-position: -861px top;
+                background-position: -871px top;
             }
         }
     }
@@ -1422,19 +1426,27 @@ html[lang="ja"] #privacy p {
         }
 
         #dnt {
-            background-position: 79px top;
+            &:before {
+                background-position: 121px top;
+            }
         }
 
         #private-browsing {
-            background-position: -221px top;
+            &:before {
+                background-position: -271px top;
+            }
         }
 
         #clear-history {
-            background-position: -521px top;
+            &:before {
+                background-position: -571px top;
+            }
         }
 
         #guest-browsing {
-            background-position: -821px top;
+            &:before {
+                background-position: -871px top;
+            }
         }
     }
 
