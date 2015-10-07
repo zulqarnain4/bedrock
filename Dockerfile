@@ -2,6 +2,7 @@ from mozorg/bedrock_base
 
 COPY . /app
 
+RUN npm install
 RUN ./bin/peep.py install --no-cache-dir -r requirements/dev.txt
 RUN ./bin/peep.py install --no-cache-dir -r requirements/prod.txt
 RUN ./bin/peep.py install --no-cache-dir -r requirements/docker.txt
