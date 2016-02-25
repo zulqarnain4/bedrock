@@ -120,3 +120,5 @@ django-sslify==0.2.7 \
     --hash=sha256:f6bfd21048c7dfc95b39659a3da77775d6db1c1f7a745805ccc6c6138f783b6d
 South==1.0.2 \
     --hash=sha256:d360bd31898f9df59f6faa786551065bba45b35e7ee3c39b381b4fbfef7392f4
+django-csp==2.0.3 \
+    --hash=sha256:d32576baad77fdd9e6859be97c2b6a3c17a6f484364389db731f0697b7a19661
