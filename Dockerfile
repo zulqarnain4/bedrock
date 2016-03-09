@@ -1,5 +1,7 @@
 from mozorg/bedrock_base
 
+RUN apt-get install -y --no-install-recommends npm
+
 COPY . /app
 
 RUN npm install
