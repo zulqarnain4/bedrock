@@ -36,7 +36,7 @@
           <div class="non-firefox-cta">
             <p>{{ _('To give the new Private Browsing a try, download Firefox.') }}</p>
             <div class="desktop-download-button">
-              {{ download_firefox(small=True, icon=False) }}
+              {{ download_firefox() }}
             </div>
             <div class="android-download-button">
               <a rel="external" href="{{ settings.GOOGLE_PLAY_FIREFOX_LINK }}" data-button-type="download" data-interaction="download click" data-download-version="Firefox for Android">
@@ -51,7 +51,7 @@
           </div>
           <div class="firefox-old-cta">
             <p>{{ _('Your Firefox is not up to date. Download the latest version to use the new Private Browsing.') }}</p>
-            {{ download_firefox(small=True, icon=False) }}
+            {{ download_firefox() }}
           </div>
         </div>
       </header>
@@ -147,7 +147,7 @@
         <div class="non-firefox-cta">
           <h2>{{ _('To give the new Private Browsing a try, download Firefox.') }}</h2>
           <div class="desktop-download-button">
-            {{ download_firefox(small=True, icon=False) }}
+            {{ download_firefox() }}
           </div>
           <div class="android-download-button">
             <a rel="external" href="{{ settings.GOOGLE_PLAY_FIREFOX_LINK }}" data-button-type="download" data-interaction="download click" data-download-version="Firefox for Android">
@@ -162,7 +162,7 @@
         </div>
         <div class="firefox-old-cta">
           <h2>{{ _('Your Firefox is not up to date. Download the latest version to use the new Private Browsing.') }}</h2>
-          {{ download_firefox(small=True, icon=False) }}
+          {{ download_firefox() }}
         </div>
       </div>
     </div>

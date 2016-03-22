@@ -975,6 +975,13 @@ nav.menu-bar {
     bottom: 0;
 }
 
+.fx-privacy-link {
+    a:link,
+    a:visited {
+        color: #333;
+    }
+}
+
 /* }}} */
 /* {{{ Footer */
 
@@ -1074,6 +1081,23 @@ nav.menu-bar {
             }
         }
     }
+}
+
+/* hide all download related links in the footer initially */
+.fx-footer-links.os_android,
+.fx-footer-links.os_ios,
+.fx-footer-links.os_desktop {
+    display: none;
+}
+
+/* show links based on thge current os */
+.linux .fx-footer-links.os_desktop,
+.linux.x86.x64 .fx-footer-links.os_desktop,
+.osx .fx-footer-links.os_desktop,
+.windows .fx-footer-links.os_desktop,
+.android .fx-footer-links.os_android,
+.ios .fx-footer-links.os_ios {
+    display: inline-block;
 }
 
 .html-rtl #colophon {

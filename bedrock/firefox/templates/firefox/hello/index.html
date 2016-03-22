@@ -53,7 +53,7 @@
     <div class="container">
       <h2 class="fx-out-of-date">{{ _('Get the latest version of Firefox to start browsing Web pages with your friends.') }}</h2>
       <h2 class="non-fx">{{ _('Get Firefox to start browsing Web pages with your friends.') }}</h2>
-      {{ download_firefox(small=True, icon=False, platform='desktop', force_direct=true, dom_id='download-fx-primary') }}
+      {{ download_firefox(platform='desktop', force_direct=true, dom_id='download-fx-primary') }}
       <div class="mobile">
         <h2>{{ _('Use Firefox on your desktop or laptop to start browsing the Web with your friends.') }} <a class="more" href="{{ url('firefox.desktop.index') }}">{{ _('Learn more')}}</a></h2>
         <a href="{{ url('firefox.desktop.index') }}">
@@ -107,7 +107,7 @@
       </div>
       <h2 class="fx-out-of-date">{{ _('Get the latest version of Firefox to start browsing Web pages with your friends.') }}</h2>
       <h2 class="non-fx">{{ _('Get Firefox to start browsing Web pages with your friends.') }}</h2>
-      {{ download_firefox(small=True, icon=False, platform='desktop', force_direct=true, dom_id='download-fx-secondary') }}
+      {{ download_firefox(platform='desktop', force_direct=true, dom_id='download-fx-secondary') }}
       <div class="mobile">
         <h2>{{ _('Use Firefox on your desktop or laptop to start browsing the Web with your friends.') }} <a class="more" href="{{ url('firefox.desktop.index') }}">{{ _('Learn more')}}</a></h2>
         <a href="{{ url('firefox.desktop.index') }}">
