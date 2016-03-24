@@ -1062,43 +1062,32 @@ CSP_DEFAULT_SRC = (
 )
 CSP_FONT_SRC = (
     "'self'",
-    'http://*.mozilla.net',
-    'https://*.mozilla.net',
-    'http://*.mozilla.org',
-    'https://*.mozilla.org',
+    '*.mozilla.net',
+    '*.mozilla.org',
 )
 CSP_IMG_SRC = (
     "'self'",
-    'http://*.mozilla.net',
-    'https://*.mozilla.net',
-    'http://*.mozilla.org',
-    'https://*.mozilla.org',
-    'http://*.log.optimizely.com',
-    'https://*.log.optimizely.com',
-    'http://app.optimizely.com',
-    'https://app.optimizely.com',
+    '*.mozilla.net',
+    '*.mozilla.org',
+    '*.optimizely.com',
 )
 CSP_SCRIPT_SRC = (
     "'self'",
     "'unsafe-inline'",
-    'http://*.mozilla.org',
-    'https://*.mozilla.org',
-    'http://*.mozilla.net',
-    'https://*.mozilla.net',
-    'http://*.optimizely.com',
-    'https://*.optimizely.com',
+    '*.mozilla.org',
+    '*.mozilla.net',
+    '*.optimizely.com',
+    'optimizely.s3.amazonaws.com',
 )
 CSP_STYLE_SRC = (
     "'self'",
     "'unsafe-inline'",
-    'http://*.mozilla.org',
-    'https://*.mozilla.org',
-    'http://*.mozilla.net',
-    'https://*.mozilla.net',
+    '*.mozilla.org',
+    '*.mozilla.net',
 )
-CSP_CHILD_SRC = (
-    'http://app.optimizely.com',
-    'https://app.optimizely.com',
-    'http://*.cdn.optimizely.com',
-    'https://*.cdn.optimizely.com',
+CSP_FRAME_SRC = (
+    '*.optimizely.com',
+)
+CSP_CONNECT_SRC = (
+    '*.optimizely.com',
 )
