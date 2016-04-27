@@ -43,7 +43,7 @@
   <ul class="download-list">
     {% for plat in builds %}
       <li class="os_{{ plat.os }}{% if plat.arch %} {{ plat.arch }}{% endif %}">
-        <a class="button {{button_color}}"
+        <a class="download-link button {{button_color}}"
            href="{{ plat.download_link }}"{% if plat.download_link_direct %}
            data-direct-link="{{ plat.download_link_direct }}"{% endif %}
            {% if plat.os == 'android' %}data-link-type="download" data-download-os="Android"
