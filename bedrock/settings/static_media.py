@@ -1410,7 +1410,6 @@ PIPELINE_JS = {
         'source_filenames': (
             'js/base/uitour-lib.js',
             'js/base/mozilla-highlight-target.js',
-            #'js/firefox/whatsnew_42/variant-a.js',
             'js/firefox/whatsnew_42/variant-a.es6',
         ),
         'output_filename': 'js/firefox_whatsnew_42_a-bundle.js',

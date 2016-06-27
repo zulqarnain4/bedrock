@@ -96,5 +96,6 @@
 {% endblock %}
 
 {% block js %}
-  {% javascript 'firefox_firstrun' %}
+  <script src="{{ static('js/base/mozilla-fxa-iframe-es6.js') }}"></script>
+  <script src="{{ static('js/firefox/firstrun/firstrun-es6.js') }}"></script>
 {% endblock %}
