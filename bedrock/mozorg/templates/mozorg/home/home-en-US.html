@@ -3,8 +3,7 @@
  # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
 
 {% from "macros.html" import google_play_button with context %}
-
-{% extends "base-new.html" %}
+{% extends "base-pebbles.html" %}
 
 {% add_lang_files "mozorg/home/index" %}
 
@@ -206,9 +205,9 @@
   <aside class="section section-newsletter" id="newsletter-subscribe">
     <div class="content">
     {% if LANG.startswith('en-') %}
-      {{ email_newsletter_form(newsletters='mozilla-foundation', title=_('Love the Web?'), subtitle=_('Get the Mozilla newsletter and help us keep it open and free.'), button_class='light', spinner_color='#fff') }}
+      {{ email_newsletter_form(newsletters='mozilla-foundation', title=_('Love the Web?'), subtitle=_('Get the Mozilla newsletter and help us keep it open and free.'), button_class='hollow light', spinner_color='#fff') }}
     {% else %}
-      {{ email_newsletter_form(button_class='light', spinner_color='#fff') }}
+      {{ email_newsletter_form(button_class='hollow light', spinner_color='#fff') }}
     {% endif %}
     </div>
   </aside>
@@ -220,7 +219,7 @@
 <footer class="wrapper section-footer" id="footer">
   <nav class="content">
     <div class="footer-column">
-      <h1 class="logo"><a href="{{ url('mozorg.home') }}" data-link-type="footer" data-link-name="Mozilla">Mozilla</a></h1>
+      <div class="logo"><a href="{{ url('mozorg.home') }}" data-link-type="footer" data-link-name="Mozilla">Mozilla</a></div>
       <p class="license">
         {%- trans url=url('foundation.licensing.website-content') -%}
         Portions of this content are ©1998–{{ current_year }} by individual

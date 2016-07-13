@@ -2,9 +2,12 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import '../../pebbles/lib.less';
-@import 'prototypes/lib';
-@import "../../firefox/horizon-lib.less";
+@import (reference) '../../pebbles/includes/lib.less';
+@import (reference) 'prototypes/lib.less';
+@import (reference) '../../firefox/horizon-lib.less';
+
+@import '../../pebbles/components/buttons-download.less';
+
 
 @font-face {
     font-family: 'Architects Daughter';
@@ -850,6 +853,10 @@ main {
         }
     }
 
+    .form-submit .button {
+        width: 100%;
+    }
+
     .errorlist {
         padding: 10px;
     }
@@ -895,8 +902,8 @@ main {
     }
 }
 
-@media @mq-desktop-wide {
-    .section-footer .content {
-        width: @width-desktop;
-    }
-}
+// @media @mq-desktop-wide {
+//     .section-footer .content {
+//         width: @width-desktop;
+//     }
+// }

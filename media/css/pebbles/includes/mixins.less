@@ -2,86 +2,17 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+@import (reference) 'variables.less';
+
 
 // THIS FILE SHOULD OUTPUT NOTHING!
 //
-// As this file is included in many places (for variable/mixin access),
-// it must output nothing for performance reasons.
+// As this file is included in many places (for mixin access),
+// it should compile to blank to avoid needless repetition.
+// Use '@import (reference)' to be extra sure.
 //
-// IF IT'S NOT A MIXIN OR VARIABLE, IT DOESN'T GO HERE!
+// IF IT'S NOT A MIXIN, IT DOESN'T GO HERE!
 
-
-// Fonts
-
-// The custom X-LocaleSpecific font family is defined with a @font-face rule in
-// locale-specific stylesheets which can be found at /media/css/l10n/. See
-// /docs/l10n.rst for details.
-@base-font-family: 'Fira Sans', X-LocaleSpecific, sans-serif;
-@base-font-size: 100%;
-
-// Use rem (root em) units for font-size.
-// Assumes default 16px to match sizes but will respect user preferences.
-// Pass through any units that aren't px or rem
-.font-size(@value) {
-        font-size: @value;
-}
-
-// When unit is pixels, pass it through and convert to rem
-.font-size(@value) when (ispixel(@value)) {
-        font-size: @value;
-        .font-size(unit(@value / 16, rem));
-}
-
-// When unit is rem, convert it to pixels and pass it through
-.font-size(@value) when (isunit(@value, rem)) {
-        font-size: unit(@value * 16, px);
-        font-size: @value;
-}
-
-.fira-sans() {
-        font-family: @base-font-family;
-}
-
-.fira-sans-light() {
-        font-family: 'Fira Sans Light', X-LocaleSpecific-Light, @base-font-family;
-        font-weight: normal;
-}
-
-
-// Text colors
-@color-text-primary:   #444;
-@color-text-secondary: #484848;
-@color-text-tertiary:  #666;
-
-// Brand colors
-@color-mozred:  #c13832;
-@color-mozblue: #0c99d5;
-@color-mozgray: #56565a;
-
-// Link colors
-@color-link: #0096dd; // blue (normal links)
-
-// Media queries
-@mq-desktop-wide:   ~'screen and (min-width: 1400px)';
-@mq-desktop:        ~'screen and (min-width: 1000px)';
-@mq-tablet:         ~'screen and (min-width: 760px)';
-@mq-phone-wide:     ~'screen and (min-width: 480px)';
-@mq-phone:          ~'screen and (max-width: 480px)';
-
-@mq-highres:        ~'only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx), only screen and (min-resolution: 144dpi)';
-
-
-// Content widths
-@width-desktop-wide:    1380px;
-@width-desktop:         980px;
-@width-tablet:          740px;
-@width-phone-wide:      460px;
-@width-phone:           300px;
-
-
-// Grid columns
-@column-width:  8.333%; // 100% / 12 columns
-@gutter-width:  20px;
 
 // Column spans for standard column widths
 .span(@columns) {
@@ -98,6 +29,7 @@
 }
 
 
+// Clear floats
 .clearfix() {
     zoom: 1;
     &:after {
@@ -107,6 +39,85 @@
         height: 0;
         visibility: hidden;
     }
+}
+
+// Font families
+.fira-sans() {
+    font-family: @font-fira-sans;
+}
+
+.fira-sans-light() {
+    font-family: 'Fira Sans Light', X-LocaleSpecific-Light, @font-fira-sans;
+    font-weight: normal;
+}
+
+
+// Use rem (root em) units for font-size.
+// Assumes default 16px to match sizes but will respect user preferences.
+// Pass through any units that aren't px or rem
+.font-size(@value) {
+    font-size: @value;
+}
+
+// When unit is pixels, pass it through and convert to rem
+.font-size(@value) when (ispixel(@value)) {
+    font-size: @value;
+    .font-size(unit(@value / 16, rem));
+}
+
+// When unit is rem, convert it to pixels and pass it through
+.font-size(@value) when (isunit(@value, rem)) {
+    font-size: unit(@value * 16, px);
+    font-size: @value;
+}
+
+
+// Type scale based on a 1.333 ratio (Perfect Fourth) with 16px base, rounded to whole pixels for simplicity.
+// See http://www.modularscale.com/?16&px&1.333&web&text
+// These are mixins, not classes. Keep presentation out of your markup.
+
+.font-size-huge() { // For arbitrarily huge text
+    .font-size(50px);
+
+    @media @mq-tablet {
+        .font-size(90px);
+    }
+}
+
+.font-size-h1() {
+    .font-size(38px);
+
+    @media @mq-tablet {
+        .font-size(50px);
+    }
+}
+
+.font-size-h2() {
+    .font-size(28px);
+
+    @media @mq-tablet {
+        .font-size(38px);
+    }
+}
+
+.font-size-h3() {
+    .font-size(21px);
+
+    @media @mq-tablet {
+        .font-size(28px);
+    }
+}
+
+.font-size-h4() {
+    .font-size(16px);
+
+    @media @mq-tablet {
+        .font-size(21px);
+    }
+}
+
+.font-size-small() { // for arbitrarily small text
+    .font-size(12px);
 }
 
 
@@ -243,11 +254,7 @@
 }
 
 
-
-/****************************************************************************/
-// Classes used to hide content from users. Choose wisely!
-
-// Hide visually, but not to screen readers
+// Hide an element visually, but not from screen readers
 .visually-hidden() {
     border: 0;
     clip: rect(0 0 0 0);
@@ -259,12 +266,11 @@
     width: 1px;
 }
 
-// Hide visually & from screen readers
+// Hide an element completely, including from screen readers
 .hidden() {
     display: none;
 }
 
-/****************************************************************************/
 
 // not the most up to date method, but works in IE7
 .image-replaced() {
@@ -273,28 +279,33 @@
     white-space: nowrap;
 }
 
-// Flip an element horizontally for RTL locales such as Arabic. Usually applied
-// to :before or :after pseudo-elements with a background-image
+
+// Flip an element horizontally for RTL locales such as Arabic and Hebrew.
+// Usually applied to pseudo-elements with a background-image, not for text.
 .flip-horizontally() {
     .transform(scale(-1, 1));
 }
 
+
+// Adds a right-pointing arrow after
 .trailing-arrow() {
     &:after {
-        content: "\00A0\25B8"; /* nbsp triangle */
+        content: "\00A0\25B8"; // space+triangle
         white-space: nowrap;
     }
 }
 
+// Adds a left-pointing arrow before
 .leading-arrow() {
     &:before {
-        content: "\25B8\00A0"; /* triangle nbsp */
+        content: "\25B8\00A0"; // triangle+space
         white-space: nowrap;
         .transform(rotate, 180deg);
     }
 }
 
 
+// Columns
 .multi-column(@width: auto, @count: auto, @gap: normal) {
     -webkit-column-width: @width;
        -moz-column-width: @width;
@@ -322,6 +333,7 @@
             column-break-inside: avoid;
 }
 
+
 // A helper mixin for applying high-resolution background images (http://www.retinajs.com)
 // File-names should follow:
 //  example.png
@@ -332,19 +344,14 @@
 
     @media @mq-highres {
         background-image: url("@{at2x_path}");
-        -webkit-background-size: @w @h;
-                background-size: @w @h;
+        .background-size(@w @h);
     }
 }
 
+
+// Prefixed for old webkits
 .background-size(...) {
     -webkit-background-size: @arguments;
             background-size: @arguments;
 }
 
-// You're welcome, Alex and Schalk.
-@colour-text-primary: @color-text-primary;
-@colour-text-secondary: @color-text-secondary;
-@colour-mozred: @color-mozred;
-@colour-mozblue: @color-mozblue;
-@colour-mozgrey: @color-mozgray;

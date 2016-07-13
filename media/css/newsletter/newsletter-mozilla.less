@@ -2,9 +2,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import (reference) '../pebbles/lib.less';
-@import '../pebbles/components/footer.less';
-@import '../pebbles/elements/forms.less';
+@import (reference) '../pebbles/includes/lib.less';
+
 
 .content {
     .clearfix;
@@ -167,17 +166,6 @@
             .font-size(12px);
         }
     }
-
-    .form-button {
-        color: #fff;
-        border: 0;
-        background: @color-mozred;
-
-        &:hover,
-        &:focus {
-            background: lighten(@color-mozred, 5%);
-        }
-    }
 }
 
 #newsletter-form-thankyou {
@@ -201,26 +189,25 @@
     display: block;
 }
 
+
 #colophon {
-    background: @color-mozgray;
-    color: #fff;
+    background: #d1d2d3;
+    color: #56565a;
+    margin: 0;
 
     a {
-        color: lighten(@color-link, 30%);
+        color: @color-link-blue;
 
         &:hover,
         &:focus,
         &:active,
-        &:visited:hover,
-        &:visited:focus,
-        &:visited:active {
-            color: lighten(@color-link, 20%);
-            text-decoration: underline;
-        }
-
         &:visited {
-            color: lighten(desaturate(@color-link, 50%), 20%);
+            color: darken(@color-link-blue, 8%);
         }
+    }
+
+    .logo a {
+        .at2x('/media/img/sandstone/footer-mozilla-dark.png', 93px, 24px);
     }
 }
 

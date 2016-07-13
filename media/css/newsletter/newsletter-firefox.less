@@ -2,12 +2,10 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import (reference) '../pebbles/lib.less';
-@import '../pebbles/components/footer.less';
-@import '../pebbles/elements/forms.less';
+@import (reference) '../pebbles/includes/lib.less';
+
 
 @color-fox-purple: #3a304b;
-@color-link-blue: #00a7e0;
 
 .content {
     .clearfix;
@@ -136,12 +134,12 @@
 
     input[type='text'],
     input[type='email'] {
-        border: 2px solid #00a7e0;
+        border: 2px solid @color-mozblue;
         margin-bottom: 2px;
 
         &:hover,
         &:focus {
-            border-color: lighten(#00a7e0, 5%);
+            border-color: saturate(lighten(@color-mozblue, 5%), 10%);
         }
     }
 
@@ -172,16 +170,6 @@
 
         small {
             .font-size(12px);
-        }
-    }
-
-    .form-button {
-        background: #00a7e0;
-        color: #fff;
-
-        &:hover,
-        &:focus {
-            background: lighten(#00a7e0, 5%);
         }
     }
 }

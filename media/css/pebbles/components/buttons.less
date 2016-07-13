@@ -1,0 +1,165 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import (reference) "../includes/lib.less";
+
+@color-light: #fff;
+@color-dark: #00539f;
+@color-green: #4caf50;
+@color-orange: #f26c23;
+
+
+/* the basis for all buttons on bedrock */
+.base-button {
+    .font-size(18px);
+    .transition(background-color 100ms ease-in-out);
+    background: none;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 2px;
+    cursor: pointer;
+    display: inline-block;
+    padding: .5em 36px;
+    position: relative;
+    text-align: center;
+    text-shadow: none;
+    text-decoration: none;
+
+    @media @mq-tablet {
+        .font-size(20px);
+    }
+
+    &:active {
+        position: relative;
+        top: 1px;
+    }
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+
+/* All buttons not in a form context such as CTA and download buttons */
+.button,
+button.button,
+button.form-button,
+input[type="submit"].form-button,
+input[type="button"].form-button,
+a.button:link,
+a.button:visited {
+    .base-button;
+    background-color: @color-mozblue;
+    border-color: darken(@color-mozblue, 3%);
+    color: @color-light;
+
+    &:hover,
+    &:focus {
+        background-color: saturate(lighten(@color-mozblue, 5%), 10%);
+    }
+
+    &.dark {
+        background-color: @color-dark;
+        border-color: darken(@color-dark, 3%);
+        color: @color-light;
+
+        &:hover,
+        &:focus {
+            background-color: saturate(lighten(@color-dark, 5%), 10%);
+        }
+    }
+
+    &.green {
+        background-color: @color-green;
+        border-color: darken(@color-green, 3%);
+        color: @color-light;
+
+        &:hover,
+        &:focus {
+            background-color: saturate(lighten(@color-green, 5%), 10%);
+        }
+    }
+
+    &.red {
+        background-color: @color-mozred;
+        border-color: darken(@color-mozred, 3%);
+        color: @color-light;
+
+        &:hover {
+            background-color: saturate(lighten(@color-mozred, 5%), 10%);
+        }
+    }
+
+    &.orange {
+        background-color: @color-orange;
+        border-color: darken(@color-orange, 3%);
+        color: @color-light;
+
+        &:hover,
+        &:focus {
+            background-color: saturate(lighten(@color-orange, 5%), 10%);
+        }
+    }
+}
+
+
+.button.hollow,
+button.button.hollow,
+a.button.hollow:link,
+a.button.hollow:visited,
+input[type="submit"].form-button,
+input[type='button'].form-button,
+button.form-button  {
+    background-color: transparent;
+    border-color: @color-mozblue;
+    color: @color-mozblue;
+
+    &:hover,
+    &:focus {
+        background-color: fadeout(@color-mozblue, 95%);
+        border-color: saturate(lighten(@color-mozblue, 5%), 10%);
+        color: saturate(lighten(@color-mozblue, 5%), 10%);
+    }
+
+    &.light {
+        color: @color-light;
+        border-color: @color-light;
+
+        &:hover,
+        &:focus {
+            background-color: fadeout(@color-light, 95%);
+            border-color: darken(@color-light, 5%);
+            color: darken(@color-light, 5%);
+        }
+    }
+
+    &.dark {
+        color: @color-dark;
+        border-color: @color-dark;
+
+        &:hover,
+        &:focus {
+            background-color: fadeout(@color-dark, 95%);
+            border-color: saturate(lighten(@color-dark, 5%), 10%);
+            color: saturate(lighten(@color-dark, 5%), 10%);
+        }
+    }
+
+    &.red {
+        color: @color-mozred;
+        border-color: @color-mozred;
+
+        &:hover,
+        &:focus {
+            background-color: fadeout(@color-mozred, 95%);
+            border-color: saturate(lighten(@color-mozred, 5%), 10%);
+            color: saturate(lighten(@color-mozred, 5%), 10%);
+        }
+    }
+}
+
+#newsletter-form .form-button {
+    width: 100%;
+}
