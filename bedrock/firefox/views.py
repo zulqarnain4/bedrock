@@ -248,6 +248,15 @@ def show_40_firstrun(version):
     return version >= Version('40.0')
 
 
+def show_49_whatsnew(version):
+    try:
+        version = Version(version)
+    except ValueError:
+        return False
+
+    return version >= Version('49.0')
+
+
 class LatestFxView(TemplateView):
 
     """
@@ -358,6 +367,8 @@ class WhatsnewView(LatestFxView):
 
         if show_devbrowser_firstrun_or_whatsnew(version):
             template = 'firefox/dev-whatsnew.html'
+        elif show_49_whatsnew(version):
+            template = 'firefox/yahoo-whatsnew.html'
         elif show_42_whatsnew(version):
             template = 'firefox/whatsnew_42/whatsnew.html'
         else:

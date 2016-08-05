@@ -587,6 +587,12 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/firefox_sync_anim-bundle.css',
     },
+    'firefox_yahoo_whatsnew': {
+        'source_filenames': (
+            'css/firefox/yahoo-whatsnew.less',
+        ),
+        'output_filename': 'css/firefox_yahoo_whatsnew-bundle.css',
+    },
     'installer_help': {
         'source_filenames': (
             'css/base/menu-resp.less',
@@ -1399,6 +1405,13 @@ PIPELINE_JS = {
             'js/firefox/win10-welcome-init.js',
         ),
         'output_filename': 'js/firefox_win10_welcome-bundle.js',
+    },
+    'firefox_yahoo_whatsnew': {
+        'source_filenames': (
+            'js/base/uitour-lib.js',
+            'js/firefox/yahoo-whatsnew.js',
+        ),
+        'output_filename': 'js/firefox_yahoo_whatsnew-bundle.js',
     },
     'geolocation': {
         'source_filenames': (
