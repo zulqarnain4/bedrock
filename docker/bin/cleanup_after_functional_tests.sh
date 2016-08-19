@@ -7,6 +7,7 @@ docker stop bedrock-code-${GIT_COMMIT_SHORT}
 
 for NODE_NUMBER in `seq ${NUMBER_OF_NODES:-5}`;
 do
+    docker logs bedrock-selenium-node-${NODE_NUMBER}-${BUILD_NUMBER} > ${WORKSPACE}/results/geckodriver-${NODE_NUMBER}-${BUILD_NUMBER}.log
     docker stop bedrock-selenium-node-${NODE_NUMBER}-${GIT_COMMIT_SHORT}
 done;
 

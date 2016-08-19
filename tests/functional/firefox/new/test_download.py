@@ -15,6 +15,7 @@ def test_download_button_displayed(base_url, selenium):
     assert page.download_button.is_displayed
 
 
+@pytest.mark.skip_if_firefox(reason='marionette flaky')
 @pytest.mark.skip_if_internet_explorer(reason='https://github.com/SeleniumHQ/selenium/issues/448')
 @pytest.mark.smoke
 @pytest.mark.sanity

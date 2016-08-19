@@ -10,7 +10,7 @@ from pages.regions.download_button import DownloadButton
 
 class ChannelAndroidPage(FirefoxBasePage):
 
-    URL_TEMPLATE = '/{locale}/firefox/channel/android'
+    URL_TEMPLATE = '/{locale}/firefox/channel/android/'
 
     _beta_download_locator = (By.ID, 'android-beta-download')
     _aurora_download_locator = (By.ID, 'android-aurora-download')

@@ -25,6 +25,7 @@ from pages.smarton.landing import SmartOnLandingPage
 from pages.smarton.base import SmartOnBasePage
 
 
+@pytest.mark.skipif(reason='Marionette flaky')
 @pytest.mark.nondestructive
 @pytest.mark.parametrize(('page_class', 'url_kwargs'), [
     pytest.mark.smoke((HomePage, None)),

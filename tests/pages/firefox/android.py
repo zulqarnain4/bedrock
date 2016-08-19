@@ -10,7 +10,7 @@ from pages.regions.send_to_device import SendToDevice
 
 class AndroidPage(FirefoxBasePage):
 
-    URL_TEMPLATE = '/{locale}/firefox/android'
+    URL_TEMPLATE = '/{locale}/firefox/android/'
 
     _customize_locator = (By.CSS_SELECTOR, '#customize-accordion > .customize-section')
     _next_button_locator = (By.ID, 'customize-next')

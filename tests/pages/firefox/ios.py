@@ -10,7 +10,7 @@ from pages.regions.send_to_device import SendToDevice
 
 class IOSPage(FirefoxBasePage):
 
-    URL_TEMPLATE = '/{locale}/firefox/ios'
+    URL_TEMPLATE = '/{locale}/firefox/ios/'
 
     _app_store_button_locator = (By.CSS_SELECTOR, '#intro .appstore-badge')
 

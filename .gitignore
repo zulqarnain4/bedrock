@@ -39,7 +39,8 @@ supervisord.log
 .env
 .cache
 tests/functional/results.html
-tests/functional/assets/style.css
+tests/functional/assets
 .eslintcache
 .docker-build*
 Dockerfile-*
+geckodriver.log

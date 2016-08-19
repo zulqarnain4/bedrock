@@ -10,7 +10,7 @@ from pages.regions.download_button import DownloadButton
 
 class DesktopPage(FirefoxDesktopBasePage):
 
-    URL_TEMPLATE = '/{locale}/firefox/desktop'
+    URL_TEMPLATE = '/{locale}/firefox/desktop/'
 
     _primary_download_locator = (By.CSS_SELECTOR, '#overview-intro-download-wrapper .download-button')
     _secondary_download_locator = (By.CSS_SELECTOR, '#subscribe-download-wrapper .download-button')

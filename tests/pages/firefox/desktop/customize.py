@@ -10,7 +10,7 @@ from pages.firefox.desktop.all import FirefoxDesktopBasePage
 
 class CustomizePage(FirefoxDesktopBasePage):
 
-    URL_TEMPLATE = '/{locale}/firefox/desktop/customize'
+    URL_TEMPLATE = '/{locale}/firefox/desktop/customize/'
 
     _customize_link_locator = (By.CSS_SELECTOR, '#customizer-list > li')
     _customize_section_locator = (By.CSS_SELECTOR, '#customizers-wrapper > section')

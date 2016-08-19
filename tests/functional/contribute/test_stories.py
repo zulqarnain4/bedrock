@@ -7,6 +7,7 @@ import pytest
 from pages.contribute.stories import ContributeStoriesPage
 
 
+# @pytest.mark.skipif(reason='Marionette flaky')
 @pytest.mark.smoke
 @pytest.mark.nondestructive
 def test_show_hide_story(base_url, selenium):

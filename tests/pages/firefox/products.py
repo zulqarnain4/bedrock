@@ -10,7 +10,7 @@ from pages.firefox.base import FirefoxBasePage, FirefoxBaseRegion
 
 class ProductsPage(FirefoxBasePage):
 
-    URL_TEMPLATE = '/{locale}/firefox/products'
+    URL_TEMPLATE = '/{locale}/firefox/products/'
 
     @property
     def download_bar(self):

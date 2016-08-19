@@ -8,6 +8,7 @@ import pytest
 from pages.leadership import LeadershipPage
 
 
+@pytest.mark.skipif(reason='Marionette flaky')
 @pytest.mark.smoke
 @pytest.mark.nondestructive
 def test_open_corporation_biography(base_url, selenium):
@@ -24,6 +25,7 @@ def test_open_corporation_biography(base_url, selenium):
     modal.close()
 
 
+@pytest.mark.skipif(reason='Marionette flaky')
 @pytest.mark.nondestructive
 def test_open_foundation_biography(base_url, selenium):
     page = LeadershipPage(selenium, base_url).open()

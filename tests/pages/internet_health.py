@@ -9,7 +9,7 @@ from pages.base import BasePage
 
 class InternetHealthPage(BasePage):
 
-    URL_TEMPLATE = '/{locale}/internet-health'
+    URL_TEMPLATE = '/{locale}/internet-health/'
 
     _blog_feed_locator = (By.ID, 'blogs')
     _blog_feed_articles_locator = (By.CSS_SELECTOR, '#blogs article')

@@ -10,7 +10,7 @@ from pages.regions.download_button import DownloadButton
 
 class FirefoxSyncPage(FirefoxBasePage):
 
-    URL_TEMPLATE = '/{locale}/firefox/sync'
+    URL_TEMPLATE = '/{locale}/firefox/sync/'
 
     _download_button_locator = (By.ID, 'download-button-desktop-release')
     _play_store_button_locator = (By.ID, 'cta-android-footer')

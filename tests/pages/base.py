@@ -2,6 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support import expected_conditions as expected
@@ -12,7 +14,7 @@ from regions.newsletter import NewsletterEmbedForm
 
 class BasePage(Page):
 
-    URL_TEMPLATE = '/{locale}'
+    URL_TEMPLATE = '/{locale}/'
 
     def __init__(self, selenium, base_url, locale='en-US', **url_kwargs):
         super(BasePage, self).__init__(selenium, base_url, locale=locale, **url_kwargs)
@@ -65,6 +67,7 @@ class BasePage(Page):
         def show(self):
             assert not self.is_displayed, 'Menu is already displayed'
             self.find_element(*self._toggle_locator).click()
+            time.sleep(1)
             self.wait.until(lambda s: self.is_displayed)
             return self
 

@@ -9,6 +9,28 @@ VIEWPORT = {
     'mobile': {'width': 320, 'height': 480}}
 
 
+@pytest.fixture
+def capabilities(request, capabilities):
+    driver = request.config.getoption('driver')
+    if capabilities.get('browserName', driver).lower() == 'firefox':
+        capabilities['marionette'] = True
+    return capabilities
+
+
+@pytest.fixture
+def firefox_options(firefox_options):
+    firefox_options.log.level = 'trace'
+    return firefox_options
+
+
+# @pytest.fixture
+# def firefox_profile(firefox_profile):
+#     firefox_profile.set_preference('browser.tabs.remote.autostart', False)
+#     firefox_profile.set_preference('browser.tabs.remote.autostart.2', False)
+#     firefox_profile.set_preference('browser.tabs.remote.force-enable', False)
+#     return firefox_profile
+
+
 @pytest.fixture(scope='session')
 def session_capabilities(session_capabilities):
     session_capabilities.setdefault('tags', []).append('bedrock')

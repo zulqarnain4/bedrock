@@ -2,6 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+import time
+
 from pypom import Region
 from selenium.webdriver.common.by import By
 
@@ -10,7 +12,7 @@ from pages.base import BasePage
 
 class ContactPage(BasePage):
 
-    URL_TEMPLATE = '/{locale}/contact'
+    URL_TEMPLATE = '/{locale}/contact/'
 
     _map_pins_locator = (By.CSS_SELECTOR, '#map img.leaflet-marker-icon')
     _contact_tab_locator = (By.CSS_SELECTOR, '.category-tabs > li[data-id=contact]')
@@ -64,7 +66,8 @@ class SpacesPage(ContactPage):
 
     URL_TEMPLATE = '/{locale}/contact/spaces'
 
-    _spaces_locator = (By.ID, 'nav-spaces li')
+    _map_locator = (By.ID, 'map')
+    _spaces_locator = (By.CSS_SELECTOR, '#nav-spaces li')
 
     @property
     def spaces(self):
@@ -91,8 +94,11 @@ class SpacesPage(ContactPage):
 
         def click(self):
             self.find_element(*self._link_locator).click()
-            self.wait.until(lambda s: self.is_displayed and
-                            self.page.displayed_map_pins == 1)
+            self.wait.until(lambda s: self.is_displayed)
+            # Firefox needs the map to be scrolled into view :(
+            time.sleep(1)
+            self.page.scroll_element_into_view(*self.page._map_locator)
+            self.wait.until(lambda s: self.page.displayed_map_pins == 1)
 
 
 class CommunitiesPage(ContactPage):
