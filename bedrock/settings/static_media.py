@@ -457,6 +457,13 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/firefox_new_horizon_scene1-bundle.css',
     },
+    'firefox_new_horizon_scene1_variations': {
+        'source_filenames': (
+            'css/base/mozilla-modal.less',
+            'css/firefox/new/horizon/all-test-variations.less',
+        ),
+        'output_filename': 'css/firefox_new_horizon_scene1_variations-bundle.css',
+    },
     'firefox_new_horizon_scene2': {
         'source_filenames': (
             'css/firefox/new/horizon/scene2.less',
@@ -1194,6 +1201,13 @@ PIPELINE_JS = {
             'js/firefox/new/scene1.js',
         ),
         'output_filename': 'js/firefox_new_scene1-bundle.js',
+    },
+    'firefox_new_scene1_variations': {
+        'source_filenames': (
+            'js/base/mozilla-modal.js',
+            'js/firefox/new/all-test-variations.js',
+        ),
+        'output_filename': 'js/firefox_new_scene1_variations-bundle.js',
     },
     'firefox_new_scene2': {
         'source_filenames': (

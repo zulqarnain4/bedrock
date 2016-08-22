@@ -466,6 +466,7 @@ def new(request):
         return HttpResponsePermanentRedirect(reverse('firefox.new'))
 
     scene = request.GET.get('scene', None)
+    version = None
 
     if scene == '2':
         if lang_file_is_active('firefox/new/horizon', l10n_utils.get_locale(request)):
@@ -475,11 +476,22 @@ def new(request):
     # if no/incorrect scene specified, show scene 1
     else:
         if lang_file_is_active('firefox/new/horizon', l10n_utils.get_locale(request)):
-                template = 'firefox/new/horizon/scene1.html'
+            template = 'firefox/new/horizon/scene1.html'
+
+            # en-US tests
+            locale = l10n_utils.get_locale(request)
+            if locale == 'en-US':
+                version = request.GET.get('v', None)
+
+                # each variation puts a link under the primary dl button
+                # 1. links to /firefox/all
+                # 2. opens modal offering alternate direct & app store downloads
+                if version not in ['1', '2']:
+                    version = None
         else:
             template = 'firefox/new/scene1.html'
 
-    return l10n_utils.render(request, template)
+    return l10n_utils.render(request, template, {'version': version})
 
 
 def sync(request):
