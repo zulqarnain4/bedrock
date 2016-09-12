@@ -2,21 +2,21 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import (reference) '../../includes/lib.less';
+@import '../../includes/lib';
 
 
 html {
-    .font-size(100%);
+    font-size: 100%;
     background: #fff;
 }
 
 body {
-    .font-size(@base-font-size);
+    font-size: 100%;
     background: #fff;
     border-top: 2px solid #fff;
-    color: @color-text-primary;
-    font-family: @base-font-stack;
-    line-height: @base-line-height;
+    color: $color-text-primary;
+    font-family: $base-font-stack;
+    line-height: $base-line-height;
 }
 
 // An arbitrary container for translatable strings to use in scripts
@@ -26,5 +26,5 @@ body {
 
 // A few places use a class to hide elements. We should try to avoid that.
 .hidden {
-    .hidden;
+    @include hidden;
 }

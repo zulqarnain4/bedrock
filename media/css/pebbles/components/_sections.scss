@@ -2,31 +2,31 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import (reference) '../includes/lib.less';
+@import '../includes/lib';
 
 
 // Standard content blocks
 .section,
 .content {
-    .clearfix;
+    @include clearfix;
     position: relative;
 }
 
 .content {
-    .border-box;
+    @include border-box;
     margin: 0 auto;
     padding: 20px;
-    min-width: @width-phone;
+    min-width: $width-phone;
 
-    @media @mq-tablet {
-        width: @width-tablet;
+    @media #{$mq-tablet} {
+        width: $width-tablet;
     }
 
-    @media @mq-desktop {
-        width: @width-desktop;
+    @media #{$mq-desktop} {
+        width: $width-desktop;
     }
 
-    @media @mq-desktop-wide {
-        width: @width-desktop-wide;
+    @media #{$mq-desktop-wide} {
+        width: $width-desktop-wide;
     }
 }

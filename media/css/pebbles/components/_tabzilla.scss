@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import (reference) '../includes/lib.less';
+@import '../includes/lib';
 
 
 #tabzilla {
@@ -10,8 +10,8 @@
     float: right;
 
     a {
-        .at2x('/media/img/tabzilla/tabzilla-static.png', 147px, 37px);
-        .image-replaced();
+        @include at2x('/media/img/tabzilla/tabzilla-static.png', 147px, 37px);
+        @include image-replaced;
         background-repeat: no-repeat;
         display: block;
         height: 37px;

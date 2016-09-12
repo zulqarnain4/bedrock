@@ -2,11 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import (reference) '../../pebbles/includes/lib.less';
-@import (reference) 'prototypes/lib.less';
-@import (reference) '../../firefox/horizon-lib.less';
-
-@import '../../pebbles/components/buttons-download.less';
+@import '../../pebbles/components/buttons-download';
 
 
 @font-face {
@@ -20,16 +16,28 @@
          url('/media/fonts/architectsdaughter.ttf') format('truetype');
 }
 
-@fontHeader: #2762A9;
-@fontDark: #56565A;
+$color-mozred-bright: saturate(lighten($color-mozred, 5%), 10%);
+$color-text-header: #2762A9;
+$color-text-dark: #56565A;
 
-@handwritten-font-family: 'Architects Daughter', X-LocaleSpecific, sans-serif;
+$handwritten-font-family: 'Architects Daughter', X-LocaleSpecific, sans-serif;
+
+// download page and firstrun colors
+$horizonColorForeground: #2d253a;
+$horizonColorBackground: #092d6c;
+
+// static horizon background gradient
+@mixin horizon-gradient() {
+    background-color: $horizonColorBackground;
+    background-image: linear-gradient(-180deg, #092d6c 0%, #10659c 40%, #7babbf 68%, #e9c39f 85%, #ff9a4a 100%);
+    background-repeat: no-repeat;
+}
 
 // mixin for icon links in who/innovate sections
-.icon-link(@height, @bgOffset) {
+@mixin icon-link($height, $bgOffset) {
     &:before {
-        background-position: 0 @bgOffset;
-        height: @height;
+        background-position: 0 $bgOffset;
+        height: $height;
         top: 0;
     }
 }
@@ -40,20 +48,19 @@ body {
 
 // Header
 .masthead {
-    .invert-text;
-    background: @color-mozred;
+    background: $color-mozred-bright;
+    color: #fff;
 
     .content {
         padding: 51px 20px 0;
     }
 
     .masthead-logo {
-        background: @color-mozred-bright;
+        background: $color-mozred-bright;
         height: 30px;
         left: 0;
         margin: 0;
         padding: 10px 0;
-        position: absolute;
         text-align: center;
         top: 0;
         width: 100%;
@@ -64,90 +71,13 @@ body {
     }
 }
 
-// Global main nav
-.masthead-nav-main {
-    .fira-sans-light;
-    left: 0;
-    position: absolute;
-    top: 0;
-    z-index: 99;
-
-    .toggle {
-        background: @color-mozred url('/media/img/home/new/icon-menu.svg') center center no-repeat;
-        .background-size(22px auto);
-        cursor: pointer;
-        display: block;
-        height: 51px;
-        overflow: hidden;
-        position: relative;
-        text-indent: -999em;
-        width: 51px;
-    }
-
-    a {
-        text-decoration: none;
-
-        &:hover,
-        &:focus {
-            text-decoration: underline;
-        }
-    }
-}
-
-#nav-main-menu {
-    background: #fff;
-    box-shadow: 2px 2px 0 rgba(0, 0, 0, .2);
-    left: -300px;
-    overflow: visible;
-    position: absolute;
-    top: 50px;
-    width: 200px;
-    z-index: 99;
-
-    li {
-        border-bottom: 1px solid #ccc;
-
-        &:last-child {
-            border: 0;
-        }
-    }
-
-    a {
-        background: #fff;
-        color: @color-text-primary;
-        display: block;
-        padding: 10px 20px;
-        text-decoration: none;
-        -webkit-transition: background-color 150ms ease, border-width 150ms ease, color 150ms ease, padding 150ms ease;
-                transition: background-color 150ms ease, border-width 150ms ease, color 150ms ease, padding 150ms ease;
-
-        &:hover,
-        &:focus {
-            background-color: #f5f5f5;
-            border-right: 6px solid @color-mozred;
-            color: @color-mozred;
-            text-decoration: underline;
-        }
-    }
-}
-
-.masthead-nav-main:hover #nav-main-menu,
-.masthead-nav-main .toggle:focus + #nav-main-menu {
-    left: auto;
-}
-
-.js #nav-main-menu {
-    left: auto;
-    display: none;
-}
-
 #nav-download-firefox {
     display: none;
 }
 
-@media @mq-tablet {
+@media #{$mq-tablet} {
     .masthead {
-        background: @color-mozred-bright;
+        background: $color-mozred-bright;
         padding: 0;
 
         .content {
@@ -159,51 +89,16 @@ body {
             position: relative;
             width: 115px;
         }
-    }
 
-    .masthead-nav-main {
-        float: right;
-        position: relative;
+        .nav-main-menu {
 
-        .toggle {
-            display: none;
-        }
-    }
-
-    #nav-main-menu,
-    .js #nav-main-menu {
-        .clearfix;
-        .font-size(14px);
-        background: transparent;
-        box-shadow: none;
-        display: block;
-        margin: 0 0 0 20px;
-        padding: 15px 0;
-        position: static;
-        width: 340px;
-
-        li {
-            .border-box;
-            border: 0;
-            border-right: 1px solid #fff;
-            float: left;
-            padding: 0 10px;
-            text-align: center;
-
-            &:last-child {
-                border-right: 0;
-                padding-right: 0;
+            a:link,
+            a:visited,
+            a:hover,
+            a:focus,
+            a:active {
+                color: #fff;
             }
-        }
-
-        a,
-        a:hover,
-        a:focus {
-            background: transparent;
-            border: 0;
-            color: #fff;
-            padding: 0;
-            text-transform: uppercase;
         }
     }
 
@@ -216,7 +111,7 @@ body {
         }
 
         .button {
-            .font-size(14px);
+            @include font-size(14px);
             border-radius: 0;
             padding: 13px 20px;
             text-decoration: none;
@@ -229,31 +124,6 @@ body {
     }
 }
 
-@media @mq-desktop {
-    #nav-main-menu,
-    .js #nav-main-menu {
-        margin-right: 20px;
-        width: 380px;
-
-        li {
-            padding: 0 20px;
-        }
-    }
-}
-
-// flexbox layout for savvy browsers to push nav items to the right
-@supports (display: flex) {
-    @media @mq-tablet {
-        #nav-main-menu,
-        .js #nav-main-menu {
-            .flexbox;
-            .justify-content(flex-end);
-            margin-left: 0;
-            margin-right: 20px;
-        }
-    }
-}
-
 main {
     overflow: hidden;
 }
@@ -261,17 +131,17 @@ main {
 .content {
     margin: 0 auto;
 
-    @media @mq-tablet {
+    @media #{$mq-tablet} {
         overflow: hidden;
-        width: @width-tablet;
+        width: $width-tablet;
     }
 
-    @media @mq-desktop {
-        width: @width-desktop;
+    @media #{$mq-desktop} {
+        width: $width-desktop;
     }
 
-    @media @mq-desktop-wide {
-        width: @width-desktop-wide;
+    @media #{$mq-desktop-wide} {
+        width: $width-desktop-wide;
     }
 }
 
@@ -299,31 +169,31 @@ main {
 
     h2,
     h3 {
-        color: @fontHeader;
-        font-family: @handwritten-font-family;
+        color: $color-text-header;
+        font-family: $handwritten-font-family;
         text-shadow: none;
     }
 
     h2 {
-        .font-size(24px);
+        @include font-size(24px);
         line-height: 1.3;
         padding: 40px 0 0;
         text-transform: uppercase;
     }
 
     h3 {
-        .font-size(16px);
+        @include font-size(16px);
         font-weight: 100;
         line-height: 1.6;
     }
 
-    @media @mq-phone-wide {
+    @media #{$mq-phone-wide} {
         h2 {
-            .font-size(28px);
+            @include font-size(28px);
         }
     }
 
-    @media @mq-tablet {
+    @media #{$mq-tablet} {
         background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.95) 100%),
                     radial-gradient(ellipse at center, rgba(255,255,255,0) 0%, rgba(40,100,168,0.25) 100%),
                     url('/media/img/home/new/b/sketchy-heart-blue.png'),
@@ -343,16 +213,16 @@ main {
         min-height: 450px;
 
         h2 {
-            .font-size(42px);
+            @include font-size(42px);
         }
 
         h3 {
-            .font-size(24px);
+            @include font-size(24px);
             line-height: 1.8;
         }
     }
 
-    @media @mq-desktop {
+    @media #{$mq-desktop} {
         background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.95) 100%),
                     radial-gradient(ellipse at center, rgba(255,255,255,0) 0%, rgba(40,100,168,0.25) 100%),
                     url('/media/img/home/new/b/sketchy-heart-blue.png'),
@@ -380,11 +250,11 @@ main {
         min-height: 576px;
 
         h2 {
-            .font-size(56px);
+            @include font-size(56px);
         }
 
         h3 {
-            .font-size(30px);
+            @include font-size(30px);
         }
     }
 }
@@ -392,33 +262,33 @@ main {
 // flexbox layout for savvy browsers
 @supports (display: flex) {
     .home-en-US #intro .content {
-        .flexbox;
-        .flex-direction(column);
+        @include flexbox;
+        @include flex-direction(column);
         height: 300px;
         padding-bottom: 0;
         padding-top: 0;
 
         h2 {
-            .flexbox;
-            .flex-direction(column);
-            .flex(1);
-            .justify-content(center);
+            @include flexbox;
+            @include flex-direction(column);
+            @include flex(1);
+            @include justify-content(center);
         }
 
         h3 {
             padding-bottom: 50px;
         }
 
-        @media @mq-tablet {
+        @media #{$mq-tablet} {
             height: 450px;
         }
 
-        @media @mq-desktop {
+        @media #{$mq-desktop} {
             height: 576px;
         }
 
-        @media @mq-desktop-wide {
-            width: @width-desktop;
+        @media #{$mq-desktop-wide} {
+            width: $width-desktop;
         }
     }
 }
@@ -435,7 +305,7 @@ main {
         margin-bottom: 10px;
     }
 
-    @media @mq-tablet {
+    @media #{$mq-tablet} {
         margin-left: auto;
         margin-right: auto;
         text-align: left;
@@ -448,7 +318,7 @@ main {
             position: relative;
 
             a {
-                .font-size(18px);
+                @include font-size(18px);
 
                 &:before {
                     background: url('/media/img/home/new/b/svg-sprite.svg');
@@ -463,40 +333,40 @@ main {
         }
     }
 
-    @media @mq-desktop {
+    @media #{$mq-desktop} {
         li a {
-            .font-size(20px);
+            @include font-size(20px);
         }
     }
 }
 
 // set icons for each link
 #encryption a {
-    .icon-link(43px, 0);
+    @include icon-link(43px, 0);
 }
 
 #teachtheweb a {
-    .icon-link(32px, -43px);
+    @include icon-link(32px, -43px);
 }
 
 #leandata a {
-    .icon-link(34px, -75px);
+    @include icon-link(34px, -75px);
 }
 
 #gaming a {
-    .icon-link(34px, -109px);
+    @include icon-link(34px, -109px);
 }
 
 #vr a {
-    .icon-link(23px, -143px);
+    @include icon-link(23px, -143px);
 }
 
 #servo a {
-    .icon-link(30px, -166px);
+    @include icon-link(30px, -166px);
 }
 
 #rust a {
-    .icon-link(33px, -196px);
+    @include icon-link(33px, -196px);
 }
 
 .section-content {
@@ -515,15 +385,15 @@ main {
         padding-bottom: 20px;
     }
 
-    @media @mq-tablet {
+    @media #{$mq-tablet} {
         p {
-            .font-size(18px);
+            @include font-size(18px);
         }
     }
 
-    @media @mq-desktop {
+    @media #{$mq-desktop} {
         p {
-            .font-size(20px);
+            @include font-size(20px);
         }
     }
 }
@@ -534,10 +404,10 @@ main {
 
 #who .section-content {
     background: #fff;
-    color: @fontDark;
+    color: $color-text-dark;
 
     &:before {
-        .at2x('/media/img/home/new/b/sketchy-m.png', 200px, 200px);
+        @include at2x('/media/img/home/new/b/sketchy-m.png', 200px, 200px);
         background-position: center;
     }
 
@@ -551,7 +421,7 @@ main {
     color: #fff;
 
     &:before {
-        .at2x('/media/img/home/new/b/vr.png', 200px, 200px);
+        @include at2x('/media/img/home/new/b/vr.png', 200px, 200px);
         background-position: center;
     }
 
@@ -561,9 +431,9 @@ main {
 }
 
 // float layout for wider viewports
-@media @mq-tablet {
+@media #{$mq-tablet} {
     #who-innovate-wrapper {
-        .clearfix;
+        @include clearfix;
     }
 
     #who {
@@ -586,12 +456,12 @@ main {
     text-align: center;
 
     h2 {
-        .font-size(24px);
+        @include font-size(24px);
         padding-top: 40px;
 
         &:before {
-            .at2x('/media/img/firefox/common/firefox-logo.png');
-            .background-size(100%);
+            @include at2x('/media/img/firefox/common/firefox-logo.png');
+            @include background-size(100%);
             background-repeat: no-repeat;
             content: '';
             display: block;
@@ -600,8 +470,8 @@ main {
             width: 80px;
         }
 
-        @media @mq-phone-wide {
-            .font-size(36px);
+        @media #{$mq-phone-wide} {
+            @include font-size(36px);
 
             &:before {
                 height: 142px;
@@ -609,15 +479,15 @@ main {
             }
         }
 
-        @media @mq-highres {
+        @media #{$mq-high-res} {
             &:before {
-                .background-size(100%);
+                @include background-size(100%);
             }
         }
     }
 
     .horizon {
-        .horizon-gradient;
+        @include horizon-gradient;
 
         .content {
             padding-bottom: 270px;
@@ -640,8 +510,8 @@ main {
             color: #fff;
         }
 
-        @media @mq-tablet {
-            .font-size(24px);
+        @media #{$mq-tablet} {
+            @include font-size(24px);
         }
     }
 
@@ -666,7 +536,7 @@ main {
             width: 1770px;
         }
 
-        @media @mq-tablet {
+        @media #{$mq-tablet} {
             // re-center assets
             margin-left: -885px;
         }
@@ -687,7 +557,7 @@ main {
     }
 
     .foreground-shape {
-        .at2x('/media/img/firefox/horizon/foreground.png', 1770px, 254px);
+        @include at2x('/media/img/firefox/horizon/foreground.png', 1770px, 254px);
         background-position: top left;
         background-repeat: no-repeat;
         bottom: 0;
@@ -741,13 +611,13 @@ main {
     ul {
         position: relative;
         padding: 60px 0 40px;
-        .clearfix;
+        @include clearfix;
 
         li {
-            max-width: @width-phone-wide;
+            max-width: $width-phone-wide;
             margin: 0 auto 30px;
 
-            @media @mq-tablet {
+            @media #{$mq-tablet} {
                 float: left;
                 width: 33.3%;
                 margin: 0;
@@ -756,13 +626,13 @@ main {
     }
 
     h3 {
-        .font-size(18px);
-        color: @color-text-secondary;
+        @include font-size(18px);
+        color: $color-text-secondary;
         padding-top: 100px;
         position: relative;
 
         &:before {
-            .background-size(fill);
+            @include background-size(fill);
             background-position: center center;
             background-repeat: no-repeat;
             content: '';
@@ -773,8 +643,8 @@ main {
             width: 100%;
         }
 
-        @media @mq-tablet {
-            .font-size(20px);
+        @media #{$mq-tablet} {
+            @include font-size(20px);
         }
     }
 
@@ -806,8 +676,8 @@ main {
     }
 
     p {
-        .font-size(16px);
-        color: @color-text-secondary;
+        @include font-size(16px);
+        color: $color-text-secondary;
     }
 }
 
@@ -815,18 +685,18 @@ main {
 // Newsletter
 #newsletter-subscribe.section-newsletter {
     margin: 0;
-    background: @color-mozred-bright;
+    background: $color-mozred-bright;
 
     .newsletter-form,
     .form-title,
     .form-contents {
-        .clearfix;
+        @include clearfix;
         float: none;
         margin: 0 auto;
     }
 
     .form-title {
-        .background-size(100px, 100px);
+        @include background-size(100px, 100px);
         background-position: center top;
         margin-top: 0;
         min-height: 0;
@@ -835,13 +705,13 @@ main {
         text-align: center;
 
         h3 {
-            .font-size(32px);
+            @include font-size(32px);
             font-style: italic;
             text-align: center;
         }
 
         h4 {
-            .font-size(18px);
+            @include font-size(18px);
             font-weight: normal;
             line-height: 1.5;
         }
@@ -867,18 +737,18 @@ main {
 }
 
 .js #form-details {
-    .hidden;
+    @include hidden;
 }
 
-@media @mq-tablet {
+@media #{$mq-tablet} {
     #newsletter-subscribe.section-newsletter {
         .newsletter-form {
             padding-left: 380px;
             width: 310px;
 
             .form-title {
-                .background-size(120px 120px);
-                .border-box;
+                @include background-size(120px 120px);
+                @include border-box;
                 background-position: left top;
                 float: left;
                 margin-left: -380px;
@@ -893,7 +763,7 @@ main {
 
             .form-contents,
             .form-submit {
-                .border-box;
+                @include border-box;
                 float: left;
                 margin: 0;
                 width: 100%;
@@ -902,8 +772,3 @@ main {
     }
 }
 
-// @media @mq-desktop-wide {
-//     .section-footer .content {
-//         width: @width-desktop;
-//     }
-// }

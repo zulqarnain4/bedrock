@@ -2,11 +2,11 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import (reference) '../../includes/lib.less';
+@import '../../includes/lib';
 
 
 a {
-    color: @color-link;
+    color: $color-link;
     text-decoration: underline;
 
     &:hover,
@@ -15,11 +15,11 @@ a {
     &:visited:hover,
     &:visited:focus,
     &:visited:active {
-        color: darken(@color-link, 10%);
+        color: darken($color-link, 10%);
         text-decoration: underline;
     }
 
     &:visited {
-        color: lighten(desaturate(@color-link, 50%), 20%);
+        color: lighten(desaturate($color-link, 50%), 20%);
     }
 }

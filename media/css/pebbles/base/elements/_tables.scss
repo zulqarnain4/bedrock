@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import (reference) '../../includes/lib.less';
+@import '../../includes/lib';
 
 
 // We so rarely use tables that it's best not to give them any
@@ -21,7 +21,7 @@
 
     th,
     td {
-        border-top: 1px solid rgba(0,0,0,0.2);
+        border-top: 1px solid rgba(0, 0, 0, .2);
         padding: .5em 10px;
         text-align: left;
     }
