@@ -18,7 +18,13 @@ from django.db.models import Count
 from dateutil.parser import parse as parsedate
 
 from bedrock.security.models import Product, SecurityAdvisory
-from bedrock.security.utils import FILENAME_RE, chdir, mfsa_id_from_filename, parse_md_file
+from bedrock.security.utils import (
+    FILENAME_RE,
+    chdir,
+    mfsa_id_from_filename,
+    parse_md_file,
+    parse_yml_file,
+)
 
 
 ADVISORIES_REPO = settings.MOFO_SECURITY_ADVISORIES_REPO
@@ -115,7 +121,7 @@ def add_or_update_advisory(data, html):
     kwargs = {
         'id': mfsa_id,
         'title': data.pop('title'),
-        'impact': data.pop('impact'),
+        'impact': data.pop('impact', None),
         'reporter': data.pop('reporter', None),
         'year': year,
         'order': order,
@@ -157,7 +163,14 @@ def update_db_from_file(filename):
     :param filename: path to markdown file.
     :return: SecurityAdvisory instance
     """
-    return add_or_update_advisory(*parse_md_file(filename))
+    if filename.endswith('.md'):
+        parser = parse_md_file
+    elif filename.endswith('.yml'):
+        parser = parse_yml_file
+    else:
+        raise RuntimeError('Unknown file type %s' % filename)
+
+    return add_or_update_advisory(*parser(filename))
 
 
 def clone_repo():
@@ -165,8 +178,8 @@ def clone_repo():
     check_call(GIT_CLONE, stdout=FNULL, stderr=STDOUT)
 
 
-def get_all_md_files():
-    return glob.glob(os.path.join(ADVISORIES_PATH, 'announce', '*', '*.md'))
+def get_all_mfsa_files():
+    return glob.glob(os.path.join(ADVISORIES_PATH, 'announce', '*', 'mfsa*.*'))
 
 
 def get_ids_from_files(filenames):
@@ -263,7 +276,7 @@ class Command(NoArgsCommand):
 
         if force or cloned:
             printout('Reading all files.')
-            modified_files = get_all_md_files()
+            modified_files = get_all_mfsa_files()
             if clear_db:
                 deleted_files = []
             else:

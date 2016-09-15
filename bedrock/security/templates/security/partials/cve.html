@@ -1,0 +1,17 @@
+<h4 id="{{ id }}" class="level-heading cve">
+  <a href="#{{ id }}"><span class="anchor">#</span>{{ id }}: {{ title }}</a>
+</h4>
+<dl class="summary">
+  <dt>Reporter</dt>
+  <dd>{{ reporter|safe }}</dd>
+  <dt>Impact</dt>
+  <dd><span class="level {{ impact_class }}">{{ impact }}</span></dd>
+</dl>
+{{ description|markdown }}
+{% if bugs %}
+<ul>
+  {% for bug in bugs -%}
+    <li><a href="{{ bug.url }}">{{ bug.desc|safe }}</a></li>
+  {%- endfor %}
+</ul>
+{% endif %}
