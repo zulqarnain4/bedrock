@@ -10,6 +10,9 @@
 {% block extrahead %}
   {% stylesheet 'firefox_new_horizon_common' %}
   {% stylesheet 'firefox_new_horizon_scene1' %}
+  {% if LANG == 'en-US' %}
+    {% javascript 'exp_firefox_new_all' %}
+  {% endif %}
 {% endblock %}
 
 {% block body_id %}firefox-new-scene1{% endblock %}

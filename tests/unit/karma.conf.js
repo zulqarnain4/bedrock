@@ -17,6 +17,7 @@ module.exports = function(config) {
             'media/js/base/mozilla-accordion-gatrack.js',
             'media/js/base/mozilla-accordion.js',
             'media/js/base/mozilla-client.js',
+            'media/js/base/mozilla-cookie-helper.js', // mozilla-traffic-cop.js
             'media/js/base/mozilla-firefox-default.js',
             'media/js/base/mozilla-form-helper.js',
             'media/js/base/mozilla-fxa-iframe.js',
@@ -25,6 +26,7 @@ module.exports = function(config) {
             'media/js/base/mozilla-modal.js',
             'media/js/base/mozilla-pager.js',
             'media/js/base/mozilla-share-cta.js',
+            'media/js/base/mozilla-traffic-cop.js',
             'media/js/base/mozilla-video-poster.js',
             'media/js/base/nav-main-resp.js',
             'media/js/base/nav-main.js',
@@ -53,6 +55,7 @@ module.exports = function(config) {
             'tests/unit/spec/base/mozilla-image-helper.js',
             'tests/unit/spec/base/mozilla-accordion.js',
             'tests/unit/spec/base/mozilla-pager.js',
+            'tests/unit/spec/base/mozilla-traffic-cop.js',
             'tests/unit/spec/base/search-params.js',
             'tests/unit/spec/base/mozilla-svg-image-fallback.js',
             'tests/unit/spec/firefox/new-ios-redirect-helper.js',

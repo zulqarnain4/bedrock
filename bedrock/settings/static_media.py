@@ -1614,4 +1614,13 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/matchmedia_addlistener-bundle.js',
     },
+    # A/B/x experiment bundles go down here for easy reference
+    'exp_firefox_new_all': {
+        'source_filenames': (
+            'js/base/mozilla-cookie-helper.js',
+            'js/base/mozilla-traffic-cop.js',
+            'js/firefox/new/exp-firefox-new-all.js',
+        ),
+        'output_filename': 'js/exp_firefox_new_all-bundle.js',
+    },
 }
