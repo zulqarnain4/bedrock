@@ -2,13 +2,12 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import '../../../pebbles/lib.less';
-@import 'lib.less';
+@import '../../../pebbles/includes/lib';
 
 .section-footer {
-    .fira-sans-light;
-    .font-size(14px);
-    .invert-text;
+    @include fira-sans-light;
+    @include font-size(14px);
+    @include invert-text;
     background: #666;
     padding: 20px 0;
 
@@ -29,8 +28,8 @@
     }
 
     .logo a {
-        .at2x('/media/img/sandstone/footer-mozilla-white.png', 93px, 24px);
-        .image-replaced();
+        @include at2x('/media/img/sandstone/footer-mozilla-white.png', 93px, 24px);
+        @include image-replaced;
         display: inline-block;
         height: 24px;
         width: 93px;
@@ -82,28 +81,28 @@
             }
 
             span {
-                .visually-hidden(); /* for a11y */
+                @include visually-hidden(); /* for a11y */
             }
         }
     }
 
-    @media @mq-tablet and (min-height: 600px) {
+    @media #{$mq-tablet} and #{$mq-tall} {
         .content {
-            .clearfix;
+            @include clearfix;
             margin: 0 auto;
             padding-left: 30px;
             padding-right: 30px;
         }
     }
 
-    @media @mq-desktop and (min-height: 600px) {
+    @media #{$mq-desktop} and #{$mq-tall} {
         .footer-column {
-            // mimics .span mixin, but must be activated at @mq-desktop
-            // instead of @mq-tablet
-            .border-box;
+            // mimics .span mixin, but must be activated at $mq-desktop
+            // instead of $mq-tablet
+            @include border-box;
             float: left;
-            padding: 0 (@gutter-width / 2);
-            width: @column-width * 4;
+            padding: 0 ($gutter-width / 2);
+            width: $column-width * 4;
         }
     }
 }
