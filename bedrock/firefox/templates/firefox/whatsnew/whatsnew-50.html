@@ -1,0 +1,36 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% add_lang_files "firefox/sendto" "download" %}
+
+{% extends "firefox/mobile-download-desktop.html" %}
+
+{% block page_css %}
+  {% stylesheet 'firefox_whatsnew_50' %}
+{% endblock %}
+
+{% block headline %}
+
+{# If user is in a locale with translated basket messages... #}
+{% if show_send_to_device %}
+  {# Custom headlines for en-* users #}
+  {% if LANG.startswith('en-') %}
+    <h4 class="up-to-date"><span>Your Firefox is up to date.</span></h4>
+    <h2>Now get on the go.</h2>
+
+    <h1>Send Firefox to your phone<br> and unleash your Internet.</h1>
+  {# Headline for non en-* users in locales with translated basket messages #}
+  {% else %}
+    {# Pre-localized headline taken from unsupported-systems.html #}
+    <h2>{{ _('Thanks for choosing Firefox!') }}</h2>
+    {# Pre-localized headline taken from send to device widget #}
+    <h1>{{ _('Send Firefox to your smartphone or tablet') }}</h1>
+  {% endif %}
+{# For users not in a locale with translated basket messages... #}
+{% else %}
+  {# Generic, pre-localized headline #}
+  <h1>{{ _('Download Firefox') }}</h1>
+{% endif %}
+
+{% endblock %}

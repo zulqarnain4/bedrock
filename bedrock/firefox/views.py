@@ -63,7 +63,7 @@ SEND_TO_DEVICE_MESSAGE_SETS = {
             'all': 'mobile-heartbeat',
         },
         'email': {
-            'all': 'download-firefox-mobile',
+            'all': 'download-firefox-mobile-reco',
         }
     }
 }
@@ -267,6 +267,15 @@ def show_49_0_whatsnew(version):
     return version == Version('49.0')
 
 
+def show_50_whatsnew(version):
+    try:
+        version = Version(version)
+    except ValueError:
+        return False
+
+    return version >= Version('50.0')
+
+
 def show_40_firstrun(version):
     try:
         version = Version(version)
@@ -408,11 +417,13 @@ class WhatsnewView(LatestFxView):
             template = 'firefox/dev-whatsnew.html'
         elif channel == 'nightly':
             template = 'firefox/nightly_whatsnew.html'
+        elif show_50_whatsnew(version):
+            template = 'firefox/whatsnew/whatsnew-50.html'
         # zh-TW on 49.0 gets a special template
         elif locale == 'zh-TW' and show_49_0_whatsnew(version):
-            template = 'firefox/whatsnew-zh-TW-49.html'
+            template = 'firefox/whatsnew/whatsnew-zh-tw-49.html'
         elif show_42_whatsnew(version):
-            template = 'firefox/whatsnew_42/whatsnew.html'
+            template = 'firefox/whatsnew/whatsnew-42.html'
         else:
             template = 'firefox/australis/whatsnew.html'
 
