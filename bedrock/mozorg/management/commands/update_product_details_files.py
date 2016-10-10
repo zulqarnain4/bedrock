@@ -20,7 +20,6 @@ FIREFOX_VERSION_KEYS = (
 
 
 class Command(BaseCommand):
-
     def __init__(self, stdout=None, stderr=None, no_color=False):
         self.file_storage = PDFileStorage(json_dir=settings.PROD_DETAILS_TEST_DIR)
         self.db_storage = PDDatabaseStorage()
