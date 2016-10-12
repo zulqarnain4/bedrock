@@ -120,6 +120,9 @@ PROD_DETAILS_JSON_REPO_URI = config('PROD_DETAILS_JSON_REPO_URI',
                                     default='https://github.com/mozilla/product-details-json.git')
 # path to updated p-d data for testing before loading into DB
 PROD_DETAILS_TEST_DIR = str(Path(PROD_DETAILS_JSON_REPO_PATH).joinpath('product-details'))
+# if the repo is cloned it will be most up-to-date
+if Path(PROD_DETAILS_TEST_DIR).is_dir():
+    PROD_DETAILS_DIR = PROD_DETAILS_TEST_DIR
 
 # Accepted locales
 PROD_LANGUAGES = ('ach', 'af', 'an', 'ar', 'as', 'ast', 'az', 'bg',

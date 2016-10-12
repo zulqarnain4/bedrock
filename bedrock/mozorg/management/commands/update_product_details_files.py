@@ -39,9 +39,6 @@ class Command(BaseCommand):
                                   'Defaults to "default".')),
 
     def handle(self, *args, **options):
-        if not settings.PROD_DETAILS_STORAGE.endswith('PDDatabaseStorage'):
-            raise CommandError('Must be setup for database product-details storage to use this')
-
         # don't really care about deleted files. almost never happens in p-d.
         modified, _ = self.update_file_data()
         try:
@@ -51,6 +48,10 @@ class Command(BaseCommand):
 
         if not options['quiet']:
             print('Product Details data is valid')
+
+        if not settings.PROD_DETAILS_STORAGE.endswith('PDDatabaseStorage'):
+            # no need to continue if not using DB backend
+            return
 
         if options['force']:
             files_to_load = self.file_storage.all_json_files()
