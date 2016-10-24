@@ -2,9 +2,13 @@
  # License, v. 2.0. If a copy of the MPL was not distributed with this
  # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
 
+{% extends "firefox/mobile-download-desktop.html" %}
+
 {% add_lang_files "firefox/sendto" "download" %}
 
-{% extends "firefox/mobile-download-desktop.html" %}
+{% block gtm_page_id %}data-gtm-page-id="/firefox/whatsnew/"{% endblock %}
+
+{% block extra_meta %}<meta name="robots" content="noindex">{% endblock %}
 
 {% block page_css %}
   {% stylesheet 'firefox_whatsnew_50' %}

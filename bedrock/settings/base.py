@@ -1172,3 +1172,8 @@ CSP_FRAME_SRC = CSP_CHILD_SRC
 
 if config('SWITCH_FLASHTALKING', default=DEV, cast=bool):
     CSP_IMG_SRC += ('servedby.flashtalking.com',)
+
+# basket supported locales for messages specific to widget in
+# firefox/mobile-download-desktop.html template
+SENDTODEVICE_MOBILE_DOWNLOAD_DESKTOP_LOCALES = config('SENDTODEVICE_MOBILE_DOWNLOAD_DESKTOP_LOCALES',
+    default=['de', 'en-US', 'en-GB', 'es-ES', 'fr', 'id', 'pl', 'pt-BR', 'ru'])

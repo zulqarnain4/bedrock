@@ -31,15 +31,7 @@
   {% stylesheet 'firefox_mobile_download_desktop' %}
 {% endblock %}
 
-{#
-  Determine if user is in locale supported by specific basket messages used by
-  this template.
-
-  This template is used for multiple URLs (/firefox/mobile-download/desktop and
-  /firefox/50.0/whatsnew/), so it's easier to do this logic here rather than
-  creating some generalized view logic.
-#}
-{% set show_send_to_device = LANG.startswith('en-') or LANG in ['de','es-ES','fr','id','pl','pt-BR','ru'] %}
+{% set show_send_to_device = LANG in settings.SENDTODEVICE_MOBILE_DOWNLOAD_DESKTOP_LOCALES %}
 
 {% block content %}
 <main role="main">
