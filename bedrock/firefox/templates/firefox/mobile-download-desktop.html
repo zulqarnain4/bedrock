@@ -31,7 +31,7 @@
   {% stylesheet 'firefox_mobile_download_desktop' %}
 {% endblock %}
 
-{% set show_send_to_device = LANG in settings.SENDTODEVICE_MOBILE_DOWNLOAD_DESKTOP_LOCALES %}
+{% set show_send_to_device = LANG in settings.SEND_TO_DEVICE_LOCALES %}
 
 {% block content %}
 <main role="main">
