@@ -65,6 +65,14 @@ SEND_TO_DEVICE_MESSAGE_SETS = {
         'email': {
             'all': 'download-firefox-mobile-reco',
         }
+    },
+    'fx-50-whatsnew': {
+        'sms': {
+            'all': 'TBD',
+        },
+        'email': {
+            'all': 'TBD',
+        }
     }
 }
 
