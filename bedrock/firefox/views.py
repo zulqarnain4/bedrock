@@ -68,7 +68,7 @@ SEND_TO_DEVICE_MESSAGE_SETS = {
     },
     'fx-50-whatsnew': {
         'sms': {
-            'all': 'TBD',
+            'all': 'whatsnewfifty',
         },
         'email': {
             'all': 'TBD',
