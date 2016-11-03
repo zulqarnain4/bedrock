@@ -71,7 +71,7 @@ SEND_TO_DEVICE_MESSAGE_SETS = {
             'all': 'whatsnewfifty',
         },
         'email': {
-            'all': 'TBD',
+            'all': 'download-firefox-mobile-whatsnew',
         }
     }
 }
