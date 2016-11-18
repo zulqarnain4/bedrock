@@ -579,7 +579,7 @@ STUB_INSTALLER_LOCALES = {
 }
 
 # Google Analytics
-GA_ACCOUNT_CODE = ''
+GA_ACCOUNT_CODE = 'UA-36116321-20'
 
 # Files from The Web[tm]
 EXTERNAL_FILES = {
@@ -1113,6 +1113,9 @@ CSP_DEFAULT_SRC = (
     '*.mozilla.net',
     '*.mozilla.org',
     '*.mozilla.com',
+    'www.google.com',
+    'cse.google.com',
+
 )
 CSP_IMG_SRC = CSP_DEFAULT_SRC + (
     'data:',
@@ -1122,6 +1125,10 @@ CSP_IMG_SRC = CSP_DEFAULT_SRC + (
     '*.tiles.mapbox.com',
     'api.mapbox.com',
     'creativecommons.org',
+    'www.googleapis.com',
+    'clients1.google.com',
+    '*.gstatic.com',
+
 )
 CSP_SCRIPT_SRC = CSP_DEFAULT_SRC + (
     # TODO fix things so that we don't need this
@@ -1134,8 +1141,11 @@ CSP_SCRIPT_SRC = CSP_DEFAULT_SRC + (
     'www.googletagmanager.com',
     'www.google-analytics.com',
     'tagmanager.google.com',
+    'cse.google.com',
     'www.youtube.com',
     's.ytimg.com',
+    'clients1.google.com',
+    'www.googleapis.com',
 )
 CSP_STYLE_SRC = CSP_DEFAULT_SRC + (
     # TODO fix things so that we don't need this
@@ -1151,6 +1161,7 @@ CSP_CHILD_SRC = (
     'accounts.firefox.com',
     'accounts.firefox.com.cn',
     'www.youtube.com',
+    'cse.google.com',
 )
 CSP_CONNECT_SRC = CSP_DEFAULT_SRC + (
     '*.optimizely.com',

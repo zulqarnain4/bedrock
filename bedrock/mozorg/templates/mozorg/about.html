@@ -20,6 +20,19 @@
 
 {% block js %}
   {% javascript 'about_video' %}
+
+  <script>
+    (function() {
+      var cx = '014783244707853607354:ifn1iyzxd1a';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+
 {% endblock %}
 
 {% block content %}
@@ -47,6 +60,10 @@
         {% else %}
           <img class="placeholder-img" src="{{ static('img/mozorg/about/poster-i-am.jpg') }}" alt="Mozilla">
         {% endif %}
+      </div>
+
+      <div>
+        <gcse:search></gcse:search>
       </div>
 
       <ul class="links">
