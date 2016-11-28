@@ -22,22 +22,24 @@
   {% javascript 'about_video' %}
 
   <script>
+    var setGTMSearch = function() {
+      var element = google.search.cse.element.getElement('mozsearch');
+      var query = element.getInputQuery();
 
-    var initMozSearch = function() {
-      $('input.gsc-search-button[type=image]' ).on( 'click', function() {
-        var element = google.search.cse.element.getElement('mozsearch');
-        var query = element.getInputQuery();
-
-        // GTM
-        dataLayer.push({
-         'search-query': query,
-         'event': 'gcs-search'
-        });
-
+      // GTM
+      dataLayer.push({
+        'search-query': query,
+        'event': 'gcs-search'
       });
     };
 
+    // Add event handlers
+    var initMozSearch = function() {
+      $('input.gsc-search-button' ).on( 'click', setGTMSearch);
+      $('input.gsc-input').keyup(function(e) { if(e.keyCode == 13 || e.which == 13) { setGTMSearch() }});
+    };
 
+    // Setup callback for when CSE is ready
     window.__gcse = {
       callback: initMozSearch
     };
