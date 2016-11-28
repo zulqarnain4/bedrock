@@ -22,6 +22,26 @@
   {% javascript 'about_video' %}
 
   <script>
+
+    var initMozSearch = function() {
+      $('input.gsc-search-button[type=image]' ).on( 'click', function() {
+        var element = google.search.cse.element.getElement('mozsearch');
+        var query = element.getInputQuery();
+
+        // GTM
+        dataLayer.push({
+         'search-query': query,
+         'event': 'gcs-search'
+        });
+
+      });
+    };
+
+
+    window.__gcse = {
+      callback: initMozSearch
+    };
+
     (function() {
       var cx = '014783244707853607354:ifn1iyzxd1a';
       var gcse = document.createElement('script');
@@ -31,6 +51,7 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(gcse, s);
     })();
+
   </script>
 
 {% endblock %}
@@ -62,8 +83,8 @@
         {% endif %}
       </div>
 
-      <div>
-        <gcse:search></gcse:search>
+      <div>GTM Test
+        <gcse:search gname="mozsearch"></gcse:search>
       </div>
 
       <ul class="links">

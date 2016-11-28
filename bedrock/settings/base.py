@@ -579,7 +579,7 @@ STUB_INSTALLER_LOCALES = {
 }
 
 # Google Analytics
-GA_ACCOUNT_CODE = 'UA-36116321-20'
+GA_ACCOUNT_CODE = ''
 
 # Files from The Web[tm]
 EXTERNAL_FILES = {
