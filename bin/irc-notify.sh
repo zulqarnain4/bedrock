@@ -13,6 +13,7 @@ SERVER="irc.mozilla.org:6697"
 # http://www.mirc.com/colors.html
 # http://stackoverflow.com/a/13382032
 RED=$'\x034'
+YELLOW=$'\x038'
 GREEN=$'\x039'
 BLUE=$'\x0311'
 BOLD=$'\x02'
@@ -60,6 +61,9 @@ if [[ -z "$MESSAGE" ]]; then
         case "$STATUS" in
           'SUCCESS')
             STATUS_COLOR="${BOLD}${GREEN}"
+            ;;
+          'WARNING')
+            STATUS_COLOR="${BOLD}${YELLOW}"
             ;;
           'FAILURE')
             STATUS_COLOR="${BOLD}${RED}"
