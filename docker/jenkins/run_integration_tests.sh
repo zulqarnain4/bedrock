@@ -1,7 +1,4 @@
 #!/bin/bash -xe
-GIT_COMMIT=${GIT_COMMIT:-$(git rev-parse HEAD)}
-cp docker/dockerfiles/bedrock_integration_tests Dockerfile
-docker build -t bedrock_integration_tests:${GIT_COMMIT} --pull=true .
 
 # $1 should be the properties file for this run
 source "$1"

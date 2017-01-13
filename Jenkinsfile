@@ -9,22 +9,18 @@ def deployAndTestProps = [
     master: [
         regions: allRegions,
         apps: ['bedrock-dev'],
-        props: 'per_push',
+        integration_tests: ['firefox', 'headless'],
     ],
     prod: [
         regions: allRegions,
         apps: ['bedrock-stage', 'bedrock-prod'],
-        props: 'per_tag',
+        integration_tests: ['chrome', 'ie', 'ie6', 'ie7'],
     ],
-    'deploy-via-jenkinsfile': [
+    'moar-jenkinsfile-experiments': [
         regions: allRegions,
         apps: ['bedrock-jenkinsfile-test'],
-        props: 'per_push',
+        integration_tests: ['firefox', 'headless'],
     ],
-]
-def propFiles = [
-    baseDir: 'docker/jenkins/properties/integration_tests',
-    fileExt: '.properties',
 ]
 
 /** Send a notice to #www on irc.mozilla.org with the build result
@@ -80,6 +76,19 @@ def pushPrivateReg(region) {
     }
 }
 
+def integrationTestJob(propFileName) {
+    def testsBaseDir = 'docker/jenkins/properties/integration_tests/'
+    def testsFileExt = '.properties'
+    return {
+        node {
+            unstash 'scripts'
+            unstash 'tests'
+            fullFilename = testsBaseDir + propFileName + testsFileExt
+            echo 'docker/jenkins/run_integration_tests.sh ' + fullFilename
+        }
+    }
+}
+
 stage ('Checkout') {
     node {
         checkout scm
@@ -93,7 +102,8 @@ stage ('Checkout') {
 }
 
 // !!!!!!! ONLY FOR TESTING. REMOVE BEFORE MERGE !!!!!!!
-if ( env.BRANCH_NAME == 'deploy-via-jenkinsfile') {
+if ( env.BRANCH_NAME == 'moar-jenkinsfile-experiments') {
+    /*
     stage ('Build Base') {
         node {
             unstash 'workspace'
@@ -206,10 +216,13 @@ if ( env.BRANCH_NAME == 'deploy-via-jenkinsfile') {
         }
         node {
             unstash 'scripts'
+            unstash 'tests'
+            // prep for next stage
+            sh 'docker/jenkins/build_integration_test_image.sh'
             ircNotification('Docker Image Pushes', 'complete')
         }
     }
-
+*/
     def deployProps = deployAndTestProps[env.BRANCH_NAME]
     for (appname in deployProps.apps) {
         for (region in deployProps.regions) {
@@ -219,23 +232,29 @@ if ( env.BRANCH_NAME == 'deploy-via-jenkinsfile') {
                     withEnv(["DEIS_PROFILE=${region.deis}",
                              "DOCKER_REPOSITORY=${appname}",
                              "DEIS_APPLICATION=${appname}"]) {
+                        /*
                         retry(3) {
                             sh 'docker/jenkins/push2deis.sh'
                         }
+                        */
+                        echo "Would have deployed ${appname}"
                     }
                 }
             }
+            // queue up test closures
+            def allTests = [:]
+            for (filename in deployProps.integration_tests) {
+                allTests[filename] = integrationTestJob(filename)
+            }
             stage ("Test ${appname}-${region.name}") {
-                def allTests = [:]
-                node {
-                    unstash 'scripts'
-                    def files = findFiles(glob: "${propFiles.baseDir}/${deployProps.props}/*${propFiles.fileExt}")
-                    for (file in files) {
-                        allTests[]
-                        echo "file name: ${file.name}"
-                        echo "file path: ${file.path}"
-                        echo "file dir: ${file.directory}"
+                try {
+                    parallel allTests
+                } catch(err) {
+                    node {
+                        unstash 'scripts'
+                        ircNotification("Integration Tests ${region.name}", 'failure')
                     }
+                    throw err
                 }
             }
         }
