@@ -335,7 +335,6 @@ PIPELINE_CSS = {
     'firefox_family': {
         'source_filenames': (
             'css/newsletter/fxnewsletter-subscribe.less',
-            'css/base/simple_footer.less',
             'css/firefox/family/index.less',
         ),
         'output_filename': 'css/firefox-family-bundle.css',
@@ -369,7 +368,6 @@ PIPELINE_CSS = {
     },
     'nightly_whatsnew': {
         'source_filenames': (
-            'css/base/simple_footer.less',
             'css/firefox/horizon/background.less',
             'css/firefox/nightly_whatsnew.less',
         ),
@@ -458,14 +456,12 @@ PIPELINE_CSS = {
         'source_filenames': (
             'css/sandstone/sandstone-resp.less',
             'css/tabzilla/tabzilla-static.less',
-            'css/base/simple_footer.less',
             'css/firefox/mobile-download.less',
         ),
         'output_filename': 'css/firefox_mobile_download.css',
     },
     'firefox_mobile_download_desktop': {
         'source_filenames': (
-            'css/base/simple_footer.less',
             'css/base/send-to-device.less',
             'css/firefox/horizon/background.less',
             'css/firefox/mobile-download-desktop.less',
@@ -477,7 +473,6 @@ PIPELINE_CSS = {
         'source_filenames': (
             'css/sandstone/sandstone-resp.less',
             'css/tabzilla/tabzilla-static.less',
-            'css/base/simple_footer.less',
             'css/base/platform-footer-links.less',
             'css/firefox/horizon/background.less',
             'css/firefox/new/common.less',
@@ -517,7 +512,6 @@ PIPELINE_CSS = {
         'source_filenames': (
             'css/sandstone/sandstone-resp.less',
             'css/tabzilla/tabzilla-static.less',
-            'css/base/simple_footer.less',
             'css/base/platform-footer-links.less',
             'css/firefox/new/onboarding/common.less',
         ),
@@ -586,7 +580,6 @@ PIPELINE_CSS = {
     },
     'firefox_whatsnew_50': {
         'source_filenames': (
-            'css/base/simple_footer.less',
             'css/base/send-to-device.less',
             'css/firefox/horizon/background.less',
             'css/firefox/mobile-download-desktop.less',
@@ -981,7 +974,6 @@ PIPELINE_CSS = {
     'thunderbird-landing': {
         'source_filenames': (
             'css/base/menu-resp.less',
-            'css/base/simple_footer.less',
             'css/thunderbird/landing.less',
         ),
         'output_filename': 'css/thunderbird-landing-bundle.css',
