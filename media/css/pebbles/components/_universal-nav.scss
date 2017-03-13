@@ -1,0 +1,321 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+.moz-universal-nav {
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+
+    a:link,
+    a:visited {
+        color: #000;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+        @include transition(color 0.1s ease-in-out);
+        color: #000;
+        text-decoration: underline;
+    }
+
+    .nav-logo {
+        @include font-size(16px);
+        float: left;
+        height: 30px;
+        margin: 0;
+        padding: 10px 0;
+
+        img {
+            height: 30px;
+            background-color: #fff;
+        }
+    }
+
+    .nav-horizontal-menu {
+        @include clearfix;
+        margin-left: 50px;
+        padding: 10px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-primary-links {
+        display: none;
+        float: left;
+        list-style-type: none;
+        margin: 0 0 0 10px;
+        padding: 13px 0;
+
+        &> li {
+            display: inline;
+            padding: 0 10px;
+        }
+
+        @media #{$mq-tablet} {
+            display: block;
+        }
+
+        @media #{$mq-tablet} {
+            &> li {
+                padding: 0 5px;
+            }
+        }
+    }
+
+    .nav-language-picker-form {
+        float: right;
+        margin: 10px;
+
+        label {
+            @include visually-hidden;
+        }
+
+        select {
+            width: 80px;
+        }
+    }
+
+    .nav-button-more {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        @include image-replaced;
+        background: #fff url('/media/img/pebbles/icon-menu-dark.svg') center center no-repeat;
+        @include background-size(20px, 20px);
+        border: none;
+        bottom: 0;
+        left: 10px;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        width: 30px;
+    }
+}
+
+.moz-universal-nav-fly-out {
+    background: #000;
+    bottom: 0;
+    color: #fff;
+    left: -320px;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    width: 280px;
+    z-index: 10000;
+
+    .nav-flyout-close-button {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        @include fira-sans-light;
+        @include font-size(13px);
+        background: #000;
+        border: none;
+        color: #fff;
+        padding: 0;
+        text-transform: uppercase;
+    }
+
+    .nav-menu-primary-links {
+        padding-top: 30px;
+
+        li {
+            margin: 20px 0;
+
+            a:link,
+            a:visited {
+                color: #fff;
+                text-decoration: none;
+            }
+
+            a:hover,
+            a:focus,
+            a:active {
+                color: #fff;
+                @include transition(color 0.1s ease-in-out);
+            }
+
+            a:focus {
+                outline: none;
+            }
+
+            &.section-cyan {
+                a:hover,
+                a:focus,
+                a:active {
+                    color: $color-brand-cyan;
+                }
+            }
+
+            &.section-lilac {
+                a:hover,
+                a:focus,
+                a:active {
+                    color: $color-brand-lilac;
+                }
+            }
+
+            &.section-lime {
+                a:hover,
+                a:focus,
+                a:active {
+                    color: $color-brand-lime;
+                }
+
+                .nav-menu-callout-link {
+                    &:link,
+                    &:visited {
+                        @include transition(color 0.1s ease-in-out, background-color 0.1s ease-in-out);
+                        border: 1px solid $color-brand-lime;
+                        color: $color-brand-lime;
+                        display: inline-block;
+                        margin-bottom: 20px;
+                        padding: 12px 20px;
+                        text-decoration: none;
+                    }
+
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        @include transition(color 0.1s ease-in-out, background-color 0.1s ease-in-out);
+                        background-color: $color-brand-lime;
+                        color: #000;
+                    }
+                }
+            }
+
+            &.section-coral {
+                a:hover,
+                a:focus,
+                a:active {
+                    color: $color-brand-coral;
+                }
+            }
+
+            &.section-orange {
+                a:hover,
+                a:focus,
+                a:active {
+                    color: $color-brand-orange;
+                }
+            }
+        }
+    }
+
+    .intro {
+        @include font-size(13px);
+        font-style: italic;
+        margin: 0 0 20px;
+    }
+
+    .summary {
+        @include font-size(16px);
+        padding-bottom: 20px;
+
+        a:link,
+        a:visited {
+            @include transition(color 0.1s ease-in-out);
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: #f1f1f1;
+
+            &:after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                content: '+';
+            }
+        }
+
+        &.selected {
+            a:link:after,
+            a:visited:after {
+                content: '-';
+            }
+        }
+    }
+
+    .detail-container {
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        padding-top: 20px;
+    }
+
+    .nav-menu-secondary-links li {
+        @include font-size(16px);
+        margin: 20px 0;
+
+        a:link,
+        a:visited {
+            display: block;
+        }
+    }
+}
+
+// Default (non-animated) accordion for old browsers.
+.moz-universal-nav-fly-out {
+
+    .detail {
+        display: none;
+    }
+
+    .summary.selected + .detail {
+        display: block;
+    }
+}
+
+// Animated accordion for newer browsers.
+@supports (transition: max-height .8s ease-out) {
+
+    .moz-universal-nav-fly-out {
+
+        .detail {
+            display: block;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .2s ease-out;
+        }
+
+        .summary.selected + .detail {
+            max-height: 1000px;
+            transition: max-height .8s ease-out;
+        }
+    }
+}
+
+// Default (non-animated) flyout for old browsers.
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+html.moz-nav-open {
+    body {
+        left: 320px;
+    }
+}
+
+// Animated flyout for newer browsers.
+@supports (transform: translateX(320px)) {
+    body {
+        position: static;
+        transition: transform .25s ease-in-out;
+    }
+
+    html.moz-nav-open {
+        body {
+            left: 0;
+            transition: transform .25s ease-in-out;
+            transform: translateX(320px);
+        }
+    }
+
+    .moz-universal-nav-fly-out {
+        left: 0;
+        transform: translateX(-320px);
+        transition: transform .25s ease-in-out;
+    }
+}

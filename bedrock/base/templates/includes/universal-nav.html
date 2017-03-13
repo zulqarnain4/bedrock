@@ -1,0 +1,218 @@
+<nav role="navigation" class="moz-universal-nav" id="moz-universal-nav">
+
+    <button class="nav-button-more hidden" id="nav-button-more" aria-controls="moz-universal-nav-fly-out" aria-expanded="false">{{_('Menu')}}</button>
+
+    <div class="nav-horizontal-menu">
+
+      <h2 class="nav-logo">
+        <a href="{{ url('mozorg.home') }}">
+          <img src="{{ static('img/pebbles/moz-wordmark-dark-reverse.svg') }}" alt="Mozilla">
+        </a>
+      </h2>
+
+      <ul class="nav-primary-links">
+        <li>
+          <a href="{{ url('mozorg.internet-health') }}" data-id="internet-health">{{ _('Internet Health') }}</a>
+        </li>
+        <li>
+          <a href="{{ url('mozorg.technology') }}" data-id="web-innovations">{{ _('Web Innovations') }}</a>
+        </li>
+        <li>
+          <a href="{{ url('firefox.new') }}" data-id="firefox">{{ _('Firefox') }}</a>
+        </li>
+        <li>
+          <a href="{{ url('mozorg.about') }}" data-id="about-us">{{ _('About Us') }}</a>
+        </li>
+        <li>
+          <a href="{{ url('mozorg.contribute.index') }}" data-id="get-involved">{{ _('Get Involved') }}</a>
+        </li>
+      </ul>
+
+      {% if translations|length > 1 %}
+      <form id="nav-language-picker-form" class="nav-language-picker-form" method="get" action="#">
+        <label for="nav-language-picker" class="visually-hidden">{{ _('Page language:') }}</label>
+        <select id="nav-language-picker" name="lang" dir="ltr">
+          {% for code, label in translations|dictsort -%}
+            {# Don't escape the label as it may include entity references
+             # like "Português (do&nbsp;Brasil)" (Bug 861149) #}
+            <option lang="{{ code }}" value="{{ code }}"{{ code|ifeq(LANG, " selected") }}>{{ code }}</option>
+          {% endfor %}
+        </select>
+        <noscript>
+          <button type="submit">{{ _('Go') }}</button>
+        </noscript>
+      </form>
+      {% endif %}
+  </div>
+</nav>
+
+<nav class="moz-universal-nav-fly-out" id="moz-universal-nav-fly-out">
+
+  <button class="nav-flyout-close-button" id="nav-flyout-close-button" aria-controls="moz-universal-nav-fly-out">{{_('Close')}}</button>
+
+  <ul class="nav-menu-primary-links">
+    <li class="section-cyan">
+      <h3 class="summary"><a href="{{ url('mozorg.internet-health') }}" data-id="internet-health">{{ _('Internet Health') }}</a></h3>
+      <div class="detail">
+        <div class="detail-container">
+          <p class="intro">
+            {{ _('The internet is our largest shared global resource. Let’s keep it healthy for everyone.') }}
+          </p>
+
+          <ul class="nav-menu-secondary-links">
+            <li>
+              <a href="{{ url('mozorg.internet-health.privacy-security') }}" data-link-type="nav" data-link-name="Privacy & Security" data-link-group="Internet Health">
+                {{ _('Privacy &amp; Security') }}
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('mozorg.internet-health.digital-inclusion') }}" data-link-type="nav" data-link-name="Digital Inclusion" data-link-group="Internet Health">
+                {{ _('Digital Inclusion') }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li class="section-lilac">
+      <h3 class="summary"><a href="{{ url('mozorg.technology') }}" data-id="web-innovations">{{ _('Web Innovations') }}</a></h3>
+      <div class="detail">
+        <div class="detail-container">
+          <p class="intro">
+            {{ _('At Mozilla, we see the Internet as our largest shared global resource. The healthier it is, the more it bene ts everyone.') }}
+          </p>
+
+          <ul class="nav-menu-secondary-links">
+            <li>
+              <a href="https://developer.mozilla.org/?utm_source=www.mozilla.org&amp;utm_medium=referral&amp;global-nav&amp;utm_content=MDN" data-link-type="nav" data-link-name="MDN" data-link-group="Web Innovations">
+                {{ _('MDN') }}
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('mozorg.technology') }}#vr" data-link-type="nav" data-link-name="Web VR" data-link-group="Web Innovations">
+                {{ _('Web VR') }}
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('mozorg.technology') }}#rust" data-link-type="nav" data-link-name="Rust" data-link-group="Web Innovations">
+                {{ _('Rust') }}
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('mozorg.technology') }}#gaming" data-link-type="nav" data-link-name="Rust" data-link-group="Gaming">
+                {{ _('Gaming') }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li class="section-lime">
+      <h3 class="summary"><a href="{{ url('firefox.new') }}" data-id="firefox">{{ _('Firefox') }}</a></h3>
+      <div class="detail">
+        <div class="detail-container">
+          <a class="nav-menu-callout-link" href="{{ url('firefox.new') }}" data-link-type="nav" data-link-name="Free download" data-link-group="Firefox">
+            {{ _('Free download') }}
+          </a>
+          <p class="intro">
+            {{ _('Get the only browser built for people, not profit.') }}
+          </p>
+          <ul class="nav-menu-secondary-links">
+            <li>
+              <a href="https://addons.mozilla.org/?utm_source=www.mozilla.org&amp;utm_medium=referral&amp;global-nav&amp;utm_content=add-ons" data-link-type="nav" data-link-name="Add-ons" data-link-group="Firefox">
+                {{ _('Add-ons') }}
+              </a>
+            </li>
+            <li>
+              <a href="#todo" data-link-type="nav" data-link-name="Updates" data-link-group="Firefox">
+                {{ _('Updates') }}
+              </a>
+            </li>
+            <li>
+              <a href="https://support.mozilla.org/?utm_source=www.mozilla.org&amp;utm_medium=referral&amp;global-nav&amp;utm_content=support" data-link-type="nav" data-link-name="Support" data-link-group="Firefox">
+                {{ _('Support') }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li class="section-coral">
+      <h3 class="summary"><a href="{{ url('mozorg.about') }}" data-id="about-us">{{ _('About Us') }}</a></h3>
+      <div class="detail">
+        <div class="detail-container">
+          <p class="intro">
+            {{ _('At Mozilla, we see the Internet as our largest shared global resource. The healthier it is, the more it bene ts everyone.') }}
+          </p>
+
+          <ul class="nav-menu-secondary-links">
+            <li>
+              <a href="{{ url('mozorg.mission') }}" data-link-type="nav" data-link-name="Our Mission" data-link-group="About Us">
+                {{ _('Our Mission') }}
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('mozorg.about.history') }}" data-link-type="nav" data-link-name="Our History" data-link-group="About Us">
+                {{ _('Our History') }}
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('mozorg.about.leadership') }}" data-link-type="nav" data-link-name="Our Leadership" data-link-group="About Us">
+                {{ _('Our Leadership') }}
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('foundation.index') }}" data-link-type="nav" data-link-name="Foundation" data-link-group="About Us">
+                {{ _('Foundation') }}
+              </a>
+            </li>
+            <li>
+              <a href="https://blog.mozilla.org/?utm_source=www.mozilla.org&amp;utm_medium=referral&amp;global-nav&amp;utm_content=blogs" data-link-type="nav" data-link-name="Blogs" data-link-group="About Us">
+                {{ _('Blogs') }}
+              </a>
+            </li>
+            <li>
+              <a href="https://careers.mozilla.org/?utm_source=www.mozilla.org&amp;utm_medium=referral&amp;global-nav&amp;utm_content=careers" data-link-type="nav" data-link-name="Careers" data-link-group="About Us">
+                {{ _('Careers') }}
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('mozorg.contact.contact-landing') }}" data-link-type="nav" data-link-name="Contact Us" data-link-group="About Us">
+                {{ _('Contact us') }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li class="section-orange">
+      <h3 class="summary"><a href="{{ url('mozorg.contribute.index') }}" data-id="get-involved">{{ _('Get Involved') }}</a></h3>
+      <div class="detail">
+        <div class="detail-container">
+          <p class="intro">
+            {{ _('At Mozilla, we see the Internet as our largest shared global resource. The healthier it is, the more it bene ts everyone.') }}
+          </p>
+
+          <ul class="nav-menu-secondary-links">
+            <li>
+              <a href="{{ donate_url('global-nav') }}" data-link-type="nav" data-link-name="Give" data-link-group="Get Involved">
+                {{ _('Give') }}
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('mozorg.contribute.index') }}" data-link-type="nav" data-link-name="Volunteer" data-link-group="Get Involved">
+                {{ _('Volunteer') }}
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('mozorg.contribute.events') }}" data-link-type="nav" data-link-name="Events" data-link-group="Get Involved">
+                {{ _('Events') }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+</nav>
