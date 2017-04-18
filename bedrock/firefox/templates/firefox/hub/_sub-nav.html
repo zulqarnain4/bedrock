@@ -1,0 +1,17 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{# hidden for screens smaller than 880px wide #}
+<nav id="fx-global-nav" class="moz-sub-nav" role="navigation">
+  <div class="nav-horizontal-menu">
+    <a id="fx-global-nav-home-link" href="{{ url('firefox') }}"><img src="{{ static('img/logos/firefox/outline-black.svg') }}" width="26" height="26" /></a>
+    <ul class="subnav-primary-links">
+      <li><a href="{{ url('firefox.desktop.index') }}">Desktop Browser</a></li>
+      <li><a href="{{ url('firefox.android.index') }}">Android Browser</a></li>
+      <li><a href="{{ url('firefox.ios') }}">iOS Browser</a></li>
+      <li><a href="">Features</a></li>
+      <li><a href="https://support.mozilla.org">Support</a></li>
+    </ul>
+  </div>
+</nav>
