@@ -1,0 +1,28 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import '../../pebbles/includes/lib';
+
+$color-burnt-orange: #9c432a;
+
+.button,
+button.button,
+a.button:link,
+a.button:visited {
+    &.button-burnt-orange {
+        @include font-size(18px);
+        @include open-sans();
+        background: transparent;
+        border-color: $color-burnt-orange;
+        border-radius: 0;
+        color: $color-burnt-orange;
+
+        &:hover,
+        &:focus {
+            background: rgba($color-burnt-orange, .05);
+            border-color: $color-burnt-orange;
+            color: $color-burnt-orange;
+        }
+    }
+}
