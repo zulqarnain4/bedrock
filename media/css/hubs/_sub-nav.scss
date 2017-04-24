@@ -93,6 +93,16 @@ $mq-nav-desktop:    'screen and (min-width: 1070px)';
     padding-top: 10px;
     width: 26px;
 
+    .fx-subnav-logo-path {
+        transition: fill 0.1s ease-in-out;
+    }
+
+    &:hover {
+        .fx-subnav-logo-path {
+            fill: $color-firefox-light-orange;
+        }
+    }
+
     @media #{$mq-nav-desktop} {
         margin-right: 73px;
     }
