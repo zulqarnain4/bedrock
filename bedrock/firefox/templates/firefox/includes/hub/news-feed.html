@@ -1,0 +1,36 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{# News feed is currently shown to English locales only. #}
+{% if LANG.startswith('en') and articles %}
+<section class="news">
+  <div class="content">
+    <h2 class="section-title"><span>{{ _('News from around the Web') }}</span></h2>
+    <ul class="news-feed">
+      {% for article in articles %}
+        <li>
+          <article class="entry">
+            <a class="entry-block" rel="bookmark" href="{{ article.link }}">
+              {% set thumbnail = article.get_featured_image_url(size='medium') %}
+              {% if thumbnail %}
+                <img src="{{ thumbnail }}" alt="">
+              {% else %}
+                <img src="{{ static('img/firefox/hub/news-fallback-thumbnail.jpg') }}" alt="">
+              {% endif %}
+              <h3 class="entry-title">{{ article.blog_title }}</h3>
+            </a>
+            <div class="entry-summary">
+              <p>{{ article.htmlify() }}</p>
+            </div>
+            <p class="entry-cta">
+              <a href="{{ article.link }}" class="cta-link">{{ article.blog_name }}</a>
+            </p>
+          </article>
+        </li>
+      {% endfor %}
+    </ul>
+
+  </div> {#--/.content--#}
+</section> {#--/.news--#}
+{% endif %}
