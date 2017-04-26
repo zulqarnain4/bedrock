@@ -73,7 +73,7 @@ $color-firefox-light-orange: #ff9500;
             &:focus {
                 h3 {
                     @include transition(color .1s ease-in-out);
-                    color: $color-firefox-light-orange;
+                    color: #9C432A;
                 }
             }
         }

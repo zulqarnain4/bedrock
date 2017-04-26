@@ -20,9 +20,28 @@ a.button:visited {
 
         &:hover,
         &:focus {
-            background: rgba($color-burnt-orange, .05);
-            border-color: $color-burnt-orange;
-            color: $color-burnt-orange;
+            background: $color-burnt-orange;
+            color: #fff;
+
+            strong:before {
+                background-position: left -14px;
+            }
+        }
+
+        strong {
+            font-weight: bold;
+
+            &:before {
+                @include background-size(12px 28px);
+                background-image: url('/media/img/firefox/hub/down-arrow-sprite.png');
+                background-position: left top;
+                content: '';
+                display: block;
+                float: left;
+                height: 14px;
+                margin: 8px 10px 0 0;
+                width: 12px;
+            }
         }
     }
 }
