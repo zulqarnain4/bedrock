@@ -1,0 +1,64 @@
+{#
+ # I'm putting this in the includes folder for reference, though it
+ # probably wouldn't really work as an include and you might just
+ # have to copy/paste this into your pages.
+ #
+ # The grid is set up for three cards with one featured with an image.
+ # They stack blog-style in smaller viewports.
+ #
+ # For the feature pages that only only have two cards, remove `is-three-cards`.
+ # Both can be image cards when there are only two.
+ #
+ #}
+
+<div class="cards-container is-three-cards">
+  <section id="card-private" class="card image-card is-featured">
+    <div class="card-image">
+      <img src="{{ static('img/firefox/hub/value-private.jpg') }}" alt="">
+    </div>
+    <p class="card-label"><strong>{{ _('Private') }}</strong></p>
+    <div class="card-content">
+      <h2 class="card-title">{{ _('More Privacy') }}</h2>
+      <p>
+      {% trans %}
+        Let your freak flag fly… or keep it safely tucked away. Firefox’s
+        powerful privacy tools give you control over your data, so that
+        you can browse, bank, and binge-watch without a care.
+      {% endtrans %}
+      </p>
+      <p class="card-cta"><a href="#" class="cta-link">{{ ('See how Firefox protects your privacy') }}</a></p>
+    </div>
+  </section>
+
+  <section id="card-modern" class="card">
+    <p class="card-label"><strong>{{ _('Modern') }}</strong></p>
+    <div class="card-content">
+      <h2 class="card-title">{{ _('More Speed') }}</h2>
+      <p>
+      {% trans %}
+        Bring it, Internet! Firefox has spent the last year beefing up our
+        performance, and pushing the web further with new, exclusive features.
+        So go ahead and launch a big project or binge a live panda stream —
+        without missing a beat.
+      {% endtrans %}
+      </p>
+      <p class="card-cta"><a href="#" class="cta-link">{{ _('Check out our browser muscles') }}</a></p>
+    </div>
+  </section>
+
+  <section id="card-independent" class="card">
+    <p class="card-label"><strong>{{ _('Independent') }}</strong></p>
+    <div class="card-content">
+      <h2 class="card-title">{{ _('More Freedom') }}</h2>
+      <p>
+      {% trans %}
+        Following the pack isn’t really our style; we’d rather lead. Firefox
+        is an independent browser fueled by a non-profit, Mozilla. So when
+        you choose Firefox, you’re helping build a healthy, unrestricted
+        Internet that helps everyone.
+      {% endtrans %}
+      </p>
+      <p class="card-cta"><a href="#" class="cta-link">{{ _('See how it benefits you') }}</a></p>
+    </div>
+  </section>
+</div> {#--/.cards-grid--#}
