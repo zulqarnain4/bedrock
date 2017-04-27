@@ -8,21 +8,47 @@ $color-burnt-orange: #9c432a;
 
 .button,
 button.button,
+button.form-button,
 a.button:link,
 a.button:visited {
-    &.button-burnt-orange {
+    &.button-hollow,
+    &.button-hollow-arrow {
         @include font-size(18px);
         @include open-sans();
         background: transparent;
-        border-color: $color-burnt-orange;
         border-radius: 0;
-        color: $color-burnt-orange;
+
+        strong {
+            font-weight: bold;
+        }
+
+        &.dark {
+            border-color: $color-burnt-orange;
+            color: $color-burnt-orange;
+
+            &:hover,
+            &:focus {
+                background: $color-burnt-orange;
+                color: #fff;
+            }
+        }
+
+        &.light {
+            border-color: #fff;
+            color: #fff;
+
+            &:hover,
+            &:focus {
+                background: #fff;
+                color: #000;
+            }
+        }
+    }
+
+    &.button-hollow-arrow {
 
         &:hover,
         &:focus {
-            background: $color-burnt-orange;
-            color: #fff;
-
             strong:before {
                 background-position: left -14px;
             }
@@ -33,7 +59,6 @@ a.button:visited {
 
             &:before {
                 @include background-size(12px 28px);
-                background-image: url('/media/img/firefox/hub/down-arrow-sprite.png');
                 background-position: left top;
                 content: '';
                 display: block;
@@ -42,6 +67,14 @@ a.button:visited {
                 margin: 8px 10px 0 0;
                 width: 12px;
             }
+        }
+
+        &.dark strong:before {
+            background-image: url('/media/img/hubs/down-arrow-dark-sprite.png');
+        }
+
+        &.light strong:before {
+            background-image: url('/media/img/hubs/down-arrow-light-sprite.png');
         }
     }
 }
