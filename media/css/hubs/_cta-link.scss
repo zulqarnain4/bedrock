@@ -10,7 +10,7 @@
 // it could be a global value added to pebbles.
 $color-burnt-orange: #9c432a;
 
-.cta-link {
+a.cta-link {
     @include font-size(16px);
     font-family: $font-open-sans;
     font-weight: bold;

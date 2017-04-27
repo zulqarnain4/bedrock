@@ -61,6 +61,25 @@
             margin: -160px 40px 0 0;
             position: relative;
             z-index: 2;
+
+            &> a:link,
+            &> a:visited {
+                text-decoration: none;
+
+                h2 {
+                    @include transition(color .1s ease-in-out);
+                    color: $color-text-primary;
+                }
+            }
+
+            &> a:hover,
+            &> a:active,
+            &> a:focus {
+                h2 {
+                    @include transition(color .1s ease-in-out);
+                    color: #9C432A;
+                }
+            }
         }
     }
 
