@@ -18,5 +18,7 @@
       <li><a href="{{ url('firefox.features') }}" data-link-name="Features" data-link-type="nav" data-link-position="subnav">{{ _('Features') }}</a></li>
       <li><a href="https://support.mozilla.org" data-link-name="Support" data-link-type="nav" data-link-position="subnav">{{ _('Support') }}</a></li>
     </ul>
+
+    {{ download_firefox(alt_copy=_('Download Firefox'), dom_id='sub-nav-download-firefox') }}
   </div>
 </nav>

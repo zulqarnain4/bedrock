@@ -56,6 +56,7 @@ $mq-nav-desktop:    'screen and (min-width: 1070px)';
 
     .subnav-primary-links {
         @include font-size(16px);
+        float: left;
         list-style-type: none;
         margin: 0;
         padding: 13px 0;
@@ -108,3 +109,85 @@ $mq-nav-desktop:    'screen and (min-width: 1070px)';
     }
 }
 
+/* -------------------------------------------------------------------------- */
+// Customized Firefox download button for sub navigation.
+// Near-total copy pasta from global-nav.html. TODO: DRY this up
+
+#sub-nav-download-firefox {
+    display: none;
+    float: right;
+    margin: 8px 0 0 0;
+
+    .download-list {
+        margin: 0;
+
+        &> li {
+            margin: 0;
+        }
+    }
+
+    .download-link:link,
+    .download-link:visited {
+        @include font-size(14px);
+        background: inherit;
+        border-radius: 0;
+        border: none;
+        color: #646464;
+        display: inline-block;
+        padding: 5px 10px;
+        text-decoration: none;
+        transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+
+        .download-title {
+            font-weight: bold;
+
+            &:before {
+                @include font-size(16px);
+                color: $color-firefox-light-orange;
+                content: "\2193\00A0"; // downward-arrow+space
+                transition: color 0.1s ease-in-out;
+                white-space: nowrap;
+            }
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $color-firefox-light-orange;
+            color: #fff;
+            transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+
+            .download-title:before {
+                color: #fff;
+                transition: color 0.1s ease-in-out;
+            }
+        }
+    }
+
+    @media #{$mq-nav-desktop} {
+        margin-right: 10px;
+
+        .download-link {
+            &:link,
+            &:visited {
+                padding: 5px 10px;
+            }
+        }
+    }
+
+    .fx-privacy-link {
+        display: none;
+    }
+}
+
+@media #{$mq-nav-tablet} {
+    .moz-sub-nav.stuck #sub-nav-download-firefox {
+        display: block;
+    }
+
+    .other .moz-sub-nav.stuck #sub-nav-download-firefox,
+    .oldwin .moz-sub-nav.stuck #sub-nav-download-firefox,
+    .oldmac .moz-sub-nav.stuck #sub-nav-download-firefox {
+        display: none;
+    }
+}
