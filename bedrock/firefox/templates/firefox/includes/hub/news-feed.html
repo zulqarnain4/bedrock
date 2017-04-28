@@ -11,7 +11,7 @@
       {% for article in articles %}
         <li>
           <article class="entry">
-            <a class="entry-block" rel="bookmark" href="{{ article.link }}">
+            <a class="entry-block" rel="bookmark" href="{{ article.link }}" data-link-name="{{ article.blog_title }}" data-link-type="link" data-link-position="Feature {{ loop.index }}">
               {% set thumbnail = article.get_featured_image_url(size='medium') %}
               {% if thumbnail %}
                 <img src="{{ thumbnail }}" alt="">
@@ -24,7 +24,7 @@
               <p>{{ article.htmlify() }}</p>
             </div>
             <p class="entry-cta">
-              <a href="{{ article.link }}" class="cta-link">{{ article.blog_name }}</a>
+              <a href="{{ article.link }}" class="cta-link" data-link-name="{{ article.blog_title }}" data-link-type="link" data-link-position="Feature {{ loop.index }}">{{ article.blog_name }}</a>
             </p>
           </article>
         </li>
