@@ -73,7 +73,7 @@ if [ "${DRIVER}" = "Remote" ]; then
   SELENIUM_VERSION=${DOCKER_SELENIUM_VERSION:-"3.0.1-fermium"}
 
   docker pull selenium/hub:${SELENIUM_VERSION}
-  docker pull selenium/node-firefox:${SELENIUM_VERSION}
+  docker pull selenium/node-firefox-debug:${SELENIUM_VERSION}
 
   # start selenium grid hub
   docker run -d --rm \
@@ -87,7 +87,8 @@ if [ "${DRIVER}" = "Remote" ]; then
     docker run -d --rm \
       --name bedrock-selenium-node-${NODE_NUMBER}-${GIT_COMMIT_SHORT} \
       ${DOCKER_LINKS[@]} \
-      selenium/node-firefox:${SELENIUM_VERSION}
+      -p $((5900 + $NODE_NUMBER)):5900 \
+      selenium/node-firefox-debug:${SELENIUM_VERSION}
     while ! ${SELENIUM_READY}; do
       IP=`docker inspect --format '{{ .NetworkSettings.IPAddress }}' bedrock-selenium-node-${NODE_NUMBER}-${GIT_COMMIT_SHORT}`
       CMD="docker run --rm --link bedrock-selenium-hub-${GIT_COMMIT_SHORT}:hub tutum/curl curl http://hub:4444/grid/api/proxy/?id=http://${IP}:5555 | grep 'proxy found'"
