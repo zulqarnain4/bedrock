@@ -11,23 +11,26 @@
 $color-burnt-orange: #9c432a;
 
 a.cta-link {
-    @include font-size(16px);
-    font-family: $font-open-sans;
-    font-weight: bold;
+    @include font-size(18px);
     border-bottom: 2px solid $color-burnt-orange;
     color: $color-burnt-orange;
     display: inline-block;
-    padding-bottom: 10px;
+    font-family: $font-open-sans;
+    font-weight: bold;
+    padding: 0 10% 10px 0;
+    position: relative;
     text-decoration: none;
-    width: 90%;
+    width: 80%;
 
     &:after {
         background: url('/media/img/firefox/hub/cta-arrow.svg') center right no-repeat;
         content: '';
         display: block;
-        float: right;
         height: 14px;
-        padding-top: 10px;
+        padding: 10px 0 0 10px;
+        position: absolute;
+        right: 0;
+        top: 0;
         transition: margin-right 100ms ease-in-out;
         width: 12px;
     }
