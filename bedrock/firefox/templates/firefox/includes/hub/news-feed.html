@@ -12,7 +12,7 @@
         <li>
           <article class="entry">
             <a class="entry-block" rel="bookmark" href="{{ article.link }}" data-link-name="{{ article.blog_title }}" data-link-type="link" data-link-position="Feature {{ loop.index }}">
-              {% set thumbnail = article.get_featured_image_url(size='medium') %}
+              {% set thumbnail = article.get_featured_image_url(size='large') %}
               {% if thumbnail %}
                 <img src="{{ thumbnail }}" alt="">
               {% else %}
