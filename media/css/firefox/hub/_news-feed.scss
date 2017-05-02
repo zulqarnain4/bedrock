@@ -7,24 +7,11 @@
 //* -------------------------------------------------------------------------- */
 // Firefox Hub: News Feed Component
 
-$color-firefox-light-orange: #ff9500;
-
 .news-feed {
     margin: 0;
 
     &> li {
         @include clearfix;
-        padding-bottom: 20px;
-
-        &:last-child {
-            border-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        @media #{$mq-tablet} {
-            border-bottom: 1px solid #000;
-            padding-bottom: 0;
-        }
     }
 
     .entry {
@@ -48,11 +35,18 @@ $color-firefox-light-orange: #ff9500;
         }
 
         @media #{$mq-desktop} {
-            padding: 40px 0 40px 460px;
+            padding: 20px 0 20px 460px;
 
             img {
                 margin-left: -460px;
                 width: 420px;
+            }
+        }
+
+        @media #{$mq-desktop-wide} {
+            a.entry-block,
+            .entry-summary {
+                max-width: 34em;
             }
         }
 
