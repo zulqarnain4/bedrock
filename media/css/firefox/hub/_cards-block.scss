@@ -10,13 +10,8 @@
 .cards-container {
     .card {
         @include clearfix;
-        border-bottom: 1px solid #000;
         padding: 20px 0;
         position: relative;
-
-        &:last-child {
-            border-bottom: 0;
-        }
     }
 
     .card-content {
@@ -92,10 +87,6 @@
     }
 
     @media #{$mq-tablet} {
-        .card {
-            padding: 40px 0;
-        }
-
         .card-cta {
             width: 60%;
         }
@@ -143,6 +134,12 @@
             }
         }
     }
+
+    @media #{$mq-desktop-wide} {
+        .card-content {
+            max-width: 34em;
+        }
+    }
 }
 
 // Alternative grid layout when there are three cards
@@ -159,7 +156,6 @@
                 @include border-box;
                 border-bottom: 0;
                 border-top: 4px solid #000;
-                padding: 20px 0;
             }
 
             .card-content {
