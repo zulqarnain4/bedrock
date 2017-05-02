@@ -11,12 +11,14 @@ $mq-nav-tablet:     'screen and (min-width: 840px)';
 $mq-nav-desktop:    'screen and (min-width: 1070px)';
 
 .moz-sub-nav {
+    @include clearfix();
     background: #fff;
     display: none; // hidden for mobile
+    overflow: hidden;
 
     @media #{$mq-nav-tablet} {
         display: block;
-        margin-bottom: 45px;
+        margin-bottom: 20px;
         transition: box-shadow 0.2s ease, transform 0.2s ease;
 
         &.stuck {
@@ -114,9 +116,12 @@ $mq-nav-desktop:    'screen and (min-width: 1070px)';
 // Near-total copy pasta from global-nav.html. TODO: DRY this up
 
 #sub-nav-download-firefox {
-    display: none;
     float: right;
     margin: 8px 0 0 0;
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: opacity 0.3s ease 0.1s, transform 0.4s ease-in-out 0.1s;
+    visibility: hidden;
 
     .download-list {
         margin: 0;
@@ -182,7 +187,9 @@ $mq-nav-desktop:    'screen and (min-width: 1070px)';
 
 @media #{$mq-nav-tablet} {
     .moz-sub-nav.stuck #sub-nav-download-firefox {
-        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
     }
 
     .other .moz-sub-nav.stuck #sub-nav-download-firefox,
