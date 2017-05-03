@@ -4,15 +4,6 @@
 
 <aside class="outro">
   <div class="content">
-
-    <section class="outro-item outro-item-download">
-      <div class="outro-item-detail">
-        <h2>{{ _('Start browsing with Firefox today') }}</h2>
-        <p class="tagline">{{ _('Faster than ever, more secure, and always independent.') }}</p>
-        {{ download_firefox(dom_id='outro-download-firefox', button_color='button-hollow-arrow light') }}
-      </div>
-    </section>
-
     <section class="outro-item outro-item-newsletter">
       <div class="outro-item-detail">
         <h2>{{ _('Hungry for more?') }}</h2>
@@ -20,6 +11,5 @@
         {{ email_newsletter_form(include_title=False, spinner_color='#000', button_class='button-hollow light') }}
       </div>
     </section>
-
   </div> {#--/.content--#}
 </aside> {#--/.outro--#}

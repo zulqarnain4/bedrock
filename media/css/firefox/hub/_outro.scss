@@ -48,26 +48,6 @@
     }
 }
 
-.outro-item-download {
-    background-color: #051818;
-    background-image: url('/media/img/firefox/hub/flames.jpg');
-    background-repeat: no-repeat;
-    background-position: top right -400px;
-
-    @media #{$mq-tablet} {
-        background-position: bottom right -400px;
-
-    }
-
-    @media #{$mq-desktop} {
-        background-position: bottom right -240px;
-    }
-
-    @media #{$mq-desktop-wide} {
-        background-position: bottom right;
-    }
-}
-
 .outro-item-newsletter {
     background-color: #0a84ff;
     @include at2x('/media/img/firefox/hub/critters.jpg', 280px, 230px);
@@ -108,21 +88,6 @@
 }
 
 html[dir="rtl"] {
-    .outro-item-download {
-        background-position: top left -400px;
-
-        @media #{$mq-tablet} {
-            background-position: bottom left -400px;
-        }
-
-        @media #{$mq-desktop} {
-            background-position: bottom left -240px;
-        }
-
-        @media #{$mq-desktop-wide} {
-            background-position: bottom left -100px;
-        }
-    }
 
     .outro-item-newsletter {
 
@@ -186,23 +151,5 @@ html[dir="rtl"] {
     .errorlist {
         background: #fff;
         color: $color-mozred;
-    }
-}
-
-#outro-download-firefox {
-    .fx-privacy-link {
-        a:link,
-        a:visited {
-            @include font-size(14px);
-            @include open-sans();
-            color: #fff;
-            text-decoration: none;
-        }
-
-        a:hover,
-        a:active,
-        a:focus {
-            text-decoration: underline;
-        }
     }
 }
