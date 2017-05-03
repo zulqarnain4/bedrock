@@ -133,6 +133,46 @@
                 margin: 0;
             }
         }
+
+        &.is-three-cards {
+            .card {
+                @include border-box;
+                border-bottom: 0;
+                border-top: 4px solid #000;
+                float: right;
+                width: 49%;
+
+                &.is-featured {
+                    float: left;
+                }
+            }
+
+            .card-content {
+                padding: 20px 40px;
+            }
+
+            .card-cta {
+                width: auto;
+            }
+
+            .image-card {
+                border-top: 0;
+                padding: 0;
+
+                .card-image {
+                    width: 100%;
+                    height: auto;
+                    margin-left: 0;
+                    float: none;
+                }
+
+                .card-content {
+                    padding-top: 40px;
+                    margin-right: 80px;
+                    margin-top: -200px;
+                }
+            }
+        }
     }
 
     @media #{$mq-desktop-wide} {
@@ -141,6 +181,7 @@
         }
     }
 }
+
 
 // Alternative grid layout when there are three cards
 @supports (display: grid) {
@@ -153,16 +194,7 @@
             grid-gap: 20px;
 
             .card {
-                @include border-box;
-                border-bottom: 0;
-                border-top: 4px solid #000;
-            }
-
-            .card-content {
-                padding: 20px 40px;
-            }
-
-            .card-cta {
+                float: none;
                 width: auto;
             }
 
@@ -218,14 +250,3 @@
     }
 }
 
-.card-private.image-card .card-label strong {
-    color: #5ca3bd;
-}
-
-.card-modern.image-card .card-label strong {
-    color: #967580;
-}
-
-.card-independent.image-card .card-label strong {
-    color: #bb447c;
-}
