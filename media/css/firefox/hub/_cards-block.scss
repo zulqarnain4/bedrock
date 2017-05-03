@@ -35,7 +35,7 @@
         }
     }
 
-    // The little highlighted bit of text at the top of a card
+    // (Optional) highlighted label at the top of a card
     .card-label {
         @include font-size-level4;
         line-height: 1.1;
