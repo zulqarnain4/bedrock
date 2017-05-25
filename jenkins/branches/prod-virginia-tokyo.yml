@@ -1,0 +1,15 @@
+# see the following for documentation of these options
+# http://bedrock.readthedocs.io/en/latest/pipeline.html#configuration
+regions:
+  - virginia
+  - tokyo
+apps:
+  - bedrock-stage
+  - bedrock-prod
+integration_tests:
+  - headless
+  - firefox
+  - chrome
+  - ie
+  - ie6
+  - ie7
