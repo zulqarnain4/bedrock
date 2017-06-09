@@ -5,7 +5,7 @@ smoke_tests: false
 regions:
   - virginia
 apps:
-  - bedrock-dev
+  - bedrock-prod
 integration_tests:
   virginia:
     - headless
