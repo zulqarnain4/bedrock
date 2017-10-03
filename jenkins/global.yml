@@ -7,6 +7,10 @@ regions:
     name: us-west
     registry_port: 5001
     deis_bin: deis
+  portland:
+    deis_profile: portland
+    name: portland
+    deis_bin: deis2
   tokyo:
     deis_profile: tokyo
     name: tokyo
