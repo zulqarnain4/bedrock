@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="32px" viewBox="0 0 33 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Erase</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="0%" x2="44.7030132%" y2="91.0492815%" id="linearGradient-1">
+            <stop stop-color="#05C8E5" offset="0%"></stop>
+            <stop stop-color="#05C5E6" offset="0%"></stop>
+            <stop stop-color="#008BFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="70.6096199%" y1="-11.044205%" x2="12.1761204%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#05C8E5" offset="0%"></stop>
+            <stop stop-color="#05C4E7" offset="19.6415298%"></stop>
+            <stop stop-color="#008BFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Mobile-Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="FF-mobile-feature_Privacy" transform="translate(-1087.000000, -593.000000)">
+            <g id="Erase" transform="translate(1087.000000, 593.000000)">
+                <path d="M16.1241089,30.1830373 L18.1836735,28.1072218 L16.4007509,26.3115939 L14.3418663,28.3858436 C12.9679814,29.7705362 10.5726193,29.7705362 9.19980287,28.3858436 L2.67083844,21.8101931 C2.57525708,21.7135024 2.52056978,21.5785465 2.52056978,21.4397739 C2.52056978,21.3006098 2.57525708,21.1660454 2.67384964,21.0666145 L6.93421385,16.7747428 L5.15119412,14.9787234 L0.893161168,19.2703015 C0.324044117,19.8394846 0,20.6312129 0,21.4397739 C0,22.2479435 0.323655575,23.0396717 0.890149967,23.6076805 L7.41649174,30.1830373 C8.57978681,31.3546777 10.1256016,31.9999998 11.770106,31.9999998 C13.414222,32.0003913 14.9618823,31.3546777 16.1241089,30.1830373 Z" id="Fill-1" fill="url(#linearGradient-1)"></path>
+                <path d="M32.1022241,9.7908612 L23.2943211,0.873621731 C22.1423065,-0.290065963 20.1085902,-0.292745213 18.9531452,0.874812509 L8.08163265,11.8809741 L8.98019225,12.7895376 L20.332544,24.282132 L21.2322797,25.1914894 L32.1018321,14.1865186 C32.6810737,13.6012512 32.9999996,12.8194063 32.9999996,11.9891364 C33.0003917,11.1580727 32.6810737,10.3773193 32.1022241,9.7908612 Z" id="Fill-3" fill="url(#linearGradient-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="36px" viewBox="0 0 35 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="-49.9334038%" x2="30.7914631%" y2="151.629571%" id="linearGradient-1">
+            <stop stop-color="#FF272D" offset="0%"></stop>
+            <stop stop-color="#C42482" offset="33.529769%"></stop>
+            <stop stop-color="#4A1475" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Mobile-Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Focus-feature_Light" transform="translate(-994.000000, -595.000000)">
+            <g id="Group-4" transform="translate(994.000000, 590.000000)">
+                <g id="Group-2" transform="translate(0.000000, 5.000000)">
+                    <ellipse id="Oval" fill="url(#linearGradient-1)" cx="17.5" cy="17.5454545" rx="17.5" ry="17.5454545"></ellipse>
+                    <g id="zap" transform="translate(11.307692, 7.000000)" stroke-linecap="round" stroke-width="2" stroke="#FFFFFF" stroke-linejoin="round">
+                        <polygon id="Shape" points="6.88034188 0 0 12.2769231 6.19230769 12.2769231 5.5042735 20.4615385 12.3846154 8.18461538 6.19230769 8.18461538"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
