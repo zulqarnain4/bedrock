@@ -458,7 +458,6 @@ PIPELINE_CSS = {
     },
     'firefox-mobile': {
         'source_filenames': (
-            'css/base/mozilla-modal.less',
             'css/base/send-to-device.less',
             'css/firefox/mobile.scss',
         ),

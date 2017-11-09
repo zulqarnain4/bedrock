@@ -1,4 +1,3 @@
-from bedrock.base.waffle import switch
 from bedrock.redirects.util import redirect, ua_redirector
 
 
@@ -661,7 +660,3 @@ redirectpatterns = (
     # Bug 1384370
     redirect(r'^developers/?$', 'mozorg.developer'),
 )
-
-if not switch('firefox-57-release'):
-    # Bug 1071318
-    redirectpatterns += (redirect(r'^firefox/mobile/?$', 'firefox.android.index'),)

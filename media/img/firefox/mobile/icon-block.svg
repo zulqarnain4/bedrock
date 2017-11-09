@@ -1,20 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
-    <title>Page 1</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <linearGradient x1="29.7472745%" y1="-47.8959658%" x2="30.7914631%" y2="151.629571%" id="linearGradient-1">
-            <stop stop-color="#FF272D" offset="0%"></stop>
-            <stop stop-color="#C42482" offset="33.529769%"></stop>
-            <stop stop-color="#4A1475" offset="100%"></stop>
-        </linearGradient>
-    </defs>
-    <g id="Mobile-Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="FF-57-Mobile-Landing" transform="translate(-1054.000000, -3446.000000)" fill="url(#linearGradient-1)">
-            <g id="FF-Focus-App-Features" transform="translate(-1.000000, 2967.000000)">
-                <path d="M1059.14286,495.571429 L1079.85714,495.571429 L1079.85714,491.428571 L1059.14286,491.428571 L1059.14286,495.571429 Z M1069.5,479 C1061.49186,479 1055,485.491857 1055,493.5 C1055,501.508143 1061.49186,508 1069.5,508 C1077.50814,508 1084,501.508143 1084,493.5 C1084,485.491857 1077.50814,479 1069.5,479 L1069.5,479 Z" id="Page-1"></path>
-            </g>
-        </g>
-    </g>
+<svg width="29" height="29" viewBox="0 0 29 29" xmlns="http://www.w3.org/2000/svg">
+  <title>
+    Page 1
+  </title>
+  <defs>
+    <linearGradient x1="29.747%" y1="-47.896%" x2="30.791%" y2="151.63%" id="a">
+      <stop stop-color="#FF272D" offset="0%"/>
+      <stop stop-color="#C42482" offset="33.53%"/>
+      <stop stop-color="#4A1475" offset="100%"/>
+    </linearGradient>
+  </defs>
+  <path d="M1059.143 495.57h20.714v-4.14h-20.714v4.14zM1069.5 479c-8.008 0-14.5 6.492-14.5 14.5s6.492 14.5 14.5 14.5 14.5-6.492 14.5-14.5-6.492-14.5-14.5-14.5z" transform="translate(-1055 -479)" fill="url(#a)" fill-rule="evenodd"/>
 </svg>

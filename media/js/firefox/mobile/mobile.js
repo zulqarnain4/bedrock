@@ -17,15 +17,13 @@
         var selectorToHide = (product === 'firefox') ? '.focus' : '.firefox';
         var selectorToShow = (product === 'firefox') ? '.firefox' : '.focus';
 
-        // contorl styling of modal: blue for firefox, purple for focus
+        // control styling of modal: blue for firefox, purple for focus
         $body.attr('data-modal-product', product);
 
         $modalContents.find(selectorToHide).addClass('hidden');
         $modalContents.find(selectorToShow).removeClass('hidden');
 
-        Mozilla.Modal.createModal(this, $modalContents, {
-            title: ''
-        });
+        Mozilla.Modal.createModal(this, $modalContents);
     }
 
     // move app store badges inside modal

@@ -54,7 +54,7 @@
         if (el) {
             el.classList.add('current');
 
-            //data-current attribute provides a styling hook for the CSS faux scroll bar.
+            // data-current attribute provides a styling hook for the CSS faux scroll bar.
             for (var i = 0; i < navs.length; i++) {
                 if (navs[i].getAttribute('data-section') === parent) {
                     navs[i].setAttribute('data-current', id);

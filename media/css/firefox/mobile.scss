@@ -71,10 +71,12 @@ a.button.quantum.button-focus {
     background-color: #fff;
     border-color: #fff;
     color: $color-focus-purple;
+    transition: border-color 0.15s ease-in-out;
 
     &:focus,
     &:hover {
         background-color: #fff;
+        border-color: lighten($color-focus-purple, 20%);
     }
 }
 
@@ -100,6 +102,7 @@ a.button.quantum.button-focus {
         margin-bottom: 0.75em;
     }
 
+    /*
     a,
     a:active,
     a:focus,
@@ -109,6 +112,7 @@ a.button.quantum.button-focus {
         color: #fff;
         text-decoration: none;
     }
+    */
 
     @media #{$mq-desktop} {
         padding-bottom: 70px;
@@ -147,7 +151,7 @@ html[dir="rtl"] .main-header {
     padding: 20px;
 
     .header-product-ctas .button {
-        display: block;
+        display: inline-block;
         margin: 0 auto 0.5em;
     }
 
@@ -317,8 +321,17 @@ html[dir="rtl"] .header-product {
 /* -------------------------------------------------------------------------- */
 // 'See more' link inside each .header-product
 
-.see-more{
+a.see-more {
     @include font-size-level6;
+    color: #fff;
+    text-decoration: none;
+
+    &:active,
+    &:focus,
+    &:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
 
     &:after {
         background: url('/media/img/firefox/mobile/chevron-down.svg') top right no-repeat;
@@ -327,10 +340,8 @@ html[dir="rtl"] .header-product {
         height: 10px;
         width: 30px;
     }
-}
 
-html[dir="rtl"] {
-    .see-more:after {
+    html[dir="rtl"] &:after {
         background-position: top left;
     }
 }
@@ -524,6 +535,13 @@ html[dir="rtl"] {
         margin-bottom: 1em;
     }
 
+    ul li a {
+        &:link,
+        &:visited {
+            color: #fff;
+        }
+    }
+
     @media #{$mq-desktop} {
         display: block;
 
@@ -539,6 +557,10 @@ html[dir="rtl"] {
 #firefox {
     .page-article-heading {
         @include at2x('/media/img/firefox/mobile/intro-firefox.png', 280px, 253px);
+    }
+
+    .features-scroller-section.page-section .features-scroller-header ul:before {
+        background: lighten(#0080FF, 10%);
     }
 
     @media #{$mq-phone-wide} {
@@ -558,6 +580,10 @@ html[dir="rtl"] {
 #focus {
     .page-article-heading {
         @include at2x('/media/img/firefox/mobile/intro-focus.png', 280px, 253px);
+    }
+
+    .features-scroller-section.page-section .features-scroller-header ul:before {
+        background: #550459;
     }
 
     @media #{$mq-phone-wide} {
@@ -824,6 +850,7 @@ html[dir="rtl"] {
 #modal-wrapper {
     h3 {
         @include rooftop-heading;
+        color: #fff;
         margin-bottom: 1em;
 
         &:before {
@@ -836,6 +863,7 @@ html[dir="rtl"] {
 
 #modal .window .inner {
     color: #fff;
+    max-width: 1000px;
     padding-bottom: 80px;
     text-align: center;
 
@@ -904,6 +932,7 @@ body[data-modal-product='focus'] #modal .window .inner {
     }
 
     .form-container {
+        padding-top: 40px;
         width: 100%;
     }
 
