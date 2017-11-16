@@ -79,7 +79,7 @@ if [ "${DRIVER}" = "Remote" ]; then
 
   # start selenium grid nodes
   for NODE_NUMBER in `seq ${NUMBER_OF_NODES:-5}`; do
-    docker run -d --rm \
+    docker run -d --rm --shm-size 2g \
       --name bedrock-selenium-node-${NODE_NUMBER}-${GIT_COMMIT_SHORT} \
       ${DOCKER_LINKS[@]} \
       selenium/node-firefox:${SELENIUM_VERSION}

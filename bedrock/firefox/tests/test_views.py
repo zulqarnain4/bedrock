@@ -993,17 +993,8 @@ class TestFeatureSendTabs(TestCase):
 
 @patch('bedrock.firefox.views.l10n_utils.render')
 class TestFirefoxHubPage(TestCase):
-    @patch('bedrock.firefox.views.switch', Mock(return_value=False))
-    def test_hub_pre_57(self, render_mock):
-        view = views.FirefoxHubView.as_view()
-        req = RequestFactory().get('/firefox/')
-        req.locale = 'en-US'
-        view(req)
-        template = render_mock.call_args[0][1]
-        eq_(template, ['firefox/hub/home.html'])
-
     @patch('bedrock.firefox.views.switch', Mock(return_value=True))
-    def test_hub_post_57(self, render_mock):
+    def test_hub(self, render_mock):
         view = views.FirefoxHubView.as_view()
         req = RequestFactory().get('/firefox/')
         req.locale = 'en-US'
@@ -1037,21 +1028,6 @@ class TestFirefoxDesktopPageRedirect(TestCase):
         resp = view(req)
         eq_(resp.status_code, 301)
         ok_(resp.url.endswith('/en-US/firefox/'))
-
-
-class TestFirefoxMobilePageRedirect(TestCase):
-    @patch('bedrock.firefox.views.switch', Mock(return_value=False))
-    def test_mobile_page_pre_57(self):
-        req = RequestFactory().get('/en-US/firefox/mobile/')
-        resp = views.mobile(req)
-        eq_(resp.status_code, 302)
-        ok_(resp.url.endswith('/en-US/firefox/android/'))
-
-    @patch('bedrock.firefox.views.switch', Mock(return_value=True))
-    def test_mobile_page_post_57(self):
-        req = RequestFactory().get('/en-US/firefox/mobile/')
-        resp = views.mobile(req)
-        eq_(resp.status_code, 200)
 
 
 class TestFirefoxQuantumPageRedirect(TestCase):
