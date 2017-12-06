@@ -8,18 +8,26 @@ import sys
 from subprocess import check_call
 from time import time
 
-import requests
+import babis
 from apscheduler.schedulers.blocking import BlockingScheduler
 from decouple import config
 from pathlib2 import Path
 
 
-schedule = BlockingScheduler()
-DEAD_MANS_SNITCH_URL = config('DEAD_MANS_SNITCH_URL', default='')
+# these are the defaults, but explicit is better
+JOB_DEFAULTS = {
+    'coalesce': True,
+    'max_instances': 1,
+}
+schedule = BlockingScheduler(job_defaults=JOB_DEFAULTS)
+
 DB_UPDATE_MINUTES = config('DB_UPDATE_MINUTES', default='5', cast=int)
 LOCAL_DB_UPDATE = config('LOCAL_DB_UPDATE', default=False, cast=bool)
 DB_DOWNLOAD_IGNORE_GIT = config('DB_DOWNLOAD_IGNORE_GIT', default=False, cast=bool)
 RUN_TIMES = {}
+
+# Dead Man's Snitch
+DEAD_MANS_SNITCH_URL = config('DEAD_MANS_SNITCH_URL', default=None)
 
 # ROOT path of the project. A pathlib.Path object.
 ROOT_PATH = Path(__file__).resolve().parents[1]
@@ -62,20 +70,6 @@ class scheduled_job(object):
         print(msg, file=sys.stderr)
 
 
-def ping_dms(function):
-    """Pings Dead Man's Snitch after job completion if URL is set."""
-
-    def _ping(*args):
-        function(*args)
-        if DEAD_MANS_SNITCH_URL:
-            utcnow = datetime.datetime.utcnow()
-            payload = {'m': 'Run {} on {}'.format(function.__name__, utcnow.isoformat())}
-            requests.get(DEAD_MANS_SNITCH_URL, params=payload)
-
-    _ping.__name__ = function.__name__
-    return _ping
-
-
 def set_last_run(name):
     RUN_TIMES[name] = time()
 
@@ -92,7 +86,7 @@ def get_time_since(name):
 
 def schedule_database_jobs():
     @scheduled_job('interval', minutes=DB_UPDATE_MINUTES)
-    @ping_dms
+    @babis.decorator(ping_after=DEAD_MANS_SNITCH_URL)
     def update_upload_database():
         fn_name = 'update_upload_database'
         command = 'bin/run-db-update.sh'
@@ -111,7 +105,7 @@ def schedule_database_jobs():
 
 
 def schedule_file_jobs():
-    @scheduled_job('interval', minutes=10)
+    @scheduled_job('interval', minutes=DB_UPDATE_MINUTES)
     def update_locales():
         call_command('l10n_update')
 
