@@ -33,6 +33,11 @@ DEAD_MANS_SNITCH_URL = config('DEAD_MANS_SNITCH_URL', default=None)
 ROOT_PATH = Path(__file__).resolve().parents[1]
 ROOT = str(ROOT_PATH)
 MANAGE = str(ROOT_PATH / 'manage.py')
+HEALTH_FILE_BASE = '/tmp/last-run'
+
+
+def set_updated_time(name):
+    check_call('touch {}-{}'.format(HEALTH_FILE_BASE, name), shell=True)
 
 
 def call_command(command):
@@ -50,6 +55,7 @@ class scheduled_job(object):
         self.name = fn.__name__
         self.callback = fn
         schedule.add_job(self.run, id=self.name, *self.args, **self.kwargs)
+        set_updated_time(self.name)
         self.log('Registered')
         return self.run
 
@@ -61,6 +67,7 @@ class scheduled_job(object):
             self.log('CRASHED: {}'.format(e))
             raise
         else:
+            set_updated_time(self.name)
             self.log('finished successfully')
 
     def log(self, message):
@@ -119,8 +126,7 @@ def schedule_file_jobs():
             check_call(command, shell=True)
 
 
-if __name__ == '__main__':
-    args = sys.argv[1:]
+def main(args):
     has_jobs = False
     if 'db' in args:
         schedule_database_jobs()
@@ -130,7 +136,18 @@ if __name__ == '__main__':
         has_jobs = True
 
     if has_jobs:
+        # run them all at startup
+        for job in schedule.get_jobs():
+            job.func()
+
+        if '--run-once' in args:
+            return
+
         try:
             schedule.start()
         except (KeyboardInterrupt, SystemExit):
             pass
+
+
+if __name__ == '__main__':
+    main(sys.argv[1:])

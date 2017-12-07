@@ -95,9 +95,11 @@ def main(args):
         return 0
 
     res = upload_db_data(new_data)
-    if res == 0 and prev_data:
-        # remove old db file
-        delete_s3_obj(prev_data['file_name'])
+    # TODO decide if we should do this here or as a separate process
+    # keeping some number of these around could be good for research
+    # if res == 0 and prev_data:
+    #    remove old db file
+    #    delete_s3_obj(prev_data['file_name'])
 
     return res
 

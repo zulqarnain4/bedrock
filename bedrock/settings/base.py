@@ -256,6 +256,7 @@ SUPPORTED_NONLOCALES = [
     'webmaker',
     'contributor-data',
     'healthz',
+    'healthz-cron',
     '2004',
     '2005',
     '2006',
@@ -287,7 +288,7 @@ NOINDEX_URLS = [
     r'^tabzilla/',
     r'/system-requirements/$',
     r'.*/(firstrun|thanks)/$',
-    r'^healthz/$',
+    r'^healthz(-cron)?/$',
     r'^country-code\.json$',
     # exclude redirects
     r'^foundation/annualreport/$'
@@ -522,7 +523,7 @@ SECURE_BROWSER_XSS_FILTER = config('SECURE_BROWSER_XSS_FILTER', default=True, ca
 SECURE_CONTENT_TYPE_NOSNIFF = config('SECURE_CONTENT_TYPE_NOSNIFF', default=True, cast=bool)
 SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=not DISABLE_SSL, cast=bool)
 SECURE_REDIRECT_EXEMPT = [
-    r'^healthz/$',
+    r'^healthz(-cron)?/$',
 ]
 if config('USE_SECURE_PROXY_HEADER', default=SECURE_SSL_REDIRECT, cast=bool):
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
