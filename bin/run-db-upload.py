@@ -2,8 +2,8 @@
 
 from __future__ import absolute_import, print_function, unicode_literals
 
+import os
 import sys
-from os import getenv
 from time import time
 
 import boto3
@@ -20,21 +20,21 @@ from db_s3_utils import (
 
 
 CACHE = {}
-BUCKET_NAME = getenv('AWS_DB_S3_BUCKET', 'bedrock-db-dev')
+BUCKET_NAME = os.getenv('AWS_DB_S3_BUCKET', 'bedrock-db-dev')
+REGION_NAME = os.getenv('AWS_DB_S3_REGION', 'us-west-2')
 
 
+# Requires setting some environment variables:
+# AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+# See boto3 docs for more info:
+# http://boto3.readthedocs.io/en/latest/guide/configuration.html#environment-variable-configuration
 def s3_client():
-    access_key_id = getenv('AWS_DB_ACCESS_KEY_ID')
-    secret_access_key = getenv('AWS_DB_SECRET_ACCESS_KEY')
-    region_name = getenv('AWS_DB_REGION', 'us-west-2')
-    if not access_key_id:
+    if 'AWS_ACCESS_KEY_ID' not in os.environ:
         return None
 
     s3 = CACHE.get('s3_client')
     if not s3:
-        s3 = boto3.client('s3', region_name=region_name,
-                                aws_access_key_id=access_key_id,
-                                aws_secret_access_key=secret_access_key)
+        s3 = boto3.client('s3', region_name=REGION_NAME)
         CACHE['s3_client'] = s3
 
     return s3
