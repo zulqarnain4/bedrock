@@ -14,7 +14,7 @@ $(document).ready(function() {
     var newItem;
     var focusedItem;
 
-    $('#nav-main > .has-submenus > li').bind('mouseover focusin', function() {
+    $('#nav-main > .has-submenus > li').on('mouseover focusin', function() {
         newItem = $(this);
 
         if (!prevItem || prevItem.attr('id') !== newItem.attr('id')) {
@@ -27,7 +27,7 @@ $(document).ready(function() {
         } else {
             prevItem.clearQueue();
         }
-    }).bind('mouseout focusout', function() {
+    }).on('mouseout focusout', function() {
         prevItem = $(this);
         prevItem.delay(100).queue(function() {
             if (prevItem) {
@@ -44,12 +44,12 @@ $(document).ready(function() {
         var menuitems = $(this).find('a');
 
         menuitems.mouseover(function() {
-            this.focus(); // Sometimes $(this).focus() doesn"t work
-        }).focus(function() {
+            this.focus(); // Sometimes $(this).trigger('focus') doesn't work
+        }).on('focus', function() {
             focusedItem = $(this);
         }).each(function(itemIdx) {
             // Enable keyboard navigation
-            $(this).keydown(function(event) {
+            $(this).on('keydown', function(event) {
                 var target;
                 if(event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
                     return true;
