@@ -1,0 +1,12 @@
+# see the following for documentation of these options
+# http://bedrock.readthedocs.io/en/latest/pipeline.html#configuration
+smoke_tests: false
+regions:
+  - frankfurt
+apps:
+  - bedrock-prod
+integration_tests:
+  frankfurt:
+    - firefox
+pipeline:
+  script: test-only
