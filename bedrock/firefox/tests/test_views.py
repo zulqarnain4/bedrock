@@ -423,10 +423,17 @@ class TestFirefoxNew(TestCase):
         views.new(req)
         render_mock.assert_called_once_with(req, 'firefox/new/scene1.html')
 
-    def test_scene_2_template(self, render_mock):
-        req = RequestFactory().get('/firefox/new/?scene=2')
+    def test_scene_2_redirect(self, render_mock):
+        req = RequestFactory().get('/firefox/new/?scene=2&dude=abides')
         req.locale = 'en-US'
-        views.new(req)
+        resp = views.new(req)
+        assert resp.status_code == 301
+        assert resp['location'].endswith('/firefox/download/thanks/?scene=2&dude=abides')
+
+    def test_scene_2_template(self, render_mock):
+        req = RequestFactory().get('/firefox/download/thanks/')
+        req.locale = 'en-US'
+        views.download_thanks(req)
         render_mock.assert_called_once_with(req, 'firefox/new/scene2.html')
 
     # wait face campaign bug 1380044
@@ -438,9 +445,9 @@ class TestFirefoxNew(TestCase):
         render_mock.assert_called_once_with(req, 'firefox/new/wait-face/scene1.html')
 
     def test_wait_face_scene_2(self, render_mock):
-        req = RequestFactory().get('/firefox/new/?scene=2&xv=waitface')
+        req = RequestFactory().get('/firefox/download/thanks/?xv=waitface')
         req.locale = 'en-US'
-        views.new(req)
+        views.download_thanks(req)
         render_mock.assert_called_once_with(req, 'firefox/new/wait-face/scene2.html')
 
     # wait face video experiment bug 1431795
@@ -452,9 +459,9 @@ class TestFirefoxNew(TestCase):
         render_mock.assert_called_once_with(req, 'firefox/new/wait-face/scene1.html')
 
     def test_wait_face_video_var_a_scene_2(self, render_mock):
-        req = RequestFactory().get('/firefox/new/?scene=2&xv=waitface&v=a')
+        req = RequestFactory().get('/firefox/download/thanks/?xv=waitface&v=a')
         req.locale = 'en-US'
-        views.new(req)
+        views.download_thanks(req)
         render_mock.assert_called_once_with(req, 'firefox/new/wait-face/scene2.html')
 
     def test_wait_face_video_var_b_scene_1(self, render_mock):
@@ -464,9 +471,9 @@ class TestFirefoxNew(TestCase):
         render_mock.assert_called_once_with(req, 'firefox/new/wait-face/scene1-video.html')
 
     def test_wait_face_video_var_b_scene_2(self, render_mock):
-        req = RequestFactory().get('/firefox/new/?scene=2&xv=waitface&v=b')
+        req = RequestFactory().get('/firefox/download/thanks/?xv=waitface&v=b')
         req.locale = 'en-US'
-        views.new(req)
+        views.download_thanks(req)
         render_mock.assert_called_once_with(req, 'firefox/new/wait-face/scene2.html')
 
     # reggie watts campaign bug 1413995
@@ -478,9 +485,9 @@ class TestFirefoxNew(TestCase):
         render_mock.assert_called_once_with(req, 'firefox/new/reggie-watts/scene1.html')
 
     def test_reggie_watts_scene_2(self, render_mock):
-        req = RequestFactory().get('/firefox/new/?scene=2&xv=reggiewatts')
+        req = RequestFactory().get('/firefox/download/thanks/?xv=reggiewatts')
         req.locale = 'en-US'
-        views.new(req)
+        views.download_thanks(req)
         render_mock.assert_called_once_with(req, 'firefox/new/reggie-watts/scene2.html')
 
     @patch.object(views, 'lang_file_is_active', lambda *x: True)
@@ -492,9 +499,9 @@ class TestFirefoxNew(TestCase):
 
     @patch.object(views, 'lang_file_is_active', lambda *x: True)
     def test_reggie_watts_translated_scene_2(self, render_mock):
-        req = RequestFactory().get('/firefox/new/?scene=2&xv=reggiewatts')
+        req = RequestFactory().get('/firefox/download/thanks/?xv=reggiewatts')
         req.locale = 'de'
-        views.new(req)
+        views.download_thanks(req)
         render_mock.assert_called_once_with(req, 'firefox/new/reggie-watts/scene2.html')
 
     @patch.object(views, 'lang_file_is_active', lambda *x: False)
@@ -506,9 +513,9 @@ class TestFirefoxNew(TestCase):
 
     @patch.object(views, 'lang_file_is_active', lambda *x: False)
     def test_reggie_watts_untranslated_scene_2(self, render_mock):
-        req = RequestFactory().get('/firefox/new/?scene=2&xv=reggiewatts')
+        req = RequestFactory().get('/firefox/download/thanks/?xv=reggiewatts')
         req.locale = 'de'
-        views.new(req)
+        views.download_thanks(req)
         render_mock.assert_called_once_with(req, 'firefox/new/scene2.html')
 
 
@@ -524,9 +531,9 @@ class TestFirefoxNewNoIndex(TestCase):
 
     def test_scene_2_noindex(self):
         # Scene 2 of /firefox/new/ should always contain a noindex tag.
-        req = RequestFactory().get('/firefox/new/?scene=2')
+        req = RequestFactory().get('/firefox/download/thanks/')
         req.locale = 'en-US'
-        response = views.new(req)
+        response = views.download_thanks(req)
         doc = pq(response.content)
         robots = doc('meta[name="robots"]')
         eq_(robots.length, 1)

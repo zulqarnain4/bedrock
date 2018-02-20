@@ -20,9 +20,7 @@
 
 {# "noindex" pages should not have the canonical or hreflang tags #}
 {# see https://bugzilla.mozilla.org/show_bug.cgi?id=1438302 #}
-{% block canonical_urls %}{% endblock %}
-
-{% block extra_meta %}
+{% block canonical_urls %}
   <meta name="robots" content="noindex,follow">
 {% endblock %}
 
