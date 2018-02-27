@@ -164,9 +164,6 @@ EXCLUDE_EDIT_TEMPLATES = [
     'security/advisories.html',
     'security/product-advisories.html',
     'security/known-vulnerabilities.html',
-    'thunderbird/releases/beta-notes.html',
-    'thunderbird/releases/release-notes.html',
-    'thunderbird/releases/system_requirements.html',
 ]
 
 
@@ -308,7 +305,6 @@ NOINDEX_URLS = [
     r'^foundation/annualreport/$'
     r'^firefox/notes/$'
     r'^teach/$'
-    r'^thunderbird/(release)?notes/$'
     r'^about/legal/impressum/$',
     r'^security/announce/',
     r'^etc/',
@@ -489,7 +485,6 @@ INSTALLED_APPS = (
     'bedrock.security',
     'bedrock.events',
     'bedrock.releasenotes',
-    'bedrock.thunderbird',
     'bedrock.shapeoftheweb',
     'bedrock.utils',
     'bedrock.wordpress',
@@ -513,7 +508,6 @@ VARY_NOCACHE_EXEMPT_URL_PREFIXES = (
     '/contribute/',
     '/about/',
     '/contact/',
-    '/thunderbird/',
     '/newsletter/',
     '/privacy/',
     '/foundation/',

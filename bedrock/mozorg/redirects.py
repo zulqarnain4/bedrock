@@ -235,9 +235,6 @@ redirectpatterns = (
     # bug 957664
     redirect(r'^press/awards(?:/|\.html)?$', 'https://blog.mozilla.org/press/awards/'),
 
-    # bug 885799, 952429
-    redirect(r'^projects/calendar/holidays\.html$', 'mozorg.projects.holiday_calendars'),
-
     # bug 876810
     redirect(r'^hacking/commit-access-policy/?$',
              'mozorg.about.governance.policies.commit.access-policy'),
