@@ -224,14 +224,6 @@ def windows_billboards(req):
     return l10n_utils.render(req, 'firefox/unsupported/win2k.html')
 
 
-def dnt(request):
-    dnt = request.META.get('HTTP_DNT')
-    request.DNT = dnt == '1'
-    response = l10n_utils.render(request, 'firefox/dnt.html')
-    response['Vary'] = 'DNT'
-    return response
-
-
 def all_downloads(request, platform, channel):
     if platform is None:
         platform = 'desktop'

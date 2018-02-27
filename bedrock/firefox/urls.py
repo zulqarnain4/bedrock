@@ -78,7 +78,6 @@ urlpatterns = (
              locale_prefix=False),
 
     url(r'^firefox/unsupported/win/$', views.windows_billboards),
-    url('^firefox/dnt/$', views.dnt, name='firefox.dnt'),
     url(firstrun_re, views.FirstrunView.as_view(), name='firefox.firstrun'),
     url(whatsnew_re, views.WhatsnewView.as_view(), name='firefox.whatsnew'),
 

@@ -578,4 +578,7 @@ redirectpatterns = (
 
     # bug 1419244
     redirect(r'^firefox/mobile-download(/.*)?', 'firefox.mobile'),
+
+    # bug 1428783
+    redirect(r'^firefox/dnt/?$', 'https://support.mozilla.org/kb/how-do-i-turn-do-not-track-feature'),
 )
