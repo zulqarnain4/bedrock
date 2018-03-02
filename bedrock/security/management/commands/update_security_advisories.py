@@ -15,13 +15,14 @@ from django.db.models import Count
 
 from dateutil.parser import parse as parsedate
 
-from bedrock.security.models import Product, SecurityAdvisory
+from bedrock.security.models import MitreCVE, Product, SecurityAdvisory
 from bedrock.utils.git import GitRepo
 from bedrock.security.utils import (
     FILENAME_RE,
     mfsa_id_from_filename,
     parse_md_file,
     parse_yml_file,
+    update_advisory_bugs,
 )
 
 
@@ -100,6 +101,38 @@ def add_or_update_advisory(data, html):
     return advisory
 
 
+def parse_cve_id(cve_id):
+    cve_year, cve_order = cve_id.split('-')[1:]
+    return int(cve_year), int(cve_order)
+
+
+def add_or_update_cve(data):
+    for cve_id, advisory in data['advisories'].iteritems():
+        cve_year, cve_order = parse_cve_id(cve_id)
+        update_advisory_bugs(advisory)
+        cve_data = {
+            'id': cve_id,
+            'year': cve_year,
+            'order': cve_order,
+            'title': advisory['title'] or '',
+            'impact': advisory['impact'] or '',
+            'reporter': advisory['reporter'] or '',
+            'description': advisory['description'] or '',
+            'bugs': advisory['bugs'],
+        }
+        try:
+            cve = MitreCVE.objects.get(id=cve_id)
+        except MitreCVE.DoesNotExist:
+            cve = MitreCVE(**cve_data)
+        else:
+            for prop, value in cve_data.items():
+                if value:
+                    setattr(cve, prop, value)
+
+        cve.products = list(set(data['fixed_in']) | set(cve.products))
+        cve.save()
+
+
 def update_db_from_file(filename):
     """
     Parse file for YAML and Markdown and update database.
@@ -115,7 +148,10 @@ def update_db_from_file(filename):
     else:
         raise RuntimeError('Unknown file type %s' % filename)
 
-    return add_or_update_advisory(*parser(filename))
+    data, html = parser(filename)
+    if 'advisories' in data:
+        add_or_update_cve(data)
+    return add_or_update_advisory(data, html)
 
 
 def get_all_mfsa_files():
@@ -197,6 +233,7 @@ class Command(NoArgsCommand):
             printout('Clearing all security advisories.')
             SecurityAdvisory.objects.all().delete()
             Product.objects.all().delete()
+            MitreCVE.objects.all().delete()
 
         if not no_git:
             printout('Updating repository.')
