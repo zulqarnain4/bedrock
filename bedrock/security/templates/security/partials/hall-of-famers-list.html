@@ -1,0 +1,21 @@
+    <div class="accordion accordion-auto-init zebra">
+      {% for years in hofers|groupby('date.year')|reverse %}
+        <section id="year-{{ years.grouper }}">
+          <h3 data-accordion-role="tab">{{ years.grouper }}</h3>
+          <div data-accordion-role="tabpanel">
+          {% for quarters in years.list|groupby('quarter_string')|reverse %}
+            <h4>{{ quarters.grouper }}</h4>
+            <ul>
+            {% for person in quarters.list|sort(reverse=True, attribute='id') %}
+              {% if person.url -%}
+                <li><a href="{{ person.url }}" rel="nofollow">{{ person.name }}</a></li>
+              {% else -%}
+                <li>{{ person.name }}</li>
+              {% endif %}
+            {% endfor %}
+            </ul>
+          {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+    </div>
