@@ -19,8 +19,27 @@
   {% endif %}
 {% endblock %}
 
+{# waitface/switch experiment: https://bugzilla.mozilla.org/show_bug.cgi?id=1443921 #}
+{% block extrahead %}
+  {% if switch('experiment-firefox-new-waitface-switch', ['en-US']) and v %}
+    {% javascript 'firefox_new_waitface_switch_experiment_datalayer' %}
+  {% endif %}
+{% endblock %}
+
+{# If this template is loaded at /firefox/new/?xv=waitface&v=3, hide the nav #}
+{# waitface/switch experiment: https://bugzilla.mozilla.org/show_bug.cgi?id=1443921 #}
+{% block site_header %}
+  {% if not '/firefox/new' in request.path %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}
+
 {% block content %}
-{% include 'firefox/includes/hub/sub-nav.html' %}
+{# If this template is loaded at /firefox/new/?xv=waitface&v=3, hide the nav #}
+{# waitface/switch experiment: https://bugzilla.mozilla.org/show_bug.cgi?id=1443921 #}
+{% if not '/firefox/new' in request.path %}
+  {% include 'firefox/includes/hub/sub-nav.html' %}
+{% endif %}
 <main>
   <div class="outer-container">
     <div class="content">
