@@ -10,7 +10,7 @@ from django.test.client import RequestFactory
 from django.test.utils import override_settings
 
 from django_jinja.backend import Jinja2
-from mock import call, Mock, patch
+from mock import ANY, call, Mock, patch
 from nose.tools import eq_, ok_
 from pyquery import PyQuery as pq
 
@@ -356,6 +356,37 @@ class TestFirstRun(TestCase):
         self.view(req, version='57.0')
         template = render_mock.call_args[0][1]
         eq_(template, ['firefox/firstrun/firstrun-quantum.html'])
+
+    # Bug 1441597, 1440486 copy & image experiments
+
+    @override_settings(DEV=True)
+    def test_fx_firstrun_58_0_context_none(self, render_mock):
+        """Should pass default context data to template"""
+        req = self.rf.get('/en-US/firefox/firstrun/')
+        self.view(req, version='58.0')
+        context_data = render_mock.call_args[0][2]
+        eq_(context_data['v'], None)
+        eq_(context_data['campaign'], None)
+
+    @override_settings(DEV=True)
+    def test_fx_firstrun_58_0_context_copy_exp(self, render_mock):
+        """Should pass variation and campaign for copy exp to template"""
+        req = self.rf.get('/en-US/firefox/firstrun/?v=a')
+        self.view(req, version='58.0')
+        context_data = render_mock.call_args[0][2]
+        eq_(context_data['v'], 'a')
+        eq_(context_data['campaign'], 'firstrun-copy-ex1')
+
+    @override_settings(DEV=True)
+    def test_fx_firstrun_58_0_context_image_exp(self, render_mock):
+        """Should pass variation and campaign for image exp to template"""
+        req = self.rf.get('/en-US/firefox/firstrun/?v=g')
+        self.view(req, version='58.0')
+        context_data = render_mock.call_args[0][2]
+        eq_(context_data['v'], 'g')
+        eq_(context_data['campaign'], 'firstrun-image-ex1')
+
+    # End variation experiments
 
 
 @patch.object(fx_views, 'firefox_desktop', firefox_desktop)
