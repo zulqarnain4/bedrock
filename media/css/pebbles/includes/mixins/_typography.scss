@@ -138,3 +138,11 @@
 @mixin font-size-extra-small {
     @include font-size(12px);
 }
+
+@mixin intro-text {
+    @include font-size-level4;
+
+    &:first-line {
+        @include font-size-level3;
+    }
+}

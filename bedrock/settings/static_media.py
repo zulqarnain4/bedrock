@@ -163,6 +163,13 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/pebbles-bundle.css',
     },
+    'pebbles-basic': {
+        'source_filenames': (
+            'css/pebbles/global.scss',
+            'css/pebbles/basic.scss',
+        ),
+        'output_filename': 'css/pebbles-basic-bundle.css',
+    },
     'oldIE': {
         'source_filenames': (
             'css/sandstone/oldIE.less',
@@ -662,7 +669,7 @@ PIPELINE_CSS = {
     },
     'security': {
         'source_filenames': (
-            'css/security/security.less',
+            'css/security/security.scss',
         ),
         'output_filename': 'css/security-bundle.css',
     },

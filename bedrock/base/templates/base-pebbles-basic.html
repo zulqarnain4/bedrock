@@ -1,0 +1,26 @@
+{% from "macros.html" import side_nav_lists with context %}
+
+{% extends 'base-pebbles.html' %}
+
+{% block site_css %}
+  {% stylesheet 'pebbles-basic' %}
+{% endblock %}
+
+{% block content %}
+  {% block main_feature %}{% endblock %}
+  <main id="main-content" class="basic-content">
+    <div class="basic-main{% if self.sidebar() %} basic-main-with-side{% endif%}">
+      {% block article %}{% endblock %}
+    </div>
+    {% block sidebar %}
+      <aside class="basic-side">
+        {% block side_nav %}
+        {% endblock %}
+        {% block side_extra %}
+        {% endblock %}
+      </aside>
+    {% endblock %}
+  </main>
+{% endblock %}
+
+{% block email_form %}{% endblock %}

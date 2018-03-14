@@ -17,9 +17,9 @@
 
 
 {% block article %}
-  <article class="section-content" itemscope itemtype="http://schema.org/Article">
+  <article itemscope itemtype="http://schema.org/Article">
     <header>
-      <h1 itemprop="name" class="title-shadow-box">{{ title }}</h1>
+      <h1 itemprop="name"><span class="highlight">{{ title }}</span></h1>
     </header>
     <div itemprop="articleBody">
       {% if is_obsolete %}

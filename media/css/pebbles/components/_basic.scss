@@ -1,0 +1,79 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import '../includes/lib';
+
+/* one large column on the left, one optional smaller column on the right */
+
+$mobile-gutter: $gutter-width;
+$tablet-gutter: 60px;
+$desktop-gutter: 85px;
+
+.basic-content {
+    @include clearfix;
+    position: relative;
+    @include border-box;
+    margin: 0 auto;
+    min-width: $width-phone;
+    max-width: $width-max-content;
+
+    &:before {
+        content: '';
+        background: #000;
+        background: linear-gradient(90deg, #999, #333);
+        height: 10px;
+        display: block;
+        margin: $mobile-gutter;
+
+        @media #{$mq-tablet} {
+            margin: $tablet-gutter $tablet-gutter $gutter-width $tablet-gutter;
+        }
+
+        @media #{$mq-desktop-wide} {
+            margin: $desktop-gutter $desktop-gutter $gutter-width $desktop-gutter;
+        }
+    }
+}
+
+.basic-main {
+    padding: $mobile-gutter;
+
+    @media #{$mq-tablet} {
+        padding: $gutter-width $tablet-gutter;
+    }
+
+    @media #{$mq-desktop-wide} {
+        padding: $gutter-width $desktop-gutter;
+    }
+
+}
+
+.basic-main-with-side {
+    padding: $mobile-gutter;
+
+    @media #{$mq-tablet} {
+        @include span(8);
+        padding: $gutter-width ($tablet-gutter / 2) $tablet-gutter $tablet-gutter;
+    }
+
+    @media #{$mq-desktop-wide} {
+        padding: $gutter-width ($desktop-gutter / 2) $desktop-gutter $desktop-gutter;
+    }
+
+}
+
+.basic-side {
+    padding: $mobile-gutter;
+
+    @media #{$mq-tablet} {
+        @include span(4);
+        padding: $gutter-width $tablet-gutter $tablet-gutter ($tablet-gutter / 2);
+    }
+
+    @media #{$mq-desktop-wide} {
+        padding: $gutter-width $desktop-gutter $desktop-gutter ($desktop-gutter / 2);
+    }
+
+    // RTL
+}
